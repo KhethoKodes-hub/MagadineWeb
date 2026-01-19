@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Magadine Business Enterprise</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚒️</text></svg>">
+    
+    <style>
+        :root {
+            --primary: #0a1929;
+            --primary-light: #1e3a5f;
+            --secondary: #2563eb;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --success: #10b981;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-primary: linear-gradient(135deg, #0a1929 0%, #1e3a5f 50%, #2563eb 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, hsla(28,100%,74%,0.3) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, hsla(189,100%,56%,0.3) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, hsla(355,100%,93%,0.3) 0px, transparent 50%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== PARTICLES BACKGROUND ===== */
+        .particles-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* ===== NAVBAR ENHANCED ===== */
+        .navbar {
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1030;
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(10, 25, 41, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-icon {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.8)); }
+        }
+
+        .brand-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta {
+            background: var(--gradient-accent);
+            color: white;
+            font-weight: 700;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-cta:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+        }
+
+        /* ===== PAGE HERO ENHANCED ===== */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(30, 58, 95, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            margin-top: 90px;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.6;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-title .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb-item.active {
+            color: var(--accent);
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== PRODUCTS HEADER ENHANCED ===== */
+        .products-header {
+            padding: 5rem 0 3rem;
+            background: linear-gradient(180deg, white 0%, var(--light) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-light);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 2rem 0;
+            padding: 1.2rem 2.5rem;
+            background: white;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tagline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .tagline:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tagline:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ===== PRODUCT CATEGORIES TABS ENHANCED ===== */
+        .product-categories {
+            padding: 3rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .category-tabs {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+        }
+
+        .category-tabs:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            justify-content: center;
+        }
+
+        .nav-tabs .nav-link {
+            color: var(--primary) !important;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            margin: 0 0.5rem;
+            background: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-tabs .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: white !important;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .nav-tabs .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: white !important;
+            background: var(--gradient-accent);
+            border: none;
+            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .tab-content {
+            padding: 2rem 0;
+        }
+
+        /* ===== PRODUCT GRID ENHANCED ===== */
+        .products-grid {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, white 0%, var(--light) 100%);
+            position: relative;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .product-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+            transition: all 0.5s ease;
+        }
+
+        .product-card:hover .product-image::before {
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.2) 100%);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-category-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            z-index: 2;
+        }
+
+        .product-content {
+            padding: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-title {
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            min-height: 3.5rem;
+        }
+
+        .product-description {
+            color: var(--dark);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            min-height: 4.5rem;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.8rem;
+        }
+
+        .product-features li {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .product-features li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .product-features li i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .product-features li:hover i {
+            transform: scale(1.2);
+        }
+
+        .btn-product {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-product::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-product:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-product:hover {
+            background: var(--gradient-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Product Images */
+        .paper-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1603484477859-abe6a73f9366?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80');
+        }
+
+        .tape-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .flag-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .cleaner-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80');
+        }
+
+        .fire-hose-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2025&q=80');
+        }
+
+        .safety-harness-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .oil-spill-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1611591437398-8b4b4b4b4b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .textile-bag-img {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        /* ===== FULL PRODUCT LIST ENHANCED ===== */
+        .full-product-list {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .category-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .category-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .category-heading {
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--gradient-accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .category-heading i {
+            color: var(--accent);
+            margin-right: 15px;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-section:hover .category-heading i {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .product-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .product-item {
+            background: linear-gradient(135deg, rgba(10, 25, 41, 0.05) 0%, rgba(30, 58, 95, 0.02) 100%);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .product-item:hover::before {
+            left: 100%;
+        }
+
+        .product-item:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateX(8px) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ===== MANUFACTURING PRODUCTS ENHANCED ===== */
+        .manufacturing-products {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+            position: relative;
+        }
+
+        .manufacturing-card {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 25px;
+            padding: 3.5rem;
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manufacturing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .manufacturing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(37, 99, 235, 0.4) !important;
+        }
+
+        .manufacturing-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .manufacturing-card:hover .manufacturing-icon {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .manufacturing-title {
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .manufacturing-features {
+            list-style: none;
+            padding-left: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .manufacturing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .manufacturing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .manufacturing-features li i {
+            color: var(--accent);
+            margin-right: 12px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .manufacturing-features li:hover i {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        /* ===== CTA SECTION ENHANCED ===== */
+        .cta-section {
+            padding: 5rem 0;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.3;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-text {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
+        }
+
+        .btn-outline-light {
+            border-width: 2px;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== FOOTER ENHANCED ===== */
+        .footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.3;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h5 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== BACK TO TOP ENHANCED ===== */
+        .btn-back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .btn-back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btn-back-to-top:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .animate-fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-fade-in-up.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .product-items {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .manufacturing-card {
+                padding: 2.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 0.8rem 1.5rem;
+                margin: 0.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.3rem;
+            }
+            
+            .page-hero {
+                height: 40vh;
+                min-height: 350px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-brand {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .brand-text {
+                font-size: 1.3rem;
+            }
+            
+            .product-items {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+            
+            .category-tabs {
+                padding: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.5rem;
+                padding: 1rem 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn-primary, .btn-product, .btn-outline-light {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .product-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-tabs {
+                padding: 1rem;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+                margin: 0.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .product-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">⚒️</span>
+                <div>
+                    <div class="brand-text">MAGADINE</div>
+                    <small class="brand-subtitle">Business Enterprise</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn btn-cta ms-lg-3 mt-3 mt-lg-0">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="particles-bg" id="particles"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-hero-content">
+                        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-3">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Products</li>
+                            </ol>
+                        </nav>
+                        <h1 class="page-title">Our Products</h1>
+                        <p class="page-subtitle">
+                            Quality mining supplies, PPE, stationery, and industrial products for your business needs
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title animate-fade-in-up">What We Supply</h2>
+                    <p class="section-subtitle animate-fade-in-up">
+                        Comprehensive range of industrial and mining products
+                    </p>
+                    <div class="tagline animate-fade-in-up">
+                        <i class="fas fa-truck me-2"></i> Delivering Quality • Supplying Solutions
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-categories">
+        <div class="container">
+            <div class="category-tabs animate-fade-in-up">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="mining-tab" data-bs-toggle="tab" data-bs-target="#mining" type="button">
+                            <i class="fas fa-hard-hat me-2"></i> Mining Supplies
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ppe-tab" data-bs-toggle="tab" data-bs-target="#ppe" type="button">
+                            <i class="fas fa-shield-alt me-2"></i> PPE & Safety
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="stationery-tab" data-bs-toggle="tab" data-bs-target="#stationery" type="button">
+                            <i class="fas fa-pen-fancy me-2"></i> Stationery
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="consumables-tab" data-bs-toggle="tab" data-bs-target="#consumables" type="button">
+                            <i class="fas fa-boxes me-2"></i> Consumables
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="productTabsContent">
+                    <!-- Mining Supplies Tab -->
+                    <div class="tab-pane fade show active" id="mining" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto text-center">
+                                <h4 class="mb-4">Essential Mining Equipment & Supplies</h4>
+                                <p class="lead">
+                                    From safety equipment to operational tools, we supply everything needed for efficient and safe mining operations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PPE & Safety Tab -->
+                    <div class="tab-pane fade" id="ppe" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto text-center">
+                                <h4 class="mb-4">Personal Protective Equipment</h4>
+                                <p class="lead">
+                                    Comprehensive safety gear to protect workers in hazardous environments and ensure compliance with safety regulations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stationery Tab -->
+                    <div class="tab-pane fade" id="stationery" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto text-center">
+                                <h4 class="mb-4">Office & Stationery Supplies</h4>
+                                <p class="lead">
+                                    Complete range of stationery and office supplies for administrative and operational needs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Consumables Tab -->
+                    <div class="tab-pane fade" id="consumables" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto text-center">
+                                <h4 class="mb-4">Industrial Consumables</h4>
+                                <p class="lead">
+                                    General consumables, cleaning supplies, and maintenance products for industrial operations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Grid -->
+    <section class="products-grid">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Our Most Popular Industrial & Mining Products</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Product 1: A4 TypeK Paper -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image paper-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">Stationery</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">A4 TypeK White Office Paper</h3>
+                            <p class="product-description">
+                                Premium quality A4 office paper for all your printing and documentation needs.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> High-quality white paper</li>
+                                <li><i class="fas fa-check"></i> Standard A4 size</li>
+                                <li><i class="fas fa-check"></i> Suitable for all printers</li>
+                                <li><i class="fas fa-check"></i> Multiple pack sizes</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2: Duct Tape -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image tape-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">Consumables</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Industrial Duct Tape</h3>
+                            <p class="product-description">
+                                Heavy-duty duct tape for industrial repairs, sealing, and temporary fixes.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Water-resistant</li>
+                                <li><i class="fas fa-check"></i> High tensile strength</li>
+                                <li><i class="fas fa-check"></i> All-weather performance</li>
+                                <li><i class="fas fa-check"></i> Multiple widths</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3: Bakkie Whip Flag -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image flag-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">Mining</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Flag, Bakkie Whip</h3>
+                            <p class="product-description">
+                                High-visibility flags for vehicle safety in mining and construction sites.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> High-visibility colors</li>
+                                <li><i class="fas fa-check"></i> Weather-resistant</li>
+                                <li><i class="fas fa-check"></i> Durable construction</li>
+                                <li><i class="fas fa-check"></i> Easy installation</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4: Hand Cleaner with Grit -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image cleaner-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">Manufactured</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Hand Cleaner with Grit</h3>
+                            <p class="product-description">
+                                Specially formulated hand cleaner with grit to remove tough industrial grime.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Removes oil and grease</li>
+                                <li><i class="fas fa-check"></i> Gentle on skin</li>
+                                <li><i class="fas fa-check"></i> Industrial strength</li>
+                                <li><i class="fas fa-check"></i> Various sizes</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5: Fire Hose Reel -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image fire-hose-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">Safety</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Fire Hose Reel</h3>
+                            <p class="product-description">
+                                Complete fire hose reels for emergency fire safety in industrial facilities.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Safety compliant</li>
+                                <li><i class="fas fa-check"></i> Easy access</li>
+                                <li><i class="fas fa-check"></i> Durable construction</li>
+                                <li><i class="fas fa-check"></i> Various lengths</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6: Safety Harness -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image safety-harness-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">PPE</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Safety Harness Systems</h3>
+                            <p class="product-description">
+                                Complete fall protection systems including flat webbing and endless round slings.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> OSHA compliant</li>
+                                <li><i class="fas fa-check"></i> Adjustable fit</li>
+                                <li><i class="fas fa-check"></i> Durable materials</li>
+                                <li><i class="fas fa-check"></i> Various configurations</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7: Oil Spill Kit -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image oil-spill-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">Safety</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">240L Oil Spill Kit</h3>
+                            <p class="product-description">
+                                Complete oil spill containment and cleanup kit with wheelie bin for easy transport.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> 240L capacity</li>
+                                <li><i class="fas fa-check"></i> Wheelie bin included</li>
+                                <li><i class="fas fa-check"></i> Absorbent materials</li>
+                                <li><i class="fas fa-check"></i> Emergency response</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8: Textile Bags -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card animate-fade-in-up">
+                        <div class="product-image textile-bag-img" style="background-image: url('./assets/handcleaners.png');">
+                            <div class="product-category-badge">Manufactured</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">1-Ton Textile Bags</h3>
+                            <p class="product-description">
+                                Heavy-duty textile bags manufactured for bulk material handling in mining.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> 80x80x60 MM dimensions</li>
+                                <li><i class="fas fa-check"></i> 300NM strength rating</li>
+                                <li><i class="fas fa-check"></i> Bulk quantity production</li>
+                                <li><i class="fas fa-check"></i> Custom sizes available</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-product">
+                                <i class="fas fa-shopping-cart me-2"></i> Request Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Product List -->
+    <section class="full-product-list">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Complete Product Catalog</h2>
+                    <p class="section-subtitle">Our Comprehensive Range of Industrial Products</p>
+                </div>
+            </div>
+            
+            <!-- Mining Supplies Category -->
+            <div class="category-section animate-fade-in-up">
+                <h3 class="category-heading">
+                    <i class="fas fa-hard-hat"></i> Mining Supplies & Equipment
+                </h3>
+                <div class="product-items">
+                    <div class="product-item">Cable Ties (All Sizes)</div>
+                    <div class="product-item">Flag, Bakkie Whip</div>
+                    <div class="product-item">Oil Spill Kit</div>
+                    <div class="product-item">Fire Hose Reel</div>
+                    <div class="product-item">Safety Tape (500m x 75mm)</div>
+                    <div class="product-item">Plug Top RBR 3Pin 15A, LM</div>
+                    <div class="product-item">Bearings</div>
+                    <div class="product-item">Shovel Round Nose</div>
+                    <div class="product-item">Bolts and Nuts</div>
+                    <div class="product-item">Construction Tape</div>
+                </div>
+            </div>
+            
+            <!-- PPE & Safety Category -->
+            <div class="category-section animate-fade-in-up">
+                <h3 class="category-heading">
+                    <i class="fas fa-shield-alt"></i> PPE & Safety Equipment
+                </h3>
+                <div class="product-items">
+                    <div class="product-item">Safety Harness Systems</div>
+                    <div class="product-item">Helmets (Hard Hats)</div>
+                    <div class="product-item">Safety Boots</div>
+                    <div class="product-item">Respiratory Masks</div>
+                    <div class="product-item">Dust Masks</div>
+                    <div class="product-item">Dromex Gloves Range</div>
+                    <div class="product-item">Chemical-Resistant Gloves</div>
+                    <div class="product-item">Cut-Resistant Gloves</div>
+                    <div class="product-item">Heat-Resistant Gloves</div>
+                    <div class="product-item">Electrical Insulating Gloves</div>
+                </div>
+            </div>
+            
+            <!-- Stationery & Office Category -->
+            <div class="category-section animate-fade-in-up">
+                <h3 class="category-heading">
+                    <i class="fas fa-pen-fancy"></i> Stationery & Office Supplies
+                </h3>
+                <div class="product-items">
+                    <div class="product-item">A4 TypeK White Office Paper</div>
+                    <div class="product-item">Highlighters (Various)</div>
+                    <div class="product-item">Pens (Various Types)</div>
+                    <div class="product-item">Hole Punch</div>
+                    <div class="product-item">Clipboard</div>
+                    <div class="product-item">Toilet Paper Supplies</div>
+                    <div class="product-item">Sealant Silicone Tubes</div>
+                    <div class="product-item">Office Files & Folders</div>
+                    <div class="product-item">Desk Organizers</div>
+                    <div class="product-item">Notebooks & Pads</div>
+                </div>
+            </div>
+            
+            <!-- General Consumables Category -->
+            <div class="category-section animate-fade-in-up">
+                <h3 class="category-heading">
+                    <i class="fas fa-boxes"></i> General Consumables
+                </h3>
+                <div class="product-items">
+                    <div class="product-item">Industrial Duct Tape</div>
+                    <div class="product-item">Cleaning Rags (5kg)</div>
+                    <div class="product-item">Industrial Cleaning Kits</div>
+                    <div class="product-item">Hand Cleaner with Grit</div>
+                    <div class="product-item">Textile Bags (1-ton bulk)</div>
+                    <div class="product-item">Sample Bags (420x610MM)</div>
+                    <div class="product-item">Industrial Mops</div>
+                    <div class="product-item">Cleaning Chemicals</div>
+                    <div class="product-item">Disposable Wipes</div>
+                    <div class="product-item">Absorbent Materials</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Products -->
+    <section class="manufacturing-products">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Our Manufacturing Products</h2>
+                    <p class="section-subtitle">Specialty Products Manufactured In-House</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="manufacturing-card animate-fade-in-up">
+                        <div class="manufacturing-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 class="manufacturing-title">Custom Manufacturing Solutions</h3>
+                        <p class="text-center mb-4" style="position: relative; z-index: 1;">
+                            Magadine Business Enterprise specializes in manufacturing high-quality industrial products tailored to specific customer requirements.
+                        </p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="mb-3" style="position: relative; z-index: 1;">Hand Cleaners with Grit</h5>
+                                <ul class="manufacturing-features">
+                                    <li><i class="fas fa-check"></i> Custom formulations available</li>
+                                    <li><i class="fas fa-check"></i> Various grit levels</li>
+                                    <li><i class="fas fa-check"></i> Skin-friendly ingredients</li>
+                                    <li><i class="fas fa-check"></i> Bulk packaging options</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h5 class="mb-3" style="position: relative; z-index: 1;">1-Ton Textile Bags</h5>
+                                <ul class="manufacturing-features">
+                                    <li><i class="fas fa-check"></i> 80x80x60 MM dimensions</li>
+                                    <li><i class="fas fa-check"></i> 300NM strength rating</li>
+                                    <li><i class="fas fa-check"></i> Bulk quantity production</li>
+                                    <li><i class="fas fa-check"></i> Custom sizes available</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="mb-0" style="position: relative; z-index: 1;">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Contact us for custom manufacturing requirements and bulk orders
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="animate-fade-in-up">
+                        <h2 class="cta-title">Need Specific Products?</h2>
+                        <p class="cta-text">
+                            Can't find what you're looking for? Contact us with your specific requirements. We can source or manufacture products to meet your exact needs.
+                        </p>
+                        <a href="contact.html" class="btn btn-primary btn-lg me-3 mb-3">
+                            <i class="fas fa-file-invoice me-2"></i> Request Custom Quote
+                        </a>
+                        <a href="tel:+27682215400" class="btn btn-outline-light btn-lg mb-3">
+                            <i class="fas fa-phone-alt me-2"></i> Call for Pricing
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <span class="brand-icon">⚒️</span>
+                        <div>
+                            <div class="brand-text">MAGADINE</div>
+                            <small class="brand-subtitle">Business Enterprise</small>
+                        </div>
+                    </div>
+                    <p style="position: relative; z-index: 1;">Mining Supply and Services of Choice in the Thaba Chweu and Greater Tubatse area.</p>
+                    <p class="mb-1" style="position: relative; z-index: 1;"><strong>Email:</strong> magadinebusiness1998@gmail.com</p>
+                    <p class="mb-1" style="position: relative; z-index: 1;"><strong>Phone:</strong> +27 68 221 5400</p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Product Categories</h5>
+                        <ul>
+                            <li><a href="#mining">Mining Supplies</a></li>
+                            <li><a href="#ppe">PPE Equipment</a></li>
+                            <li><a href="#stationery">Stationery</a></li>
+                            <li><a href="#consumables">General Consumables</a></li>
+                            <li><a href="#manufacturing">Custom Manufacturing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <div class="footer-contact">
+                        <h5>Location</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> Unit B19 Steelpoort Mine Supplier Park, Farm Spitskop 333KT, Road R555, Steelpoort, 1133</p>
+                        <div class="mt-3">
+                            <a href="contact.html" class="btn btn-outline-light btn-sm">
+                                <i class="fas fa-directions me-1"></i> Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright">
+                        <p class="mb-0">
+                            © Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="btn btn-back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Particle system
+            function createParticles() {
+                const container = document.getElementById('particles');
+                const particleCount = 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.width = (Math.random() * 4 + 2) + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.animationDelay = Math.random() * 20 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    container.appendChild(particle);
+                }
+            }
+            createParticles();
+            
+            // Navbar scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                const backToTop = document.getElementById('backToTop');
+                
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            // Back to top
+            document.getElementById('backToTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        const navbarToggler = document.querySelector('.navbar-toggler');
+                        if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
+                            navbarToggler.click();
+                        }
+                    }
+                });
+            });
+            
+            // Product tab functionality
+            const productTabs = document.querySelectorAll('#productTabs button');
+            productTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-bs-target').replace('#', '');
+                    window.history.replaceState(null, null, `#${tabId}`);
+                });
+            });
+            
+            // Check URL hash on load and activate corresponding tab
+            const hash = window.location.hash;
+            if (hash) {
+                const tabId = hash.replace('#', '');
+                const tabButton = document.querySelector(`button[data-bs-target="#${tabId}"]`);
+                if (tabButton) {
+                    const tab = new bootstrap.Tab(tabButton);
+                    tab.show();
+                }
+            }
+            
+            // Animate elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            document.querySelectorAll('.animate-fade-in-up').forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Product card hover effects
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+            
+            // Product item hover effects
+            const productItems = document.querySelectorAll('.product-item');
+            productItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+            
+            // Active nav link
+            function setActiveNavLink() {
+                const currentPage = window.location.pathname.split('/').pop();
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                navLinks.forEach(link => {
+                    const linkHref = link.getAttribute('href');
+                    if (linkHref === currentPage) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+            
+            setActiveNavLink();
+            
+            // Initialize Bootstrap tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html>

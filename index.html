@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magadine Business Enterprise | Premier Mining Supply & Services</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚒️</text></svg>">
+    
+    <style>
+        :root {
+            --primary: #0a1929;
+            --primary-light: #1e3a5f;
+            --secondary: #2563eb;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --success: #10b981;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-primary: linear-gradient(135deg, #0a1929 0%, #1e3a5f 50%, #2563eb 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, hsla(28,100%,74%,0.3) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, hsla(189,100%,56%,0.3) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, hsla(355,100%,93%,0.3) 0px, transparent 50%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== PARTICLES BACKGROUND ===== */
+        .particles-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* ===== NAVBAR ENHANCED ===== */
+        .navbar {
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1030;
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(10, 25, 41, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-icon {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.8)); }
+        }
+
+        .brand-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta {
+            background: var(--gradient-accent);
+            color: white;
+            font-weight: 700;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-cta:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+        }
+
+        /* ===== HERO ENHANCED ===== */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(30, 58, 95, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            padding-top: 90px;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-title .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
+        }
+
+        .btn-outline-light {
+            border-width: 2px;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-outline-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+
+        /* ===== SECTIONS ENHANCED ===== */
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-light);
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            font-weight: 500;
+        }
+
+        /* ===== ABOUT ENHANCED ===== */
+        .about-section {
+            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .icon-wrapper {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-accent);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .about-card:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .mission-card {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 25px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(37, 99, 235, 0.4) !important;
+        }
+
+        .mission-text {
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== SERVICES ENHANCED ===== */
+        .services-section {
+            background: white;
+            position: relative;
+        }
+
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            background: white;
+            position: relative;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::after {
+            opacity: 0.05;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .service-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-image::before {
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.5) 100%);
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+
+        .expansion-card {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 25px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expansion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .expansion-card:hover::before {
+            left: 100%;
+        }
+
+        .expansion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px rgba(37, 99, 235, 0.4) !important;
+        }
+
+        .badge-expansion {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ===== VALUES ENHANCED ===== */
+        .values-section {
+            background: linear-gradient(180deg, white 0%, var(--light) 100%);
+        }
+
+        .value-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: var(--gradient-accent);
+            transition: height 0.5s ease;
+        }
+
+        .value-card:hover::before {
+            height: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .value-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.3;
+            line-height: 1;
+            transition: all 0.5s ease;
+        }
+
+        .value-card:hover .value-number {
+            opacity: 0.6;
+            transform: scale(1.1);
+        }
+
+        /* ===== PRODUCTS ENHANCED ===== */
+        .products-section {
+            background: white;
+        }
+
+        .product-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            background: white;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: var(--gradient-accent);
+            transition: height 0.5s ease;
+            z-index: 0;
+        }
+
+        .product-card:hover::before {
+            height: 5px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .product-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.15);
+        }
+
+        /* ===== CONTACT ENHANCED ===== */
+        .contact-section {
+            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+        }
+
+        .contact-card {
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .contact-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .form-control {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.25rem rgba(245, 158, 11, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ENHANCED ===== */
+        .footer {
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.3;
+        }
+
+        /* ===== BACK TO TOP ENHANCED ===== */
+        .btn-back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .btn-back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btn-back-to-top:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .hero-stats { gap: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="brand-icon">⚒️</span>
+                <div>
+                    <div class="brand-text">MAGADINE</div>
+                    <small class="brand-subtitle">Business Enterprise</small>
+                </div>
+            </a>n
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-cta ms-lg-3 mt-3 mt-lg-0">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="particles-bg" id="particles"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 col-md-10">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="d-block">Mining Supply & Services</span>
+                            <span class="highlight">of Choice</span>
+                        </h1>
+                        <p class="hero-subtitle lead mb-4">
+                            Serving the Thaba Chweu and Greater Tubatse area with exceptional service, competitive pricing, and unwavering commitment to excellence.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#products" class="btn btn-primary btn-lg me-3 mb-3">
+                                <i class="fas fa-box-open me-2"></i>View Products
+                            </a>
+                            <a href="#contact" class="btn btn-outline-light btn-lg mb-3">
+                                <i class="fas fa-phone-alt me-2"></i>Contact Us
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="8">0</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="100">0</div>
+                                <div class="stat-label">% Woman Owned</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="500">0</div>
+                                <div class="stat-label">+ Products</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">About Magadine Business Enterprise</h2>
+                    <p class="section-subtitle">100% Black Woman Owned & Led</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="about-card card h-100 border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="icon-wrapper mb-4">
+                                <i class="fas fa-female"></i>
+                            </div>
+                            <h3 class="card-title mb-3">100% Black Woman Owned</h3>
+                            <p class="card-text">
+                                Magadine Business Enterprise (Pty) Ltd was founded in 2016 in the Thaba Chweu Municipality area and is 100% black woman owned.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="about-card card h-100 border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="icon-wrapper mb-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="card-title mb-3">All Woman Leadership</h3>
+                            <p class="card-text">
+                                Miss Marumo Mkhonto is a sole director with 51% of shares and the other 49% is held by a disabled black woman Ms. Mahlatse Lekwadu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="mission-card card border-0 shadow">
+                        <div class="card-body p-4 p-lg-5">
+                            <h3 class="card-title text-center mb-4">
+                                <i class="fas fa-bullseye me-2"></i>Our Mission
+                            </h3>
+                            <p class="mission-text lead text-center">
+                                Magadine Business Enterprise (Pty) Ltd intends to deliver remarkable service supply and support to our customers with a purposeful sense of urgency.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-subtitle">Comprehensive Supply Solutions</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0">
+   <img src="assets/miningsup.png" class="service-image mining-img" alt="Mining supplies equipment">                        <div class="card-body p-4">
+                            <h3 class="card-title">
+                                <i class="fas fa-hard-hat me-2"></i>Mining Supplies
+                            </h3>
+                            <p class="card-text">
+                                Comprehensive range of mining equipment, tools, and consumables for the mining industry.
+                            </p>
+                            <ul class="service-list">
+                                <li>Cable ties (all sizes)</li>
+                                <li>Safety harnesses</li>
+                                <li>Helmets & safety boots</li>
+                                <li>Dromex Gloves range</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0">
+   <img src="assets/PPEsafety.png" class="service-image mining-img" alt="PPE & Safety">                        <div class="card-body p-4">
+                            <h3 class="card-title">
+                                <i class="fas fa-shield-alt me-2"></i>PPE & Safety
+                            </h3>
+                            <p class="card-text">
+                                Personal Protective Equipment to ensure worker safety in hazardous environments.
+                            </p>
+                            <ul class="service-list">
+                                <li>Respiratory masks</li>
+                                <li>Safety harnesses</li>
+                                <li>Fire risk equipment</li>
+                                <li>Chemical-resistant gloves</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0">
+   <img src="assets/stationery&office.png" class="service-image mining-img" alt="Stationery & Office">                        <div class="card-body p-4">
+                            <h3 class="card-title">
+                                <i class="fas fa-pen-fancy me-2"></i>Stationery & Office
+                            </h3>
+                            <p class="card-text">
+                                Complete office supply solutions including stationery and general consumables.
+                            </p>
+                            <ul class="service-list">
+                                <li>Highlighters & Pens</li>
+                                <li>Typek paper</li>
+                                <li>Clipboards</li>
+                                <li>Hole punches</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="expansion-card card border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8">
+                                    <h3 class="card-title mb-3">
+                                        <i class="fas fa-chart-line me-2"></i>Future Expansion
+                                    </h3>
+                                    <p class="card-text">
+                                        Magadine Business Enterprise identified supply services as a core service and is planning to grow and expand to Construction. Additionally, we manufacture hand cleaners with grit and produce 1-ton textile bags to meet diverse industry needs.
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                                    <span class="badge-expansion">Coming Soon</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Our Promise</h2>
+                    <p class="section-subtitle">We Do What We Say We Will Do</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">01</div>
+                            <h4 class="card-title mt-3">Integrity & Honesty</h4>
+                            <p class="card-text">Transparent dealings and ethical business practices</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">02</div>
+                            <h4 class="card-title mt-3">Accountable & Responsible</h4>
+                            <p class="card-text">Taking ownership of our commitments</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">03</div>
+                            <h4 class="card-title mt-3">Motivated & Professional</h4>
+                            <p class="card-text">Dedicated team delivering quality service</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">04</div>
+                            <h4 class="card-title mt-3">Safety & Quality</h4>
+                            <p class="card-text">Prioritizing safety and high-quality products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Quality Mining & Safety Supplies</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+            <img src="assets/safetyHarness.png" class="product-image img-fluid" alt="Safety harness product image">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Safety Harness</h5>
+                            <p class="card-text small">High-quality fall protection equipment</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+                        <img src="assets/firesafetygear.png" class="product-image fire-equipment">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Fire Risk Equipment</h5>
+                            <p class="card-text small">Essential fire safety gear</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+                        <img src="assets/cleaningkit.png" class="product-image cleaning-kit">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Cleaning Kit Supply</h5>
+                            <p class="card-text small">Industrial cleaning solutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+                        <img src="assets/constructionTape.png" class="product-image construction-tape">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Construction Tape</h5>
+                            <p class="card-text small">High-visibility safety tape</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a href="contact.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-list-alt me-2"></i>View Full Product Catalog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p class="section-subtitle">Get in touch for quotes and inquiries</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-card card border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="row">
+                                <div class="col-md-4 text-center mb-4 mb-md-0">
+                                    <div class="contact-icon mb-3">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <h5>Email</h5>
+                                    <a href="mailto:admin@magadine.co.za" class="contact-link">admin@magadine.co.za</a>
+                                </div>
+                                
+                                <div class="col-md-4 text-center mb-4 mb-md-0">
+                                    <div class="contact-icon mb-3">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <h5>Phone</h5>
+                                    <a href="tel:+27682215400" class="contact-link">+27 68 221 5400</a>
+                                </div>
+                                
+                                <div class="col-md-4 text-center">
+                                    <div class="contact-icon mb-3">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <h5>Location</h5>
+                                    <p class="contact-text">
+                                        Unit B19 Steelpoort Mine Supplier Park,<br>
+                                        Farm Spitskop 333KT, Road R555,<br>
+                                        Steelpoort, 1133
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-5 pt-4 border-top">
+                                <h4 class="text-center mb-4">Send Us a Message</h4>
+                                <form id="contactForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Your Name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" placeholder="Your Email" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" placeholder="Subject" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-3">
+                        <span class="brand-icon">⚒️</span>
+                        <div>
+                            <div class="brand-text">MAGADINE</div>
+                            <small class="brand-subtitle">Business Enterprise</small>
+                        </div>
+                    </div>
+                    <p class="mb-0 mt-3" style="position: relative; z-index: 1;">Mining Supply and Services of Choice</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0" style="position: relative; z-index: 1;">
+                        © Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="btn btn-back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Particle system
+            function createParticles() {
+                const container = document.getElementById('particles');
+                const particleCount = 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.width = (Math.random() * 4 + 2) + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.animationDelay = Math.random() * 20 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    container.appendChild(particle);
+                }
+            }
+            createParticles();
+            
+            // Animated counters
+            function animateCounter(element) {
+                const target = parseInt(element.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                }, 16);
+            }
+            
+            const counters = document.querySelectorAll('.stat-number[data-target]');
+            const observerCounter = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.target.textContent === '0') {
+                        animateCounter(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => observerCounter.observe(counter));
+            
+            // Navbar scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                const backToTop = document.getElementById('backToTop');
+                
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        const navbarToggler = document.querySelector('.navbar-toggler');
+                        if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
+                            navbarToggler.click();
+                        }
+                    }
+                });
+            });
+            
+            // Back to top
+            document.getElementById('backToTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you shortly.');
+                this.reset();
+            });
+            
+            // Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            document.querySelectorAll('.service-card, .value-card, .product-card, .about-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+            
+            // Active nav link
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const top = section.offsetTop - 100;
+                    const bottom = top + section.offsetHeight;
+                    const id = section.getAttribute('id');
+                    
+                    if (scrollPos >= top && scrollPos < bottom) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveNavLink);
+        });
+    </script>
+</body>
+</html>

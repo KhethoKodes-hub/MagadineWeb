@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magadine Business Enterprise | Mining Supply & Services of Choice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        olive: { DEFAULT: '#6b8e23', light: '#8aad35', dark: '#4a6218', muted: '#8faa50' },
+        earth: { DEFAULT: '#8B4513', light: '#a85520', dark: '#6b330e', warm: '#c4692a' },
+        navy: { DEFAULT: '#1e3a5f', light: '#2d4f7c', dark: '#0f1f35' },
+        cream: { DEFAULT: '#f5f0e8', warm: '#ede5d5', deep: '#d4c5a9' },
+      },
+      fontFamily: {
+        display: ['Bebas Neue', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'float 9s ease-in-out infinite',
+        'scan': 'scan 3s linear infinite',
+        'reveal': 'reveal 1s ease forwards',
+        'fade-up': 'fadeUp 0.8s ease forwards',
+        'shimmer': 'shimmer 2.5s linear infinite',
+        'orbit': 'orbit 20s linear infinite',
+        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        'ticker': 'ticker 20s linear infinite',
+      },
+      keyframes: {
+        float: { '0%,100%': {transform:'translateY(0px)'}, '50%': {transform:'translateY(-20px)'} },
+        scan: { '0%': {top:'-10%'}, '100%': {top:'110%'} },
+        reveal: { 'from': {clipPath:'inset(0 100% 0 0)'}, 'to': {clipPath:'inset(0 0% 0 0)'} },
+        fadeUp: { 'from': {opacity:'0',transform:'translateY(40px)'}, 'to': {opacity:'1',transform:'translateY(0)'} },
+        shimmer: { '0%': {backgroundPosition:'-200% center'}, '100%': {backgroundPosition:'200% center'} },
+        orbit: { 'from': {transform:'rotate(0deg) translateX(120px) rotate(0deg)'}, 'to': {transform:'rotate(360deg) translateX(120px) rotate(-360deg)'} },
+        pulseGlow: { '0%,100%': {boxShadow:'0 0 20px rgba(107,142,35,0.4)'}, '50%': {boxShadow:'0 0 60px rgba(107,142,35,0.8), 0 0 100px rgba(107,142,35,0.3)'} },
+        ticker: { '0%': {transform:'translateX(0)'}, '100%': {transform:'translateX(-50%)'} },
+      }
+    }
+  }
+}
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #0d1117; color: #f5f0e8; overflow-x: hidden; cursor: none; }
+
+  /* CUSTOM CURSOR */
+  .cursor-dot { width: 8px; height: 8px; background: #6b8e23; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s; }
+  .cursor-ring { width: 36px; height: 36px; border: 1.5px solid rgba(107,142,35,0.6); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform 0.15s, width 0.3s, height 0.3s, border-color 0.3s; }
+  .cursor-ring.hover { width: 60px; height: 60px; border-color: rgba(139,69,19,0.8); }
+
+  /* GLASSMORPHISM */
+  .glass { background: rgba(255,255,255,0.04); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+  .glass-olive { background: rgba(107,142,35,0.12); backdrop-filter: blur(20px); border: 1px solid rgba(107,142,35,0.25); }
+  .glass-earth { background: rgba(139,69,19,0.12); backdrop-filter: blur(20px); border: 1px solid rgba(139,69,19,0.25); }
+  .glass-dark { background: rgba(13,17,23,0.7); backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.06); }
+
+  /* GRADIENT TEXT */
+  .grad-olive { background: linear-gradient(135deg, #8aad35, #6b8e23, #4a6218); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .grad-earth { background: linear-gradient(135deg, #c4692a, #8B4513, #6b330e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .grad-full { background: linear-gradient(135deg, #8aad35 0%, #6b8e23 30%, #8B4513 70%, #c4692a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .grad-shimmer { background: linear-gradient(90deg, #6b8e23, #c4692a, #8aad35, #a85520, #6b8e23); background-size: 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 1000; transition: all 0.5s; }
+  nav.scrolled { background: rgba(13,17,23,0.92); backdrop-filter: blur(30px); border-bottom: 1px solid rgba(107,142,35,0.2); }
+  .nav-link-item { position: relative; color: rgba(245,240,232,0.75); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; padding: 0.4rem 0; }
+  .nav-link-item::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: linear-gradient(90deg, #6b8e23, #8B4513); transition: width 0.4s cubic-bezier(0.4,0,0.2,1); }
+  .nav-link-item:hover { color: #f5f0e8; }
+  .nav-link-item:hover::after { width: 100%; }
+
+  /* HERO */
+  .hero-bg { background: radial-gradient(ellipse at 20% 50%, rgba(107,142,35,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(139,69,19,0.12) 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, rgba(30,58,95,0.2) 0%, transparent 60%), #0d1117; }
+  .grid-overlay { background-image: linear-gradient(rgba(107,142,35,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(107,142,35,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+
+  /* NOISE TEXTURE */
+  .noise::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); opacity: 0.4; pointer-events: none; z-index: 0; }
+
+  /* SERVICES BG IMAGES */
+  .service-mining { background: linear-gradient(135deg, rgba(13,17,23,0.7) 0%, rgba(107,142,35,0.2) 100%), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80') center/cover; }
+  .service-ppe { background: linear-gradient(135deg, rgba(13,17,23,0.7) 0%, rgba(139,69,19,0.2) 100%), url('https://images.unsplash.com/photo-1618333258404-fc8f3e746f79?w=800&q=80') center/cover; }
+  .service-office { background: linear-gradient(135deg, rgba(13,17,23,0.7) 0%, rgba(30,58,95,0.2) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80') center/cover; }
+  .service-consumables { background: linear-gradient(135deg, rgba(13,17,23,0.7) 0%, rgba(107,142,35,0.2) 100%), url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80') center/cover; }
+
+  /* PRODUCT IMAGES */
+  .prod-harness { background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80') center/cover; }
+  .prod-fire { background: url('https://images.unsplash.com/photo-1587653263995-422546a7a569?w=600&q=80') center/cover; }
+  .prod-cleaning { background: url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80') center/cover; }
+  .prod-tape { background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80') center/cover; }
+  .prod-helmet { background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80') center/cover; }
+  .prod-gloves { background: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=80') center/cover; }
+
+  /* CARD HOVER EFFECTS */
+  .service-card-wrap { transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1); }
+  .service-card-wrap:hover { transform: translateY(-12px) scale(1.02); }
+  .service-card-inner { height: 420px; position: relative; border-radius: 20px; overflow: hidden; }
+  .service-card-inner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,17,23,0.95) 0%, rgba(13,17,23,0.3) 60%, transparent 100%); z-index: 1; transition: all 0.5s; }
+  .service-card-wrap:hover .service-card-inner::before { background: linear-gradient(to top, rgba(13,17,23,0.98) 0%, rgba(13,17,23,0.6) 70%, rgba(107,142,35,0.15) 100%); }
+  .service-card-content { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 2rem; transform: translateY(0); transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .service-card-details { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .service-card-wrap:hover .service-card-details { max-height: 200px; }
+  .service-shine { position: absolute; top: -50%; left: -50%; width: 40px; height: 200%; background: rgba(255,255,255,0.1); transform: rotate(20deg) translateX(-100px); transition: transform 0.8s ease; z-index: 3; }
+  .service-card-wrap:hover .service-shine { transform: rotate(20deg) translateX(600px); }
+
+  /* PRODUCT CARD */
+  .product-card { border-radius: 16px; overflow: hidden; position: relative; transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+  .product-card:hover { transform: translateY(-10px) rotateX(2deg); }
+  .product-card-img { height: 200px; transition: transform 0.6s ease; }
+  .product-card:hover .product-card-img { transform: scale(1.1); }
+  .product-corner { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-top: 2px solid rgba(107,142,35,0.6); border-right: 2px solid rgba(107,142,35,0.6); opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translate(-4px, 4px); }
+  .product-card:hover .product-corner { opacity: 1; transform: translate(0,0); }
+
+  /* VALUE CARDS */
+  .value-card { transition: all 0.4s ease; position: relative; overflow: hidden; }
+  .value-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: linear-gradient(to bottom, #6b8e23, #8B4513); transition: height 0.5s ease; }
+  .value-card:hover::before { height: 100%; }
+  .value-card::after { content: ''; position: absolute; bottom: -20px; right: -20px; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, rgba(107,142,35,0.15), transparent); transition: all 0.5s; }
+  .value-card:hover::after { bottom: 10px; right: 10px; width: 120px; height: 120px; }
+  .value-card:hover { transform: translateX(6px); border-color: rgba(107,142,35,0.3) !important; }
+
+  /* CONTACT */
+  .contact-method { transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; }
+  .contact-method::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,142,35,0.06), rgba(139,69,19,0.06)); opacity: 0; transition: opacity 0.4s; }
+  .contact-method:hover { transform: translateY(-6px); }
+  .contact-method:hover::after { opacity: 1; }
+
+  /* TICKER */
+  .ticker-track { display: flex; white-space: nowrap; animation: ticker 20s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+
+  /* SCROLL ANIMATIONS */
+  .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+  /* BUTTON */
+  .btn-primary-mag { background: linear-gradient(135deg, #6b8e23, #8B4513); color: white; font-weight: 600; letter-spacing: 0.05em; border-radius: 50px; padding: 0.9rem 2.5rem; position: relative; overflow: hidden; transition: all 0.4s; display: inline-flex; align-items: center; gap: 0.6rem; text-transform: uppercase; font-size: 0.85rem; }
+  .btn-primary-mag::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #8aad35, #c4692a); opacity: 0; transition: opacity 0.4s; }
+  .btn-primary-mag:hover::before { opacity: 1; }
+  .btn-primary-mag:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(107,142,35,0.3), 0 0 0 1px rgba(107,142,35,0.3); }
+  .btn-primary-mag span { position: relative; z-index: 1; }
+  .btn-outline-mag { border: 1px solid rgba(245,240,232,0.2); color: rgba(245,240,232,0.85); border-radius: 50px; padding: 0.9rem 2.5rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.4s; display: inline-flex; align-items: center; gap: 0.6rem; backdrop-filter: blur(10px); }
+  .btn-outline-mag:hover { border-color: rgba(107,142,35,0.6); color: #6b8e23; background: rgba(107,142,35,0.06); transform: translateY(-3px); }
+
+  /* INPUT */
+  .form-input-mag { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem 1.25rem; color: #f5f0e8; width: 100%; outline: none; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .form-input-mag::placeholder { color: rgba(245,240,232,0.35); }
+  .form-input-mag:focus { border-color: rgba(107,142,35,0.5); background: rgba(107,142,35,0.06); box-shadow: 0 0 0 3px rgba(107,142,35,0.1); }
+
+  /* STAT COUNTER */
+  .stat-orb { width: 120px; height: 120px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+  .stat-orb::before { content: ''; position: absolute; inset: -2px; border-radius: 50%; background: conic-gradient(#6b8e23 0deg, #8B4513 120deg, transparent 120deg); animation: orbit 4s linear infinite; z-index: -1; }
+  .stat-orb::after { content: ''; position: absolute; inset: -1px; border-radius: 50%; background: conic-gradient(#8aad35 0deg, #c4692a 180deg, transparent 180deg); z-index: -1; }
+
+  /* SECTION DIVIDER */
+  .divider-geo { clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 70%); }
+  .divider-geo-inv { clip-path: polygon(0 30%, 100% 0, 100% 70%, 0 100%); }
+
+  /* FLOATING ORB */
+  .orb { border-radius: 50%; filter: blur(80px); position: absolute; pointer-events: none; }
+  .orb-olive { background: radial-gradient(circle, rgba(107,142,35,0.4), transparent); }
+  .orb-earth { background: radial-gradient(circle, rgba(139,69,19,0.35), transparent); }
+  .orb-navy { background: radial-gradient(circle, rgba(30,58,95,0.4), transparent); }
+
+  /* ABOUT BG */
+  .about-hero-bg { background: linear-gradient(135deg, rgba(13,17,23,0.85) 0%, rgba(30,58,95,0.6) 100%), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=80') center/cover fixed; }
+
+  /* ANIMATED BORDER */
+  .animated-border { position: relative; }
+  .animated-border::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(107,142,35,0.5), rgba(139,69,19,0.5), rgba(30,58,95,0.5), rgba(107,142,35,0.5)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; background-size: 300% 300%; animation: shimmer 4s linear infinite; }
+
+  /* HERO BG */
+  .hero-full-bg { background: linear-gradient(160deg, rgba(13,17,23,0.88) 0%, rgba(13,17,23,0.75) 50%, rgba(30,58,95,0.6) 100%), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=85') center/cover; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero-title-main { font-size: 4rem !important; }
+    .service-card-inner { height: 320px; }
+  }
+</style>
+</head>
+<body class="bg-[#0d1117]">
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="py-5 px-6">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-xl glass-olive flex items-center justify-center text-lg animate-pulse-glow">⚒️</div>
+      <div>
+        <div class="font-display text-2xl grad-full tracking-wider">MAGADINE</div>
+        <div class="font-mono text-[9px] text-cream-deep tracking-[0.25em] uppercase opacity-60">Business Enterprise</div>
+      </div>
+    </a>
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#home" class="nav-link-item">Home</a>
+      <a href="#about" class="nav-link-item">About</a>
+      <a href="#services" class="nav-link-item">Services</a>
+      <a href="#products" class="nav-link-item">Products</a>
+      <a href="#contact" class="nav-link-item">Contact</a>
+    </div>
+    <a href="#contact" class="btn-primary-mag hidden lg:inline-flex cursor-none"><span><i class="fas fa-file-invoice mr-1"></i>Get Quote</span></a>
+    <button id="menuBtn" class="lg:hidden glass p-2 rounded-lg"><i class="fas fa-bars text-cream-DEFAULT"></i></button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full glass-dark border-t border-white/5 py-6 px-8 flex flex-col gap-5">
+    <a href="#home" class="nav-link-item text-lg">Home</a>
+    <a href="#about" class="nav-link-item text-lg">About</a>
+    <a href="#services" class="nav-link-item text-lg">Services</a>
+    <a href="#products" class="nav-link-item text-lg">Products</a>
+    <a href="#contact" class="nav-link-item text-lg">Contact</a>
+    <a href="#contact" class="btn-primary-mag self-start cursor-none"><span>Get Quote</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden hero-full-bg grid-overlay noise">
+  <!-- Floating orbs -->
+  <div class="orb orb-olive w-96 h-96 top-1/4 -left-32 animate-float opacity-60"></div>
+  <div class="orb orb-earth w-80 h-80 bottom-1/4 -right-20 animate-float-slow opacity-50"></div>
+  <div class="orb orb-navy w-64 h-64 top-10 right-1/3 animate-float opacity-40" style="animation-delay:3s"></div>
+
+  <!-- Scan line -->
+  <div class="absolute left-0 w-full h-px bg-gradient-to-r from-transparent via-olive to-transparent opacity-30 animate-scan" style="z-index:5"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-20 w-full">
+    <div class="max-w-4xl">
+      <!-- Tag -->
+      <div class="inline-flex items-center gap-3 glass rounded-full px-5 py-2 mb-8 animated-border" style="animation-delay:0.2s">
+        <div class="w-2 h-2 rounded-full bg-olive animate-ping"></div>
+        <span class="font-mono text-xs text-olive tracking-widest uppercase">Thaba Chweu & Greater Tubatse Region</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-display leading-none mb-6" style="animation: fadeUp 1s ease 0.3s both;">
+        <span class="block text-cream-DEFAULT" style="font-size: clamp(3rem, 10vw, 8rem); letter-spacing: -0.01em;">MINING SUPPLY</span>
+        <span class="block grad-shimmer" style="font-size: clamp(3rem, 10vw, 8rem); letter-spacing: -0.01em;">&amp; SERVICES</span>
+        <span class="block text-cream-DEFAULT opacity-50" style="font-size: clamp(1.5rem, 5vw, 4rem); letter-spacing: 0.2em;">OF CHOICE</span>
+      </h1>
+
+      <p class="text-cream-DEFAULT/70 text-lg max-w-2xl leading-relaxed mb-10" style="animation: fadeUp 1s ease 0.5s both;">
+        Delivering exceptional supply chain solutions with purpose and urgency. From PPE safety equipment to mining consumables — we are your trusted industrial partner.
+      </p>
+
+      <div class="flex flex-wrap gap-4 mb-20" style="animation: fadeUp 1s ease 0.7s both;">
+        <a href="#products" class="btn-primary-mag cursor-none"><span><i class="fas fa-boxes mr-2"></i>View Products</span></a>
+        <a href="#contact" class="btn-outline-mag cursor-none"><i class="fas fa-phone mr-2"></i>Contact Us</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-6 max-w-lg" style="animation: fadeUp 1s ease 0.9s both;">
+        <div class="text-center">
+          <div class="font-display text-5xl grad-olive mb-1"><span class="counter" data-target="8">0</span>+</div>
+          <div class="font-mono text-xs text-cream-DEFAULT/50 tracking-widest uppercase">Years Exp</div>
+        </div>
+        <div class="text-center border-x border-white/10">
+          <div class="font-display text-5xl grad-earth mb-1"><span class="counter" data-target="100">0</span>%</div>
+          <div class="font-mono text-xs text-cream-DEFAULT/50 tracking-widest uppercase">Woman Owned</div>
+        </div>
+        <div class="text-center">
+          <div class="font-display text-5xl grad-olive mb-1"><span class="counter" data-target="500">0</span>+</div>
+          <div class="font-mono text-xs text-cream-DEFAULT/50 tracking-widest uppercase">Products</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <a href="#ticker" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream-DEFAULT/40 hover:text-cream-DEFAULT/80 transition-colors z-10">
+    <span class="font-mono text-xs tracking-widest uppercase">Scroll</span>
+    <div class="w-px h-12 bg-gradient-to-b from-olive/60 to-transparent animate-pulse"></div>
+  </a>
+</section>
+
+<!-- TICKER -->
+<div id="ticker" class="bg-gradient-to-r from-olive/20 via-earth/20 to-navy/20 border-y border-white/5 py-4 overflow-hidden">
+  <div class="ticker-track">
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">⚒ Mining Supplies</span>
+    <span class="mx-8 text-olive font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">🛡 PPE & Safety Equipment</span>
+    <span class="mx-8 text-earth font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">🗂 Stationery & Office Supplies</span>
+    <span class="mx-8 text-olive font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">📦 General Consumables</span>
+    <span class="mx-8 text-earth font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">🏗 Construction (Coming Soon)</span>
+    <span class="mx-8 text-olive font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">💧 Hand Cleaners & Textile Bags</span>
+    <span class="mx-8 text-earth font-mono text-xs">✦</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">⚒ Mining Supplies</span>
+    <span class="mx-8 text-olive font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">🛡 PPE & Safety Equipment</span>
+    <span class="mx-8 text-earth font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">🗂 Stationery & Office Supplies</span>
+    <span class="mx-8 text-olive font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">📦 General Consumables</span>
+    <span class="mx-8 text-earth font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">🏗 Construction (Coming Soon)</span>
+    <span class="mx-8 text-olive font-mono text-xs">✦</span>
+    <span class="mx-8 font-mono text-xs text-cream-DEFAULT/60 tracking-widest uppercase">💧 Hand Cleaners & Textile Bags</span>
+    <span class="mx-8 text-earth font-mono text-xs">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="relative py-32 overflow-hidden about-hero-bg">
+  <div class="orb orb-earth w-96 h-96 top-0 right-0 opacity-30"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <!-- Left: Text -->
+      <div class="reveal-on-scroll">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <div class="w-8 h-px bg-olive"></div>
+          <span class="font-mono text-xs text-olive tracking-widest uppercase">Who We Are</span>
+        </div>
+        <h2 class="font-display text-6xl lg:text-7xl text-cream-DEFAULT leading-none mb-8">
+          BLACK<br><span class="grad-olive">WOMAN</span><br>OWNED &amp;<br><span class="grad-earth">LED</span>
+        </h2>
+        <p class="text-cream-DEFAULT/65 text-lg leading-relaxed mb-6">
+          Founded in 2016 in the Thaba Chweu Municipality, Magadine Business Enterprise (Pty) Ltd was built from the ground up with purpose. We are a 100% Black Woman Owned business serving the mining and industrial heartland of Limpopo.
+        </p>
+        <p class="text-cream-DEFAULT/65 leading-relaxed mb-10">
+          Miss Marumo Mkhonto leads as sole director (51%), partnering with Ms. Mahlatse Lekwadu — a disabled black woman — who holds 49%. Our leadership reflects the diversity and resilience of the communities we serve.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <div class="glass-olive rounded-xl px-5 py-3">
+            <div class="font-mono text-xs text-olive/80 uppercase tracking-wider mb-1">Founded</div>
+            <div class="font-display text-2xl text-cream-DEFAULT">2016</div>
+          </div>
+          <div class="glass-earth rounded-xl px-5 py-3">
+            <div class="font-mono text-xs text-earth-light/80 uppercase tracking-wider mb-1">Location</div>
+            <div class="font-display text-xl text-cream-DEFAULT">Steelpoort</div>
+          </div>
+          <div class="glass rounded-xl px-5 py-3">
+            <div class="font-mono text-xs text-cream-DEFAULT/50 uppercase tracking-wider mb-1">B-BBEE</div>
+            <div class="font-display text-2xl text-cream-DEFAULT">Level 1</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Cards -->
+      <div class="grid grid-cols-1 gap-5 reveal-on-scroll">
+        <!-- Mission -->
+        <div class="glass animated-border rounded-2xl p-8 value-card border border-white/5">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl glass-olive flex items-center justify-center shrink-0">
+              <i class="fas fa-bullseye text-olive text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-display text-2xl text-cream-DEFAULT mb-2 tracking-wide">OUR MISSION</h3>
+              <p class="text-cream-DEFAULT/65 leading-relaxed">To deliver remarkable service, supply and support with a purposeful sense of urgency — every time, no exceptions.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Vision -->
+        <div class="glass rounded-2xl p-8 value-card border border-white/5">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl glass-earth flex items-center justify-center shrink-0">
+              <i class="fas fa-eye text-earth-light text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-display text-2xl text-cream-DEFAULT mb-2 tracking-wide">OUR VISION</h3>
+              <p class="text-cream-DEFAULT/65 leading-relaxed">To become the premier supply and service provider for the mining and industrial sector across Limpopo and beyond.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Certifications -->
+        <div class="glass rounded-2xl p-6 border border-white/5">
+          <div class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest mb-4">Certifications & Credentials</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="glass-olive rounded-full px-4 py-1 font-mono text-xs text-olive tracking-wider">100% Black Owned</span>
+            <span class="glass-earth rounded-full px-4 py-1 font-mono text-xs text-earth-light tracking-wider">Woman Led</span>
+            <span class="glass rounded-full px-4 py-1 font-mono text-xs text-cream-DEFAULT/60 tracking-wider">Disability Inclusive</span>
+            <span class="glass rounded-full px-4 py-1 font-mono text-xs text-cream-DEFAULT/60 tracking-wider">Pty Ltd Registered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="relative py-32 bg-[#0d1117] overflow-hidden">
+  <div class="orb orb-olive w-[500px] h-[500px] -top-40 -left-40 opacity-20"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20 reveal-on-scroll">
+      <div class="inline-flex items-center gap-2 mb-6">
+        <div class="w-8 h-px bg-earth"></div>
+        <span class="font-mono text-xs text-earth-light tracking-widest uppercase">What We Do</span>
+        <div class="w-8 h-px bg-earth"></div>
+      </div>
+      <h2 class="font-display text-6xl lg:text-8xl text-cream-DEFAULT mb-4">OUR SERVICES</h2>
+      <p class="text-cream-DEFAULT/50 max-w-xl mx-auto">Comprehensive supply solutions for South Africa's mining and industrial heartland.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 reveal-on-scroll">
+      <!-- Mining -->
+      <div class="service-card-wrap cursor-none">
+        <div class="service-card-inner service-mining">
+          <div class="service-shine"></div>
+          <div class="service-card-content">
+            <div class="w-10 h-10 glass-olive rounded-xl flex items-center justify-center mb-3">
+              <i class="fas fa-hard-hat text-olive"></i>
+            </div>
+            <h3 class="font-display text-2xl text-cream-DEFAULT tracking-wide mb-1">MINING<br>SUPPLIES</h3>
+            <div class="service-card-details">
+              <div class="w-12 h-px bg-olive/60 my-3"></div>
+              <ul class="space-y-1 text-cream-DEFAULT/65 text-sm">
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>Cable ties (all sizes)</li>
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>Safety harnesses</li>
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>Helmets & safety boots</li>
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>Dromex gloves range</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PPE -->
+      <div class="service-card-wrap cursor-none">
+        <div class="service-card-inner service-ppe">
+          <div class="service-shine"></div>
+          <div class="service-card-content">
+            <div class="w-10 h-10 glass-earth rounded-xl flex items-center justify-center mb-3">
+              <i class="fas fa-shield-alt text-earth-light"></i>
+            </div>
+            <h3 class="font-display text-2xl text-cream-DEFAULT tracking-wide mb-1">PPE &amp;<br>SAFETY</h3>
+            <div class="service-card-details">
+              <div class="w-12 h-px bg-earth/60 my-3"></div>
+              <ul class="space-y-1 text-cream-DEFAULT/65 text-sm">
+                <li><i class="fas fa-chevron-right text-earth-light text-xs mr-2"></i>Respiratory masks</li>
+                <li><i class="fas fa-chevron-right text-earth-light text-xs mr-2"></i>Safety harnesses</li>
+                <li><i class="fas fa-chevron-right text-earth-light text-xs mr-2"></i>Fire risk equipment</li>
+                <li><i class="fas fa-chevron-right text-earth-light text-xs mr-2"></i>Chemical-resistant gloves</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Office -->
+      <div class="service-card-wrap cursor-none">
+        <div class="service-card-inner service-office">
+          <div class="service-shine"></div>
+          <div class="service-card-content">
+            <div class="w-10 h-10 glass rounded-xl flex items-center justify-center mb-3">
+              <i class="fas fa-pen-fancy text-cream-DEFAULT/80"></i>
+            </div>
+            <h3 class="font-display text-2xl text-cream-DEFAULT tracking-wide mb-1">STATIONERY<br>&amp; OFFICE</h3>
+            <div class="service-card-details">
+              <div class="w-12 h-px bg-white/30 my-3"></div>
+              <ul class="space-y-1 text-cream-DEFAULT/65 text-sm">
+                <li><i class="fas fa-chevron-right text-cream-DEFAULT/50 text-xs mr-2"></i>Highlighters & pens</li>
+                <li><i class="fas fa-chevron-right text-cream-DEFAULT/50 text-xs mr-2"></i>Typek paper & boards</li>
+                <li><i class="fas fa-chevron-right text-cream-DEFAULT/50 text-xs mr-2"></i>Clipboards & folders</li>
+                <li><i class="fas fa-chevron-right text-cream-DEFAULT/50 text-xs mr-2"></i>Hole punches & more</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consumables -->
+      <div class="service-card-wrap cursor-none">
+        <div class="service-card-inner service-consumables">
+          <div class="service-shine"></div>
+          <div class="service-card-content">
+            <div class="w-10 h-10 glass-olive rounded-xl flex items-center justify-center mb-3">
+              <i class="fas fa-cubes text-olive"></i>
+            </div>
+            <h3 class="font-display text-2xl text-cream-DEFAULT tracking-wide mb-1">GENERAL<br>CONSUMABLES</h3>
+            <div class="service-card-details">
+              <div class="w-12 h-px bg-olive/60 my-3"></div>
+              <ul class="space-y-1 text-cream-DEFAULT/65 text-sm">
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>Hand cleaners with grit</li>
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>1-ton textile bags</li>
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>Industrial cleaning kits</li>
+                <li><i class="fas fa-chevron-right text-olive text-xs mr-2"></i>Workshop consumables</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expansion Banner -->
+    <div class="mt-10 glass animated-border rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 reveal-on-scroll">
+      <div class="flex items-center gap-5">
+        <div class="w-14 h-14 rounded-2xl glass-earth flex items-center justify-center shrink-0">
+          <i class="fas fa-chart-line text-earth-light text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-display text-2xl text-cream-DEFAULT tracking-wide mb-1">FUTURE EXPANSION — CONSTRUCTION</h3>
+          <p class="text-cream-DEFAULT/55 text-sm max-w-lg">We are actively planning expansion into the construction sector, bringing the same quality, urgency, and commitment we apply across all our services.</p>
+        </div>
+      </div>
+      <div class="shrink-0 glass-olive rounded-full px-6 py-3 font-mono text-xs text-olive tracking-widest uppercase animate-pulse-glow">Coming Soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="relative py-32 overflow-hidden" style="background: linear-gradient(180deg, #0d1117 0%, #0f1a0a 50%, #0d1117 100%);">
+  <div class="orb orb-olive w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20 reveal-on-scroll">
+      <div class="inline-flex items-center gap-2 mb-6">
+        <div class="w-8 h-px bg-olive"></div>
+        <span class="font-mono text-xs text-olive tracking-widest uppercase">Our Promise</span>
+        <div class="w-8 h-px bg-olive"></div>
+      </div>
+      <h2 class="font-display text-6xl lg:text-8xl text-cream-DEFAULT">WE DO WHAT<br><span class="grad-olive">WE SAY.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 reveal-on-scroll">
+      <div class="glass value-card rounded-2xl p-8 border border-white/5">
+        <div class="font-display text-7xl grad-olive opacity-20 leading-none mb-4">01</div>
+        <h4 class="font-display text-xl text-cream-DEFAULT tracking-wide mb-3">INTEGRITY &amp; HONESTY</h4>
+        <p class="text-cream-DEFAULT/55 text-sm leading-relaxed">Transparent dealings and ethical business practices in every interaction.</p>
+        <div class="mt-6 w-8 h-px bg-olive/60"></div>
+      </div>
+      <div class="glass value-card rounded-2xl p-8 border border-white/5">
+        <div class="font-display text-7xl grad-earth opacity-20 leading-none mb-4">02</div>
+        <h4 class="font-display text-xl text-cream-DEFAULT tracking-wide mb-3">ACCOUNTABLE &amp; RESPONSIBLE</h4>
+        <p class="text-cream-DEFAULT/55 text-sm leading-relaxed">Taking full ownership of our commitments, no matter the complexity.</p>
+        <div class="mt-6 w-8 h-px bg-earth/60"></div>
+      </div>
+      <div class="glass value-card rounded-2xl p-8 border border-white/5">
+        <div class="font-display text-7xl grad-olive opacity-20 leading-none mb-4">03</div>
+        <h4 class="font-display text-xl text-cream-DEFAULT tracking-wide mb-3">MOTIVATED &amp; PROFESSIONAL</h4>
+        <p class="text-cream-DEFAULT/55 text-sm leading-relaxed">A dedicated, passionate team delivering quality service every day.</p>
+        <div class="mt-6 w-8 h-px bg-olive/60"></div>
+      </div>
+      <div class="glass value-card rounded-2xl p-8 border border-white/5">
+        <div class="font-display text-7xl grad-earth opacity-20 leading-none mb-4">04</div>
+        <h4 class="font-display text-xl text-cream-DEFAULT tracking-wide mb-3">SAFETY &amp; QUALITY</h4>
+        <p class="text-cream-DEFAULT/55 text-sm leading-relaxed">Prioritising worker safety and delivering only high-quality products.</p>
+        <div class="mt-6 w-8 h-px bg-earth/60"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="relative py-32 bg-[#0d1117] overflow-hidden">
+  <div class="orb orb-earth w-96 h-96 bottom-0 right-0 opacity-25"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal-on-scroll gap-6">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-6">
+          <div class="w-8 h-px bg-earth"></div>
+          <span class="font-mono text-xs text-earth-light tracking-widest uppercase">Featured Range</span>
+        </div>
+        <h2 class="font-display text-6xl lg:text-7xl text-cream-DEFAULT leading-none">FEATURED<br><span class="grad-earth">PRODUCTS</span></h2>
+      </div>
+      <a href="#contact" class="btn-outline-mag self-start cursor-none">View Full Catalog <i class="fas fa-arrow-right ml-2"></i></a>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-5 reveal-on-scroll">
+      <!-- Product 1 -->
+      <div class="product-card glass border border-white/5 cursor-none col-span-2 lg:col-span-1">
+        <div class="product-card-img prod-harness"></div>
+        <div class="product-corner"></div>
+        <div class="p-5">
+          <div class="font-mono text-xs text-olive/70 tracking-widest uppercase mb-2">Safety Equipment</div>
+          <h5 class="font-display text-xl text-cream-DEFAULT tracking-wide">SAFETY HARNESS</h5>
+          <p class="text-cream-DEFAULT/50 text-sm mt-1">High-quality fall protection equipment</p>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card glass border border-white/5 cursor-none">
+        <div class="product-card-img prod-fire"></div>
+        <div class="product-corner"></div>
+        <div class="p-5">
+          <div class="font-mono text-xs text-earth-light/70 tracking-widest uppercase mb-2">Fire Safety</div>
+          <h5 class="font-display text-xl text-cream-DEFAULT tracking-wide">FIRE RISK GEAR</h5>
+          <p class="text-cream-DEFAULT/50 text-sm mt-1">Essential fire safety equipment</p>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card glass border border-white/5 cursor-none">
+        <div class="product-card-img prod-cleaning"></div>
+        <div class="product-corner"></div>
+        <div class="p-5">
+          <div class="font-mono text-xs text-olive/70 tracking-widest uppercase mb-2">Cleaning</div>
+          <h5 class="font-display text-xl text-cream-DEFAULT tracking-wide">CLEANING KIT</h5>
+          <p class="text-cream-DEFAULT/50 text-sm mt-1">Industrial cleaning solutions</p>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="product-card glass border border-white/5 cursor-none">
+        <div class="product-card-img prod-tape"></div>
+        <div class="product-corner"></div>
+        <div class="p-5">
+          <div class="font-mono text-xs text-earth-light/70 tracking-widest uppercase mb-2">Construction</div>
+          <h5 class="font-display text-xl text-cream-DEFAULT tracking-wide">SAFETY TAPE</h5>
+          <p class="text-cream-DEFAULT/50 text-sm mt-1">High-visibility construction tape</p>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="product-card glass border border-white/5 cursor-none">
+        <div class="product-card-img prod-helmet"></div>
+        <div class="product-corner"></div>
+        <div class="p-5">
+          <div class="font-mono text-xs text-olive/70 tracking-widest uppercase mb-2">Head Protection</div>
+          <h5 class="font-display text-xl text-cream-DEFAULT tracking-wide">SAFETY HELMET</h5>
+          <p class="text-cream-DEFAULT/50 text-sm mt-1">Mining-grade head protection</p>
+        </div>
+      </div>
+      <!-- Product 6 -->
+      <div class="product-card glass border border-white/5 cursor-none">
+        <div class="product-card-img prod-gloves"></div>
+        <div class="product-corner"></div>
+        <div class="p-5">
+          <div class="font-mono text-xs text-earth-light/70 tracking-widest uppercase mb-2">Hand Protection</div>
+          <h5 class="font-display text-xl text-cream-DEFAULT tracking-wide">DROMEX GLOVES</h5>
+          <p class="text-cream-DEFAULT/50 text-sm mt-1">Full Dromex gloves range</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="relative py-32 overflow-hidden" style="background: linear-gradient(160deg, #0d1117 0%, #0f1a0a 100%);">
+  <div class="orb orb-olive w-96 h-96 top-20 right-0 opacity-20"></div>
+  <div class="orb orb-navy w-80 h-80 bottom-0 left-20 opacity-30"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20 reveal-on-scroll">
+      <div class="inline-flex items-center gap-2 mb-6">
+        <div class="w-8 h-px bg-olive"></div>
+        <span class="font-mono text-xs text-olive tracking-widest uppercase">Get In Touch</span>
+        <div class="w-8 h-px bg-olive"></div>
+      </div>
+      <h2 class="font-display text-6xl lg:text-8xl text-cream-DEFAULT mb-4">LET'S WORK<br><span class="grad-shimmer">TOGETHER</span></h2>
+      <p class="text-cream-DEFAULT/50 max-w-md mx-auto">Request a quote or reach out for any supply inquiry. We respond with urgency.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8 reveal-on-scroll">
+      <!-- Contact Info -->
+      <div class="lg:col-span-2 flex flex-col gap-5">
+        <!-- Email -->
+        <a href="mailto:admin@magadine.co.za" class="contact-method glass rounded-2xl p-6 border border-white/5 flex items-center gap-5 group cursor-none">
+          <div class="w-14 h-14 rounded-2xl glass-olive flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+            <i class="fas fa-envelope text-olive text-lg"></i>
+          </div>
+          <div>
+            <div class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest mb-1">Email</div>
+            <div class="text-cream-DEFAULT font-medium group-hover:text-olive transition-colors">admin@magadine.co.za</div>
+          </div>
+        </a>
+        <!-- Phone -->
+        <a href="tel:+27682215400" class="contact-method glass rounded-2xl p-6 border border-white/5 flex items-center gap-5 group cursor-none">
+          <div class="w-14 h-14 rounded-2xl glass-earth flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+            <i class="fas fa-phone-alt text-earth-light text-lg"></i>
+          </div>
+          <div>
+            <div class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest mb-1">Phone</div>
+            <div class="text-cream-DEFAULT font-medium group-hover:text-earth-light transition-colors">+27 68 221 5400</div>
+          </div>
+        </a>
+        <!-- Location -->
+        <div class="contact-method glass rounded-2xl p-6 border border-white/5 flex items-start gap-5">
+          <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center shrink-0 border border-white/10 mt-1">
+            <i class="fas fa-map-marker-alt text-cream-DEFAULT/70 text-lg"></i>
+          </div>
+          <div>
+            <div class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest mb-2">Location</div>
+            <p class="text-cream-DEFAULT/70 text-sm leading-relaxed">Unit B19 Steelpoort Mine Supplier Park,<br>Farm Spitskop 333KT, Road R555,<br>Steelpoort, 1133</p>
+          </div>
+        </div>
+        <!-- Hours -->
+        <div class="glass-olive rounded-2xl p-6 border border-olive/20">
+          <div class="font-mono text-xs text-olive/70 uppercase tracking-widest mb-3">Business Hours</div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between text-cream-DEFAULT/70"><span>Monday – Friday</span><span class="text-olive">07:30 – 17:00</span></div>
+            <div class="flex justify-between text-cream-DEFAULT/70"><span>Saturday</span><span class="text-cream-DEFAULT/40">By Appointment</span></div>
+            <div class="flex justify-between text-cream-DEFAULT/70"><span>Sunday</span><span class="text-cream-DEFAULT/40">Closed</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-3">
+        <div class="glass animated-border rounded-2xl p-8 border border-white/5">
+          <h3 class="font-display text-3xl text-cream-DEFAULT tracking-wide mb-8">SEND A MESSAGE</h3>
+          <form id="contactForm" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest block mb-2">Your Name</label>
+                <input type="text" class="form-input-mag" placeholder="Miss / Mr / Dr..." required>
+              </div>
+              <div>
+                <label class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest block mb-2">Email Address</label>
+                <input type="email" class="form-input-mag" placeholder="name@company.co.za" required>
+              </div>
+            </div>
+            <div>
+              <label class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest block mb-2">Company / Organisation</label>
+              <input type="text" class="form-input-mag" placeholder="Your company name">
+            </div>
+            <div>
+              <label class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest block mb-2">Subject / Service Needed</label>
+              <input type="text" class="form-input-mag" placeholder="e.g. PPE Supply Quote Request" required>
+            </div>
+            <div>
+              <label class="font-mono text-xs text-cream-DEFAULT/40 uppercase tracking-widest block mb-2">Your Message</label>
+              <textarea class="form-input-mag resize-none" rows="4" placeholder="Tell us what you need..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary-mag w-full justify-center cursor-none"><span><i class="fas fa-paper-plane mr-2"></i>Send Message</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative bg-[#080c0f] border-t border-white/5 py-12 overflow-hidden">
+  <div class="orb orb-olive w-64 h-64 bottom-0 left-0 opacity-10"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-xl glass-olive flex items-center justify-center">⚒️</div>
+        <div>
+          <div class="font-display text-2xl grad-full tracking-wider">MAGADINE</div>
+          <div class="font-mono text-[9px] text-cream-DEFAULT/40 tracking-[0.25em] uppercase">Business Enterprise (Pty) Ltd</div>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#home" class="nav-link-item text-xs">Home</a>
+        <a href="#about" class="nav-link-item text-xs">About</a>
+        <a href="#services" class="nav-link-item text-xs">Services</a>
+        <a href="#products" class="nav-link-item text-xs">Products</a>
+        <a href="#contact" class="nav-link-item text-xs">Contact</a>
+      </div>
+      <p class="font-mono text-xs text-cream-DEFAULT/30 text-center">
+        © <span id="year"></span> Magadine Business Enterprise — All Rights Reserved
+      </p>
+    </div>
+    <div class="mt-8 pt-8 border-t border-white/5 text-center">
+      <p class="font-mono text-xs text-cream-DEFAULT/25 tracking-widest uppercase">Mining Supply &amp; Services of Choice · Steelpoort, Limpopo, South Africa</p>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 glass-olive rounded-full flex items-center justify-center text-olive opacity-0 invisible transition-all duration-500 z-50 hover:scale-110 cursor-none border border-olive/30 animate-pulse-glow">
+  <i class="fas fa-chevron-up text-sm"></i>
+</button>
+
+<!-- SUCCESS TOAST -->
+<div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 glass-olive rounded-2xl px-8 py-4 opacity-0 invisible transition-all z-50 border border-olive/40 flex items-center gap-3">
+  <i class="fas fa-check-circle text-olive"></i>
+  <span class="text-cream-DEFAULT font-medium">Message sent! We'll respond promptly.</span>
+</div>
+
+<script>
+// CURSOR
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px'; });
+function animateRing() { ringX += (mouseX - ringX) * 0.12; ringY += (mouseY - ringY) * 0.12; ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px'; requestAnimationFrame(animateRing); }
+animateRing();
+document.querySelectorAll('a, button, .service-card-wrap, .product-card, .value-card, .contact-method').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+});
+
+// YEAR
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 60) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+  if (window.scrollY > 400) { btn.classList.remove('opacity-0','invisible'); btn.classList.add('opacity-100','visible'); } else { btn.classList.add('opacity-0','invisible'); btn.classList.remove('opacity-100','visible'); }
+});
+
+// MOBILE MENU
+document.getElementById('menuBtn').addEventListener('click', () => {
+  const m = document.getElementById('mobileMenu');
+  m.classList.toggle('hidden');
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const el = document.querySelector(id);
+    if (el) { e.preventDefault(); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' }); document.getElementById('mobileMenu').classList.add('hidden'); }
+  });
+});
+
+// BACK TO TOP
+document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// COUNTERS
+function animateCount(el) {
+  const target = +el.dataset.target;
+  let current = 0;
+  const step = target / 60;
+  const t = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = Math.floor(current);
+    if (current >= target) clearInterval(t);
+  }, 25);
+}
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting && e.target.textContent === '0') animateCount(e.target); });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(c => countObs.observe(c));
+
+// SCROLL REVEAL
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObs.observe(el));
+
+// FORM SUBMIT
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const toast = document.getElementById('toast');
+  toast.classList.remove('opacity-0','invisible');
+  toast.classList.add('opacity-100','visible');
+  setTimeout(() => { toast.classList.add('opacity-0','invisible'); toast.classList.remove('opacity-100','visible'); }, 4000);
+  e.target.reset();
+});
+</script>
+</body>
+</html>

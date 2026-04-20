@@ -8,33 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel=icon href="assets/magaLogo.jpeg" type="image/jpeg">
+    <link rel="icon" href="assets/magaLogo.jpeg" type="image/jpeg">
     
     <style>
-      :root {
-    --primary: #1e3a5f; /* Navy */
-    --primary-light: #2d4f7c;
-    --secondary: #8B4513; /* Earthy Brown */
-    --accent: #6b8e23; /* Olive */
-    --accent-dark: #556b1f;
-    --success: #10b981;
-    --danger: #ef4444;
-    --light: #f8fafc; /* White/Off-white */
-    --dark: #0f172a; /* Black */
-    --white: #ffffff;
-    --olive: #6b8e23;
-    --brown: #8B4513;
-    --navy: #1e3a5f;
-    --black: #0f172a;
-    --gradient-1: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
-    --gradient-2: linear-gradient(135deg, #8B4513 0%, #1e3a5f 100%);
-    --gradient-3: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
-    --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 50%, #0f172a 100%);
-    --gradient-accent: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%); /* Olive to Brown */
-    --gradient-mesh: radial-gradient(at 40% 20%, rgba(107, 142, 35, 0.3) 0px, transparent 50%),
-                    radial-gradient(at 80% 0%, rgba(139, 69, 19, 0.3) 0px, transparent 50%),
-                    radial-gradient(at 0% 50%, rgba(31, 58, 95, 0.3) 0px, transparent 50%);
-}
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d4f7c;
+            --secondary: #8B4513;
+            --accent: #6b8e23;
+            --accent-dark: #556b1f;
+            --success: #10b981;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --white: #ffffff;
+            --olive: #6b8e23;
+            --brown: #8B4513;
+            --navy: #1e3a5f;
+            --black: #0f172a;
+            --gradient-1: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-2: linear-gradient(135deg, #8B4513 0%, #1e3a5f 100%);
+            --gradient-3: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 50%, #0f172a 100%);
+            --gradient-accent: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, rgba(107, 142, 35, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, rgba(139, 69, 19, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, rgba(31, 58, 95, 0.3) 0px, transparent 50%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -78,70 +79,94 @@
             100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
 
-        /* ===== NAVBAR ENHANCED ===== */
+        /* ===== NAVBAR - MATCHING INDEX PAGE ===== */
         .navbar {
-            background: rgba(244, 246, 249, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1.2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            padding: 0 0;
+            min-height: 90px;
+            border-bottom: 2px solid transparent;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1030;
+            display: flex;
+            align-items: center;
         }
 
         .navbar.scrolled {
-            padding: 0.8rem 0;
-            background: rgba(244, 246, 249, 0.95);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            min-height: 80px;
+            background: linear-gradient(135deg, rgba(248,250,252,0.99) 0%, rgba(235,242,250,0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(30,58,95,0.15), 0 2px 8px rgba(107,142,35,0.1);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(135deg, #6b8e23, #8B4513, #1e3a5f) 1;
         }
 
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            height: 100%;
             transition: transform 0.3s ease;
+            padding: 4px 0;
         }
 
         .navbar-brand:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .brand-icon {
-            font-size: 2.2rem;
-            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
-            animation: glow 2s ease-in-out infinite;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+            position: relative;
         }
 
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5)); }
-            50% { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.8)); }
+        .brand-icon::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: linear-gradient(135deg, rgba(107,142,35,0.15) 0%, rgba(139,69,19,0.1) 100%);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .brand-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .navbar-brand:hover .brand-icon::before {
+            opacity: 1;
         }
 
-        .brand-subtitle {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .brand-icon img {
+            height: 180px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 16px rgba(107,142,35,0.25));
+            transition: filter 0.3s ease, height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled .brand-icon img {
+            height: 80px;
+        }
+
+        .navbar-brand:hover .brand-icon img {
+            filter: drop-shadow(0 6px 22px rgba(107,142,35,0.4));
         }
 
         .nav-link {
-            color:  rgba(12, 1, 1, 0.9) !important;
+            color: rgba(255, 255, 255, 0.95) !important;
             font-weight: 600;
             margin: 0 0.5rem;
             padding: 0.6rem 1.2rem !important;
             border-radius: 8px;
             position: relative;
             transition: all 0.3s ease;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        .navbar.scrolled .nav-link {
+            color: rgba(12, 1, 1, 0.85) !important;
+            text-shadow: none;
         }
 
         .nav-link::before {
@@ -163,9 +188,15 @@
 
         .nav-link:hover,
         .nav-link.active {
-            color:  rgba(12, 1, 1, 0.9) !important;
-            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9) !important;
+            background: rgba(255,255,255,0.15);
             transform: translateY(-2px);
+        }
+
+        .navbar.scrolled .nav-link:hover,
+        .navbar.scrolled .nav-link.active {
+            color: rgba(12, 1, 1, 0.9) !important;
+            background: linear-gradient(135deg, rgba(107,142,35,0.08) 0%, rgba(139,69,19,0.05) 100%);
         }
 
         .btn-cta {
@@ -176,7 +207,7 @@
             border-radius: 50px;
             border: none;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 4px 15px rgba(107,142,35,0.3);
             position: relative;
             overflow: hidden;
         }
@@ -201,52 +232,86 @@
 
         .btn-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 8px 25px rgba(107,142,35,0.5);
+            color: white;
         }
 
-        /* ===== PAGE HERO ENHANCED ===== */
+        /* Mobile Navbar Styles */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: white;
+                border-radius: 20px;
+                margin-top: 20px;
+                padding: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+                border: 1px solid rgba(107,142,35,0.15);
+            }
+            .navbar-collapse .nav-link {
+                color: var(--dark) !important;
+                text-shadow: none;
+                padding: 12px 16px !important;
+                margin: 4px 0;
+                border-radius: 12px;
+            }
+            .navbar-collapse .nav-link:hover,
+            .navbar-collapse .nav-link.active {
+                background: linear-gradient(135deg, rgba(107,142,35,0.1) 0%, rgba(139,69,19,0.08) 100%);
+                color: var(--primary) !important;
+            }
+            .navbar-collapse .btn-cta {
+                margin-top: 12px !important;
+                width: 100%;
+                text-align: center;
+            }
+            .navbar-toggler {
+                background: rgba(255,255,255,0.9);
+                border: 1px solid rgba(107,142,35,0.3);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* ===== PAGE HERO ===== */
         .page-hero {
             background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(30, 58, 95, 0.9) 100%),
                         url('./assets/magahero5.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            height: 50vh;
-            min-height: 400px;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             position: relative;
             color: white;
-            margin-top: 90px;
+            padding-top: 90px;
             overflow: hidden;
         }
 
         .page-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: var(--gradient-mesh);
             opacity: 0.6;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(225deg, rgba(107,142,35,0.12) 0%, transparent 40%, rgba(139,69,19,0.1) 100%);
+            pointer-events: none;
         }
 
         .page-hero-content {
             position: relative;
             z-index: 10;
+            text-align: center;
             animation: fadeInUp 1s ease;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-title {
@@ -257,32 +322,25 @@
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .page-title .highlight {
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
         .page-subtitle {
             font-size: 1.4rem;
             max-width: 700px;
+            margin: 0 auto;
             opacity: 0.95;
-            margin-bottom: 2rem;
-            line-height: 1.8;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .breadcrumb {
             background: transparent;
             padding: 0;
-            margin-bottom: 0;
+            margin-bottom: 1rem;
+            justify-content: center;
         }
 
         .breadcrumb-item a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         .breadcrumb-item a:hover {
@@ -297,100 +355,9 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* ===== CONTACT INFO CARDS ENHANCED ===== */
-        .contact-info-cards {
-            padding: 5rem 0;
-            background: linear-gradient(180deg, white 0%, var(--light) 100%);
-            position: relative;
-        }
-
-        .info-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--gradient-accent);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-        }
-
-        .info-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .info-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        .info-icon {
-            width: 90px;
-            height: 90px;
-            background: var(--gradient-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .info-card:hover .info-icon {
-            transform: scale(1.15) rotate(10deg);
-        }
-
-        .info-title {
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .info-text {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .contact-link:hover {
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* ===== CONTACT FORM ENHANCED ===== */
-        .contact-section {
-            padding: 5rem 0;
-            background: white;
-            position: relative;
-        }
-
+        /* ===== SECTIONS ===== */
         .section-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
             margin-bottom: 1rem;
             position: relative;
@@ -416,66 +383,131 @@
         .section-subtitle {
             color: var(--primary-light);
             font-size: 1.3rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             font-weight: 500;
+        }
+
+        /* ===== CONTACT INFO CARDS ===== */
+        .contact-info-cards {
+            padding: 4rem 0;
+            background: linear-gradient(180deg, white 0%, var(--light) 100%);
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            text-align: center;
+            border: 1px solid rgba(107,142,35,0.08);
+            position: relative;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(30,58,95,0.15);
+        }
+
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(107,142,35,0.3);
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover .info-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .info-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-section {
+            padding: 4rem 0;
+            background: white;
         }
 
         .contact-form-container {
             background: white;
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(30,58,95,0.08);
             transition: all 0.5s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.05), transparent);
-            transition: left 0.8s ease;
-        }
-
-        .contact-form-container:hover::before {
-            left: 100%;
+            border: 1px solid rgba(107,142,35,0.08);
         }
 
         .contact-form-container:hover {
             transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15) !important;
+            box-shadow: 0 25px 60px rgba(30,58,95,0.15);
         }
 
         .form-title {
             color: var(--primary);
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
         .form-subtitle {
             color: var(--primary-light);
             margin-bottom: 2rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .form-control, .form-select {
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             border-radius: 12px;
-            border: 2px solid rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(107,142,35,0.15);
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
         }
 
         .form-control:focus, .form-select:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 0 0.25rem rgba(245, 158, 11, 0.15);
+            box-shadow: 0 0 0 3px rgba(107,142,35,0.15);
             transform: translateY(-2px);
         }
 
@@ -489,48 +521,18 @@
             background: var(--gradient-accent);
             color: white;
             border: none;
-            padding: 1rem 2.5rem;
+            padding: 0.8rem 2rem;
             font-weight: 700;
             border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            font-size: 1rem;
             width: 100%;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-        }
-
-        .btn-submit::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-submit:hover::after {
-            width: 400px;
-            height: 400px;
+            box-shadow: 0 5px 20px rgba(107,142,35,0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
-        }
-
-        .btn-submit:active {
-            transform: translateY(-1px);
-        }
-
-        .invalid-feedback {
-            color: var(--danger);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            box-shadow: 0 10px 30px rgba(107,142,35,0.5);
         }
 
         .form-check-input:checked {
@@ -538,34 +540,24 @@
             border-color: var(--accent);
         }
 
-        .form-check-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 0.25rem rgba(245, 158, 11, 0.25);
-        }
-
-        /* ===== MAP SECTION ENHANCED ===== */
+        /* ===== MAP SECTION ===== */
         .map-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: linear-gradient(180deg, var(--light) 0%, white 100%);
         }
 
         .map-container {
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            height: 500px;
+            box-shadow: 0 10px 30px rgba(30,58,95,0.1);
+            height: 400px;
             position: relative;
             transition: all 0.5s ease;
         }
 
         .map-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-        }
-
-        #map {
-            height: 100%;
-            width: 100%;
+            box-shadow: 0 20px 50px rgba(30,58,95,0.15);
         }
 
         .map-overlay {
@@ -573,24 +565,24 @@
             top: 20px;
             left: 20px;
             background: white;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 300px;
+            max-width: 280px;
             z-index: 1000;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(107,142,35,0.1);
         }
 
         .map-title {
             color: var(--primary);
             font-weight: 700;
             margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
-        /* ===== BUSINESS HOURS ENHANCED ===== */
+        /* ===== BUSINESS HOURS ===== */
         .hours-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: white;
         }
 
@@ -598,8 +590,8 @@
             background: var(--gradient-primary);
             color: white;
             border-radius: 25px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(30,58,95,0.3);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -612,26 +604,27 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            background: radial-gradient(circle, rgba(107,142,35,0.15) 0%, transparent 70%);
+            animation: rotateSlow 20s linear infinite;
         }
 
-        @keyframes rotate {
+        @keyframes rotateSlow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
         .hours-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 70px rgba(37, 99, 235, 0.4) !important;
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px rgba(30,58,95,0.4);
         }
 
         .hours-title {
             font-weight: 800;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
             position: relative;
             z-index: 1;
+            text-align: center;
         }
 
         .hours-list {
@@ -642,7 +635,7 @@
         }
 
         .hours-list li {
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
@@ -661,9 +654,9 @@
             font-weight: 700;
         }
 
-        /* ===== FAQ SECTION ENHANCED ===== */
+        /* ===== FAQ SECTION ===== */
         .faq-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: linear-gradient(180deg, white 0%, var(--light) 100%);
         }
 
@@ -672,14 +665,21 @@
             margin: 0 auto;
         }
 
+        .accordion-item {
+            border: none;
+            margin-bottom: 1rem;
+            background: transparent;
+        }
+
         .accordion-button {
             background: white;
             color: var(--primary);
             font-weight: 700;
-            padding: 1.2rem 1.5rem;
+            padding: 1rem 1.2rem;
             border-radius: 15px !important;
-            border: 2px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(107,142,35,0.15);
             transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .accordion-button:not(.collapsed) {
@@ -690,28 +690,24 @@
 
         .accordion-button:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 0 0.25rem rgba(245, 158, 11, 0.25);
-        }
-
-        .accordion-button::after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231a3a5f'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            box-shadow: 0 0 0 3px rgba(107,142,35,0.15);
         }
 
         .accordion-button:not(.collapsed)::after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            filter: brightness(0) invert(1);
         }
 
         .accordion-body {
             background: white;
             border-radius: 0 0 15px 15px;
-            padding: 1.5rem;
-            border: 2px solid rgba(0, 0, 0, 0.05);
+            padding: 1.2rem;
+            border: 1px solid rgba(107,142,35,0.1);
             border-top: none;
         }
 
-        /* ===== CTA SECTION ENHANCED ===== */
+        /* ===== CTA SECTION ===== */
         .cta-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: var(--gradient-primary);
             color: white;
             text-align: center;
@@ -722,25 +718,21 @@
         .cta-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: var(--gradient-mesh);
             opacity: 0.3;
         }
 
         .cta-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
             position: relative;
             z-index: 1;
         }
 
         .cta-text {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.95;
             max-width: 700px;
@@ -753,47 +745,27 @@
         .btn-primary {
             background: var(--gradient-accent);
             border: none;
-            padding: 1rem 2.5rem;
+            padding: 0.8rem 2rem;
             font-weight: 700;
             border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(107,142,35,0.3);
             position: relative;
             z-index: 1;
         }
 
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-primary:hover::after {
-            width: 400px;
-            height: 400px;
-        }
-
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 10px 30px rgba(107,142,35,0.5);
         }
 
         .btn-outline-light {
             border-width: 2px;
             border-radius: 50px;
-            padding: 1rem 2.5rem;
+            padding: 0.8rem 2rem;
             font-weight: 700;
             transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 1;
@@ -801,15 +773,14 @@
 
         .btn-outline-light:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* ===== FOOTER ENHANCED ===== */
+        /* ===== FOOTER ===== */
         .footer {
             background: var(--gradient-primary);
             color: white;
-            padding: 3rem 0;
+            padding: 3rem 0 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -817,27 +788,15 @@
         .footer::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: var(--gradient-mesh);
             opacity: 0.3;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
         }
 
         .footer-links h5 {
             color: var(--accent);
             margin-bottom: 1rem;
             font-weight: 700;
-            position: relative;
-            z-index: 1;
         }
 
         .footer-links ul {
@@ -853,26 +812,11 @@
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
         }
 
         .footer-links a:hover {
             color: var(--accent);
             padding-left: 5px;
-        }
-
-        .footer-contact p {
-            margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-contact i {
-            color: var(--accent);
-            margin-right: 10px;
-            width: 20px;
         }
 
         .copyright {
@@ -885,7 +829,7 @@
             z-index: 1;
         }
 
-        /* ===== BACK TO TOP ENHANCED ===== */
+        /* ===== BACK TO TOP ===== */
         .btn-back-to-top {
             position: fixed;
             bottom: 40px;
@@ -900,7 +844,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 10px 30px rgba(107,142,35,0.4);
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -913,8 +857,7 @@
         }
 
         .btn-back-to-top:hover {
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+            transform: translateY(-5px) scale(1.1);
         }
 
         /* ===== ANIMATIONS ===== */
@@ -929,291 +872,137 @@
             transform: translateY(0);
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
-            .page-title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .contact-form-container {
-                padding: 2rem;
-            }
-            
-            .map-container {
-                height: 400px;
-            }
-            
-            .hours-card {
-                padding: 2rem;
-            }
-            
-            .cta-title {
-                font-size: 2.5rem;
-            }
+            .page-title { font-size: 2.8rem; }
+            .section-title { font-size: 2.5rem; }
+            .brand-icon img { height: 140px; }
+            .navbar.scrolled .brand-icon img { height: 68px; }
+            .contact-form-container { padding: 1.5rem; }
         }
 
         @media (max-width: 768px) {
-            .page-title {
-                font-size: 2.3rem;
-            }
-            
-            .page-hero {
-                height: 40vh;
-                min-height: 350px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .cta-title {
-                font-size: 2rem;
-            }
-            
-            .navbar-brand {
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .brand-text {
-                font-size: 1.3rem;
-            }
-            
-            .info-card {
-                padding: 2rem;
-            }
-            
-            .map-overlay {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 1rem;
-                max-width: 100%;
-            }
-            
-            .hero-buttons .btn {
-                display: block;
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-            
-            .hero-buttons .me-3 {
-                margin-right: 0 !important;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .page-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .btn-primary, .btn-submit, .btn-outline-light {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-            
-            .form-title {
-                font-size: 1.5rem;
-            }
-            
-            .contact-form-container {
-                padding: 1.5rem;
-            }
-            
-            .info-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.5rem;
-            }
+            .page-title { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .cta-title { font-size: 1.8rem; }
+            .brand-icon img { height: 120px; }
+            .navbar.scrolled .brand-icon img { height: 58px; }
+            .btn-back-to-top { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .map-overlay { position: relative; top: 0; left: 0; margin-bottom: 1rem; max-width: 100%; }
+            .hours-card { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <span class="brand-icon"><img src="assets/magatransprentlogo.png" style="width:140px; height:140px"alt="MAGADINE Logo"></span>
-                <div>
-                    <!--<div class="brand-text">MAGADINE</div>
-                    <small class="brand-subtitle">Business Enterprise</small>-->
-                </div>
+                <span class="brand-icon">
+                    <img src="assets/magatransprentlogo.png" alt="MAGADINE Logo">
+                </span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.html">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="contact.html">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
                 </ul>
                 <a href="#contactForm" class="btn btn-cta ms-lg-3 mt-3 mt-lg-0">Get Quote</a>
             </div>
         </div>
     </nav>
 
-    <!-- Page Hero -->
     <section class="page-hero">
         <div class="particles-bg" id="particles"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-hero-content">
-                        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-3">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
-                            </ol>
-                        </nav>
-                        <h1 class="page-title">Get In Touch</h1>
-                        <p class="page-subtitle">
-                            Contact Magadine Business Enterprise for quality mining supplies, PPE, and industrial solutions
-                        </p>
-                    </div>
-                </div>
+            <div class="page-hero-content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">Get In Touch</h1>
+                <p class="page-subtitle">Contact Magadine Business Enterprise for quality mining supplies, PPE, and industrial solutions</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Info Cards -->
     <section class="contact-info-cards">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="info-card animate-fade-in-up">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <h3 class="info-title">Our Location</h3>
-                        <p class="info-text">
-                            Unit B19 Steelpoort Mine Supplier Park,<br>
-                            Farm Spitskop 333KT, Road R555,<br>
-                            Steelpoort, 1133
-                        </p>
-                        <a href="#map" class="contact-link">
-                            <i class="fas fa-directions me-1"></i> Get Directions
-                        </a>
+                        <p class="info-text">Unit B19 Steelpoort Mine Supplier Park,<br>Farm Spitskop 333KT, Road R555,<br>Steelpoort, 1133</p>
+                        <a href="#map" class="contact-link"><i class="fas fa-directions me-1"></i> Get Directions</a>
                     </div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
                     <div class="info-card animate-fade-in-up">
-                        <div class="info-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
+                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                         <h3 class="info-title">Call Us</h3>
-                        <p class="info-text">
-                            Available during business hours<br>
-                            for inquiries and support
-                        </p>
-                        <a href="tel:+27682215400" class="contact-link">
-                            <i class="fas fa-phone me-1"></i> +27 68 221 5400
-                        </a>
+                        <p class="info-text">Available during business hours for inquiries and support</p>
+                        <a href="tel:+27682215400" class="contact-link"><i class="fas fa-phone me-1"></i> +27 68 221 5400</a>
                     </div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
                     <div class="info-card animate-fade-in-up">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
                         <h3 class="info-title">Email Us</h3>
-                        <p class="info-text">
-                            Send us your inquiries,<br>
-                            quote requests, or questions
-                        </p>
-                        <a href="mailto:magadinebusiness1998@gmail.com" class="contact-link">
-                            <i class="fas fa-envelope me-1"></i> admin@magadine.co.za
-                        </a>
+                        <p class="info-text">Send us your inquiries, quote requests, or questions</p>
+                        <a href="mailto:admin@magadine.co.za" class="contact-link"><i class="fas fa-envelope me-1"></i> admin@magadine.co.za</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form & Map -->
-    <section class="contact-section">
+    <section class="contact-section" id="contactForm">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12 text-center">
                     <h2 class="section-title">Send Us a Message</h2>
                     <p class="section-subtitle">We'll get back to you within 24 hours</p>
                 </div>
             </div>
-            
-            <div class="row g-5">
-                <!-- Contact Form -->
-                <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
                     <div class="contact-form-container animate-fade-in-up">
                         <h3 class="form-title">Request a Quote</h3>
-                        <p class="form-subtitle">
-                            Fill out the form below and we'll provide you with a competitive quote for your mining supply needs.
-                        </p>
-                        
+                        <p class="form-subtitle">Fill out the form below and we'll provide you with a competitive quote for your mining supply needs.</p>
                         <form id="contactForm" novalidate>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="firstName" class="form-label">First Name *</label>
                                     <input type="text" class="form-control" id="firstName" required>
-                                    <div class="invalid-feedback">
-                                        Please enter your first name.
-                                    </div>
+                                    <div class="invalid-feedback">Please enter your first name.</div>
                                 </div>
-                                
                                 <div class="col-md-6">
                                     <label for="lastName" class="form-label">Last Name *</label>
                                     <input type="text" class="form-control" id="lastName" required>
-                                    <div class="invalid-feedback">
-                                        Please enter your last name.
-                                    </div>
+                                    <div class="invalid-feedback">Please enter your last name.</div>
                                 </div>
-                                
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email Address *</label>
                                     <input type="email" class="form-control" id="email" required>
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address.
-                                    </div>
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
                                 </div>
-                                
                                 <div class="col-md-6">
                                     <label for="phone" class="form-label">Phone Number *</label>
                                     <input type="tel" class="form-control" id="phone" required>
-                                    <div class="invalid-feedback">
-                                        Please enter your phone number.
-                                    </div>
+                                    <div class="invalid-feedback">Please enter your phone number.</div>
                                 </div>
-                                
                                 <div class="col-12">
                                     <label for="company" class="form-label">Company Name</label>
                                     <input type="text" class="form-control" id="company">
                                 </div>
-                                
                                 <div class="col-12">
                                     <label for="serviceType" class="form-label">Service Interested In *</label>
                                     <select class="form-select" id="serviceType" required>
@@ -1225,55 +1014,42 @@
                                         <option value="manufacturing">Custom Manufacturing</option>
                                         <option value="other">Other Inquiry</option>
                                     </select>
-                                    <div class="invalid-feedback">
-                                        Please select a service type.
-                                    </div>
+                                    <div class="invalid-feedback">Please select a service type.</div>
                                 </div>
-                                
                                 <div class="col-12">
                                     <label for="message" class="form-label">Your Message *</label>
-                                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please enter your message.
-                                    </div>
+                                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    <div class="invalid-feedback">Please enter your message.</div>
                                 </div>
-                                
                                 <div class="col-12">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="privacyPolicy" required>
                                         <label class="form-check-label" for="privacyPolicy">
-                                            I agree to the <a href="#" class="text-decoration-none">Privacy Policy</a> and consent to being contacted by Magadine Business Enterprise.
+                                            I agree to the <a href="#" class="text-decoration-none">Privacy Policy</a> and consent to being contacted.
                                         </label>
-                                        <div class="invalid-feedback">
-                                            You must agree before submitting.
-                                        </div>
+                                        <div class="invalid-feedback">You must agree before submitting.</div>
                                     </div>
                                 </div>
-                                
-                                <div class="col-12 mt-4">
-                                    <button type="submit" class="btn-submit">
-                                        <i class="fas fa-paper-plane me-2"></i> Send Message
-                                    </button>
+                                <div class="col-12 mt-3">
+                                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane me-2"></i> Send Message</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                
-                <!-- Map -->
-                <div class="col-lg-6">
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
                     <div class="map-container animate-fade-in-up">
-                        <div id="map"></div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.5!2d30.4167!3d-24.4667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6b3b5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2sSteelpoort!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         <div class="map-overlay">
-                            <h4 class="map-title">Our Location</h4>
-                            <p class="mb-2">
-                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                Unit B19 Steelpoort Mine Supplier Park
-                            </p>
-                            <p class="mb-0">
-                                <i class="fas fa-road text-primary me-2"></i>
-                                Farm Spitskop 333KT, Road R555
-                            </p>
+                            <h4 class="map-title"><i class="fas fa-map-marker-alt me-1" style="color: var(--accent);"></i> Our Location</h4>
+                            <p class="mb-0 small">Unit B19 Steelpoort Mine Supplier Park<br>Farm Spitskop 333KT, Road R555<br>Steelpoort, 1133</p>
                         </div>
                     </div>
                 </div>
@@ -1281,126 +1057,41 @@
         </div>
     </section>
 
-    <!-- Business Hours -->
     <section class="hours-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="hours-card animate-fade-in-up">
-                        <h3 class="hours-title text-center">
-                            <i class="fas fa-clock me-2"></i> Business Hours
-                        </h3>
+                        <h3 class="hours-title"><i class="fas fa-clock me-2"></i> Business Hours</h3>
                         <ul class="hours-list">
-                            <li>
-                                <span class="hours-day">Monday</span>
-                                <span class="hours-time">8:00 AM - 15:30 PM</span>
-                            </li>
-                            <li>
-                                <span class="hours-day">Tuesday</span>
-                                <span class="hours-time">8:00 AM - 15:30 PM</span>
-                            </li>
-                            <li>
-                                <span class="hours-day">Wednesday</span>
-                                <span class="hours-time">8:00 AM - 15:30 PM</span>
-                            </li>
-                            <li>
-                                <span class="hours-day">Thursday</span>
-                                <span class="hours-time">8:00 AM - 15:30 PM</span>
-                            </li>
-                            <li>
-                                <span class="hours-day">Friday</span>
-                                <span class="hours-time">8:00 AM - 15:30 PM</span>
-                            </li>
-                            <!--<li>
-                                <span class="hours-day">Saturday</span>
-                                <span class="hours-time">9:00 AM - 1:00 PM</span>
-                            </li>
-                            <li>
-                                <span class="hours-day">Sunday</span>
-                                <span class="hours-time">Closed</span>
-                            </li>-->
+                            <li><span class="hours-day">Monday - Friday</span><span class="hours-time">8:00 AM - 3:30 PM</span></li>
+                            <li><span class="hours-day">Saturday</span><span class="hours-time">Closed</span></li>
+                            <li><span class="hours-day">Sunday</span><span class="hours-time">Closed</span></li>
+                            <li><span class="hours-day">Public Holidays</span><span class="hours-time">Closed</span></li>
                         </ul>
-                        <div class="text-center mt-4">
-                            <p class="mb-0">
-                                <i class="fas fa-exclamation-circle me-2"></i>
-                                After-hours emergency inquiries call: <strong>+27 68 221 5400</strong>
-                            </p>
-                        </div>
+                        <div class="text-center mt-3"><p class="mb-0"><i class="fas fa-exclamation-circle me-2"></i>After-hours emergency inquiries: <strong>+27 68 221 5400</strong></p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section class="faq-section">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12 text-center">
                     <h2 class="section-title">Frequently Asked Questions</h2>
                     <p class="section-subtitle">Find quick answers to common questions</p>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-12">
                     <div class="faq-container">
                         <div class="accordion" id="faqAccordion">
-                            <!-- FAQ Item 1 -->
-                            <div class="accordion-item animate-fade-in-up">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                        What areas do you serve?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        We primarily service the <strong>Thaba Chweu and Greater Tubatse area</strong>, including Steelpoort and surrounding regions. We can arrange delivery to other areas upon request.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 2 -->
-                            <div class="accordion-item animate-fade-in-up">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                        How quickly can you deliver?
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        For in-stock items, we typically deliver within <strong>24-48 hours</strong> in our primary service area. Special orders may take longer depending on supplier lead times.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 3 -->
-                            <div class="accordion-item animate-fade-in-up">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                        Do you offer bulk discounts?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Yes, we offer <strong>competitive pricing for bulk orders</strong>. Contact our sales team with your specific requirements for a customized quote.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 4 -->
-                            <div class="accordion-item animate-fade-in-up">
-                                <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                                        What payment methods do you accept?
-                                    </button>
-                                </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        We accept <strong>EFT/bank transfers, credit cards</strong>, and can arrange credit terms for established business customers subject to credit approval.
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="accordion-item animate-fade-in-up"><h2 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">What areas do you serve?</button></h2><div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">We primarily service the <strong>Thaba Chweu and Greater Tubatse area</strong>, including Steelpoort and surrounding regions. We can arrange delivery to other areas upon request.</div></div></div>
+                            <div class="accordion-item animate-fade-in-up"><h2 class="accordion-header" id="headingTwo"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">How quickly can you deliver?</button></h2><div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">For in-stock items, we typically deliver within <strong>24-48 hours</strong> in our primary service area. Special orders may take longer depending on supplier lead times.</div></div></div>
+                            <div class="accordion-item animate-fade-in-up"><h2 class="accordion-header" id="headingThree"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">Do you offer bulk discounts?</button></h2><div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes, we offer <strong>competitive pricing for bulk orders</strong>. Contact our sales team with your specific requirements for a customized quote.</div></div></div>
+                            <div class="accordion-item animate-fade-in-up"><h2 class="accordion-header" id="headingFour"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">What payment methods do you accept?</button></h2><div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">We accept <strong>EFT/bank transfers, credit cards</strong>, and can arrange credit terms for established business customers subject to credit approval.</div></div></div>
                         </div>
                     </div>
                 </div>
@@ -1408,281 +1099,122 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="animate-fade-in-up">
                         <h2 class="cta-title">Ready to Get Started?</h2>
-                        <p class="cta-text">
-                            Contact Magadine Business Enterprise today for all your mining supply, PPE, and industrial needs. Experience exceptional service from a 100% black woman owned enterprise.
-                        </p>
-                        <a href="tel:+27682215400" class="btn btn-primary btn-lg me-3 mb-3">
-                            <i class="fas fa-phone-alt me-2"></i>Call Now
-                        </a>
-                        <a href="#contactForm" class="btn btn-outline-light btn-lg mb-3">
-                            <i class="fas fa-envelope me-2"></i>Email Us
-                        </a>
+                        <p class="cta-text">Contact Magadine Business Enterprise today for all your mining supply, PPE, and industrial needs. Experience exceptional service from a 100% black woman owned enterprise.</p>
+                        <a href="tel:+27682215400" class="btn btn-primary btn-lg me-3 mb-3"><i class="fas fa-phone-alt me-2"></i>Call Now</a>
+                        <a href="#contactForm" class="btn btn-outline-light btn-lg mb-3"><i class="fas fa-envelope me-2"></i>Email Us</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="footer-brand">
-                <span class="brand-icon"><img src="assets/magatransprentlogo.png" style="width:150px; height:150px"alt="MAGADINE Logo"></span>
-                        <div>
-                            <!--<div class="brand-text">MAGADINE</div>
-                            <small class="brand-subtitle">Business Enterprise</small>-->
-                        </div>
-                    </div>
-                    <p style="position: relative; z-index: 1;">Mining Supply and Services of Choice in South Africa.</p>
-                </div>
-                
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Quick Links</h5>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="products.html">Products</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Our Services</h5>
-                        <ul>
-                            <li><a href="services.html">Mining Supplies</a></li>
-                            <li><a href="services.html">PPE Equipment</a></li>
-                            <li><a href="services.html">Stationery Supply</a></li>
-                            <li><a href="services.html">General Consumables</a></li>
-                            <li><a href="services.html">Custom Manufacturing</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <div class="footer-contact">
-                        <h5>Contact Info</h5>
-                        <p><i class="fas fa-map-marker-alt"></i> Unit B19 Steelpoort Mine Supplier Park, Farm Spitskop 333KT, Road R555, Steelpoort, 1133</p>
-                        <p><i class="fas fa-phone-alt"></i> +27 68 221 5400</p>
-                        <p><i class="fas fa-envelope"></i> admin@magadine.co.za</p>
-                    </div>
-                </div>
+                <div class="col-lg-4 mb-4"><div class="footer-brand mb-3"><img src="assets/magatransprentlogo.png" style="height: 100px; width: auto; filter: brightness(0) invert(1);" alt="MAGADINE Logo"></div><p>Mining Supply and Services of Choice in South Africa.</p></div>
+                <div class="col-lg-2 col-md-6 mb-4"><div class="footer-links"><h5>Quick Links</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="products.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div></div>
+                <div class="col-lg-3 col-md-6 mb-4"><div class="footer-links"><h5>Our Services</h5><ul><li><a href="services.html">Mining Supplies</a></li><li><a href="services.html">PPE Equipment</a></li><li><a href="services.html">Stationery Supply</a></li><li><a href="services.html">General Consumables</a></li><li><a href="services.html">Custom Manufacturing</a></li></ul></div></div>
+                <div class="col-lg-3 mb-4"><div class="footer-contact"><h5>Contact Info</h5><p><i class="fas fa-map-marker-alt me-2"></i> Unit B19 Steelpoort Mine Supplier Park, Steelpoort, 1133</p><p><i class="fas fa-phone-alt me-2"></i> +27 68 221 5400</p><p><i class="fas fa-envelope me-2"></i> admin@magadine.co.za</p></div></div>
             </div>
-            
-            <div class="row">
-                <div class="col-12">
-                    <div class="copyright">
-                        <p class="mb-0">
-                            © Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <div class="copyright"><p class="mb-0">© Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved</p></div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="btn btn-back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <button id="backToTop" class="btn btn-back-to-top"><i class="fas fa-chevron-up"></i></button>
 
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // Particle system
             function createParticles() {
                 const container = document.getElementById('particles');
-                const particleCount = 30;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = Math.random() * 100 + '%';
-                    particle.style.width = (Math.random() * 4 + 2) + 'px';
-                    particle.style.height = particle.style.width;
-                    particle.style.animationDelay = Math.random() * 20 + 's';
-                    particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                    container.appendChild(particle);
+                if (container) {
+                    for (let i = 0; i < 30; i++) {
+                        const particle = document.createElement('div');
+                        particle.className = 'particle';
+                        particle.style.left = Math.random() * 100 + '%';
+                        particle.style.top = Math.random() * 100 + '%';
+                        particle.style.width = (Math.random() * 4 + 2) + 'px';
+                        particle.style.height = particle.style.width;
+                        particle.style.animationDelay = Math.random() * 20 + 's';
+                        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                        container.appendChild(particle);
+                    }
                 }
             }
             createParticles();
             
-            // Navbar scroll
             window.addEventListener('scroll', function() {
                 const navbar = document.querySelector('.navbar');
                 const backToTop = document.getElementById('backToTop');
-                
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('show');
-                } else {
-                    backToTop.classList.remove('show');
-                }
+                if (window.scrollY > 80) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+                if (window.scrollY > 300) backToTop.classList.add('show');
+                else backToTop.classList.remove('show');
             });
             
-            // Back to top
             document.getElementById('backToTop').addEventListener('click', function() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
             
-            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
-                    
                     const target = document.querySelector(targetId);
                     if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
                         const navbarToggler = document.querySelector('.navbar-toggler');
-                        if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
-                            navbarToggler.click();
-                        }
+                        if (navbarToggler && !navbarToggler.classList.contains('collapsed')) navbarToggler.click();
                     }
                 });
             });
             
-            // Contact Form Validation and Submission
-            const contactForm = document.getElementById('contactForm');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('animated'); });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.animate-fade-in-up').forEach(element => observer.observe(element));
             
+            const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 event.stopPropagation();
-                
-                if (!contactForm.checkValidity()) {
-                    contactForm.classList.add('was-validated');
-                } else {
-                    submitContactForm();
+                if (!contactForm.checkValidity()) contactForm.classList.add('was-validated');
+                else {
+                    const submitBtn = contactForm.querySelector('.btn-submit');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
+                    submitBtn.disabled = true;
+                    setTimeout(() => {
+                        const successAlert = document.createElement('div');
+                        successAlert.className = 'alert alert-success alert-dismissible fade show mt-4';
+                        successAlert.innerHTML = `<i class="fas fa-check-circle me-2"></i><strong>Thank you for your message!</strong> We have received your inquiry and will contact you within 24 hours.<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+                        contactForm.parentNode.insertBefore(successAlert, contactForm.nextSibling);
+                        contactForm.reset();
+                        contactForm.classList.remove('was-validated');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        setTimeout(() => { if (successAlert.parentNode) successAlert.remove(); }, 10000);
+                    }, 1500);
                 }
             }, false);
             
-            function submitContactForm() {
-                const formData = {
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    company: document.getElementById('company').value,
-                    serviceType: document.getElementById('serviceType').value,
-                    message: document.getElementById('message').value
-                };
-                
-                const submitBtn = contactForm.querySelector('.btn-submit');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    const successAlert = document.createElement('div');
-                    successAlert.className = 'alert alert-success alert-dismissible fade show mt-4';
-                    successAlert.innerHTML = `
-                        <i class="fas fa-check-circle me-2"></i>
-                        <strong>Thank you for your message!</strong> We have received your inquiry and will contact you within 24 hours.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    `;
-                    
-                    contactForm.parentNode.insertBefore(successAlert, contactForm.nextSibling);
-                    
-                    contactForm.reset();
-                    contactForm.classList.remove('was-validated');
-                    
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    
-                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    
-                    setTimeout(() => {
-                        if (successAlert.parentNode) {
-                            successAlert.remove();
-                        }
-                    }, 10000);
-                    
-                }, 1500);
-            }
-            
-            // Real-time form validation
             const formInputs = contactForm.querySelectorAll('input, select, textarea');
             formInputs.forEach(input => {
                 input.addEventListener('input', function() {
-                    if (this.checkValidity()) {
-                        this.classList.remove('is-invalid');
-                        this.classList.add('is-valid');
-                    } else {
-                        this.classList.remove('is-valid');
-                        this.classList.add('is-invalid');
-                    }
+                    if (this.checkValidity()) { this.classList.remove('is-invalid'); this.classList.add('is-valid'); }
+                    else { this.classList.remove('is-valid'); this.classList.add('is-invalid'); }
                 });
             });
-            
-            // Animate elements on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            
-            document.querySelectorAll('.animate-fade-in-up').forEach(element => {
-                observer.observe(element);
-            });
-            
-            // Active nav link
-            function setActiveNavLink() {
-                const currentPage = window.location.pathname.split('/').pop();
-                const navLinks = document.querySelectorAll('.nav-link');
-                
-                navLinks.forEach(link => {
-                    const linkHref = link.getAttribute('href');
-                    if (linkHref === currentPage) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            }
-            
-            setActiveNavLink();
-            
-            // Phone number formatting
-            const phoneInput = document.getElementById('phone');
-            if (phoneInput) {
-                phoneInput.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length > 0) {
-                        value = '+27 ' + value;
-                    }
-                    e.target.value = value;
-                });
-            }
         });
     </script>
 </body>

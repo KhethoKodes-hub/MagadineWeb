@@ -8,33 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel=icon href="assets/magaLogo.jpeg" type="image/jpeg">
+    <link rel="icon" href="assets/magaLogo.jpeg" type="image/jpeg">
     
     <style>
-       :root {
-    --primary: #1e3a5f; /* Navy */
-    --primary-light: #2d4f7c;
-    --secondary: #8B4513; /* Earthy Brown */
-    --accent: #6b8e23; /* Olive */
-    --accent-dark: #556b1f;
-    --success: #10b981;
-    --danger: #ef4444;
-    --light: #f8fafc; /* White/Off-white */
-    --dark: #0f172a; /* Black */
-    --white: #ffffff;
-    --olive: #6b8e23;
-    --brown: #8B4513;
-    --navy: #1e3a5f;
-    --black: #0f172a;
-    --gradient-1: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
-    --gradient-2: linear-gradient(135deg, #8B4513 0%, #1e3a5f 100%);
-    --gradient-3: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
-    --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 50%, #0f172a 100%);
-    --gradient-accent: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%); /* Olive to Brown */
-    --gradient-mesh: radial-gradient(at 40% 20%, rgba(107, 142, 35, 0.3) 0px, transparent 50%),
-                    radial-gradient(at 80% 0%, rgba(139, 69, 19, 0.3) 0px, transparent 50%),
-                    radial-gradient(at 0% 50%, rgba(31, 58, 95, 0.3) 0px, transparent 50%);
-}
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d4f7c;
+            --secondary: #8B4513;
+            --accent: #6b8e23;
+            --accent-dark: #556b1f;
+            --success: #10b981;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --white: #ffffff;
+            --olive: #6b8e23;
+            --brown: #8B4513;
+            --navy: #1e3a5f;
+            --black: #0f172a;
+            --gradient-1: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-2: linear-gradient(135deg, #8B4513 0%, #1e3a5f 100%);
+            --gradient-3: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 50%, #0f172a 100%);
+            --gradient-accent: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, rgba(107, 142, 35, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, rgba(139, 69, 19, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, rgba(31, 58, 95, 0.3) 0px, transparent 50%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -55,70 +56,94 @@
             letter-spacing: -0.02em;
         }
 
-        /* ===== NAVBAR ===== */
+        /* ===== NAVBAR - MATCHING INDEX PAGE ===== */
         .navbar {
-            background: rgba(244, 246, 249, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1.2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            padding: 0 0;
+            min-height: 90px;
+            border-bottom: 2px solid transparent;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1030;
+            display: flex;
+            align-items: center;
         }
 
         .navbar.scrolled {
-            padding: 0.8rem 0;
-            background: rgba(244, 246, 249, 0.95);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            min-height: 80px;
+            background: linear-gradient(135deg, rgba(248,250,252,0.99) 0%, rgba(235,242,250,0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(30,58,95,0.15), 0 2px 8px rgba(107,142,35,0.1);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(135deg, #6b8e23, #8B4513, #1e3a5f) 1;
         }
 
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            height: 100%;
             transition: transform 0.3s ease;
+            padding: 4px 0;
         }
 
         .navbar-brand:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .brand-icon {
-            font-size: 2.2rem;
-            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
-            animation: glow 2s ease-in-out infinite;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+            position: relative;
         }
 
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5)); }
-            50% { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.8)); }
+        .brand-icon::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: linear-gradient(135deg, rgba(107,142,35,0.15) 0%, rgba(139,69,19,0.1) 100%);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .brand-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .navbar-brand:hover .brand-icon::before {
+            opacity: 1;
         }
 
-        .brand-subtitle {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .brand-icon img {
+            height: 180px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 16px rgba(107,142,35,0.25));
+            transition: filter 0.3s ease, height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled .brand-icon img {
+            height: 80px;
+        }
+
+        .navbar-brand:hover .brand-icon img {
+            filter: drop-shadow(0 6px 22px rgba(107,142,35,0.4));
         }
 
         .nav-link {
-            color: rgba(12, 1, 1, 0.9) !important;
+            color: rgba(255, 255, 255, 0.95) !important;
             font-weight: 600;
             margin: 0 0.5rem;
             padding: 0.6rem 1.2rem !important;
             border-radius: 8px;
             position: relative;
             transition: all 0.3s ease;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        .navbar.scrolled .nav-link {
+            color: rgba(12, 1, 1, 0.85) !important;
+            text-shadow: none;
         }
 
         .nav-link::before {
@@ -140,9 +165,15 @@
 
         .nav-link:hover,
         .nav-link.active {
-            color: rgba(12, 1, 1, 0.9) !important;
-            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9) !important;
+            background: rgba(255,255,255,0.15);
             transform: translateY(-2px);
+        }
+
+        .navbar.scrolled .nav-link:hover,
+        .navbar.scrolled .nav-link.active {
+            color: rgba(12, 1, 1, 0.9) !important;
+            background: linear-gradient(135deg, rgba(107,142,35,0.08) 0%, rgba(139,69,19,0.05) 100%);
         }
 
         .btn-cta {
@@ -153,7 +184,7 @@
             border-radius: 50px;
             border: none;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 4px 15px rgba(107,142,35,0.3);
             position: relative;
             overflow: hidden;
         }
@@ -178,7 +209,42 @@
 
         .btn-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 8px 25px rgba(107,142,35,0.5);
+            color: white;
+        }
+
+        /* Mobile Navbar Styles */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: white;
+                border-radius: 20px;
+                margin-top: 20px;
+                padding: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+                border: 1px solid rgba(107,142,35,0.15);
+            }
+            .navbar-collapse .nav-link {
+                color: var(--dark) !important;
+                text-shadow: none;
+                padding: 12px 16px !important;
+                margin: 4px 0;
+                border-radius: 12px;
+            }
+            .navbar-collapse .nav-link:hover,
+            .navbar-collapse .nav-link.active {
+                background: linear-gradient(135deg, rgba(107,142,35,0.1) 0%, rgba(139,69,19,0.08) 100%);
+                color: var(--primary) !important;
+            }
+            .navbar-collapse .btn-cta {
+                margin-top: 12px !important;
+                width: 100%;
+                text-align: center;
+            }
+            .navbar-toggler {
+                background: rgba(255,255,255,0.9);
+                border: 1px solid rgba(107,142,35,0.3);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
         }
 
         /* ===== PAGE HERO ===== */
@@ -193,19 +259,24 @@
             align-items: center;
             position: relative;
             color: white;
-            margin-top: 90px;
+            padding-top: 90px;
             overflow: hidden;
         }
 
         .page-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: var(--gradient-mesh);
-            opacity: 0.7;
+            opacity: 0.6;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(225deg, rgba(107,142,35,0.12) 0%, transparent 40%, rgba(139,69,19,0.1) 100%);
+            pointer-events: none;
         }
 
         .page-hero-content {
@@ -216,14 +287,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-title {
@@ -312,12 +377,13 @@
         .overview-card {
             background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
             border-radius: 25px;
-            padding: 3.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(107,142,35,0.08);
         }
 
         .overview-card::before {
@@ -326,7 +392,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 4px;
             background: var(--gradient-accent);
             transform: scaleX(0);
             transition: transform 0.5s ease;
@@ -338,12 +404,12 @@
 
         .overview-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 60px rgba(30,58,95,0.15);
         }
 
         .overview-icon {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             background: var(--gradient-accent);
             border-radius: 20px;
             display: flex;
@@ -352,7 +418,7 @@
             color: white;
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 10px 30px rgba(107,142,35,0.3);
             transition: all 0.4s ease;
         }
 
@@ -370,22 +436,23 @@
         /* ===== MAIN SERVICES ===== */
         .main-services {
             padding: 6rem 0;
-            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
         }
 
         .service-main-card {
-            border-radius: 25px;
+            border-radius: 20px;
             overflow: hidden;
             border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
             background: white;
+            border: 1px solid rgba(107,142,35,0.08);
         }
 
         .service-main-card:hover {
             transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 25px 60px rgba(30,58,95,0.18);
         }
 
         .service-image {
@@ -396,59 +463,29 @@
             overflow: hidden;
         }
 
-        .service-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.6) 100%);
-            transition: all 0.5s ease;
-        }
-
-        .service-main-card:hover .service-image::before {
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
-        }
-
-        .service-main-card:hover .service-image {
-            transform: scale(1.1);
-        }
-
         .service-badge {
             position: absolute;
             top: 20px;
             right: 20px;
             background: var(--gradient-accent);
             color: white;
-            padding: 0.6rem 1.8rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.9rem;
-            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 5px 15px rgba(107,142,35,0.4);
             z-index: 10;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
 
         .service-content {
-            padding: 2.5rem;
+            padding: 2rem;
         }
 
         .service-title {
             color: var(--primary);
             font-weight: 800;
             margin-bottom: 1.5rem;
-            font-size: 1.6rem;
-        }
-
-        .service-description {
-            margin-bottom: 2rem;
-            line-height: 1.8;
+            font-size: 1.5rem;
         }
 
         .service-features {
@@ -458,7 +495,7 @@
         }
 
         .service-features li {
-            padding: 0.7rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
@@ -467,13 +504,13 @@
 
         .service-features li:hover {
             padding-left: 10px;
-            background: rgba(245, 158, 11, 0.05);
+            color: var(--accent);
         }
 
         .service-features li i {
             color: var(--accent);
             margin-right: 12px;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .btn-service {
@@ -487,127 +524,73 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 20px rgba(10, 25, 41, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-service::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-service:hover::after {
-            width: 300px;
-            height: 300px;
+            box-shadow: 0 5px 15px rgba(30,58,95,0.3);
         }
 
         .btn-service:hover {
             background: var(--gradient-accent);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 8px 25px rgba(107,142,35,0.5);
             color: white;
         }
 
         /* Service images */
-        .mining-service-img {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-        }
+        .mining-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/miningsupplies2.png'); background-size: cover; background-position: center; }
+        .ppe-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/safetyequipment.png'); background-size: cover; background-position: center; }
+        .stationery-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/stationery&office.png'); background-size: cover; background-position: center; }
+        .consumables-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/cleanrags.png'); background-size: cover; background-position: center; }
+        .manufacturing-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/handcleaners.png'); background-size: cover; background-position: center; }
+        .textile-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/textile\\ bag.jpg'); background-size: cover; background-position: center; }
+        .future-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/constructionex.png'); background-size: cover; background-position: center; }
 
-        .ppe-service-img {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2025&q=80');
-        }
-
-        .stationery-service-img {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-        }
-
-        .consumables-service-img {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80');
-        }
-
-        /* ===== SERVICE DETAILS ===== */
+        /* ===== DETAIL CARDS ===== */
         .service-details {
             padding: 6rem 0;
             background: white;
         }
 
         .detail-card {
-            border-radius: 25px;
-            border: 2px solid transparent;
+            border-radius: 20px;
+            border: 1px solid rgba(107,142,35,0.08);
             overflow: hidden;
             transition: all 0.5s ease;
             height: 100%;
             background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
         }
 
         .detail-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-            border-color: var(--accent);
+            box-shadow: 0 25px 60px rgba(30,58,95,0.15);
+            border-color: rgba(107,142,35,0.2);
         }
 
         .detail-header {
             background: var(--gradient-primary);
             color: white;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .detail-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         .detail-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             margin: 0;
-            position: relative;
-            z-index: 1;
         }
 
         .detail-body {
-            padding: 2.5rem;
+            padding: 2rem;
         }
 
         .product-list {
             list-style: none;
             padding-left: 0;
-            columns: 2;
-            column-gap: 2rem;
+            columns: 1;
         }
 
         .product-list li {
             padding: 0.6rem 0;
             border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
-            break-inside: avoid;
             transition: all 0.3s ease;
         }
 
@@ -619,40 +602,39 @@
         .product-list li i {
             color: var(--accent);
             margin-right: 10px;
-            font-size: 0.9rem;
+            width: 20px;
         }
 
-        /* ===== PRODUCT CATEGORIES ===== */
+        /* ===== CATEGORY CARDS ===== */
         .product-categories {
             padding: 6rem 0;
-            background: linear-gradient(180deg, white 0%, var(--light) 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
         }
 
         .category-card {
-            border-radius: 25px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
             background: white;
-            position: relative;
+            border: 1px solid rgba(107,142,35,0.08);
         }
 
         .category-card:hover {
             transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 25px 60px rgba(30,58,95,0.18);
         }
 
         .category-image {
             height: 240px;
             background-size: cover;
             background-position: center;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.5s ease;
         }
 
         .category-card:hover .category-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .category-content {
@@ -674,25 +656,15 @@
             right: 20px;
             background: var(--gradient-accent);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 1.4rem;
-            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
-        }
-
-        .manufacturing-service-img {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-        }
-
-        .future-service-img {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(107,142,35,0.4);
         }
 
         /* ===== WHY CHOOSE US ===== */
@@ -703,49 +675,50 @@
 
         .feature-card {
             text-align: center;
-            padding: 2.5rem;
-            border-radius: 25px;
+            padding: 2rem;
+            border-radius: 20px;
             background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
             transition: all 0.5s ease;
             height: 100%;
+            border: 1px solid rgba(107,142,35,0.08);
         }
 
         .feature-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 25px 60px rgba(30,58,95,0.15);
+            background: linear-gradient(145deg, #ffffff 0%, #f0f8e8 100%);
         }
 
         .feature-icon {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             background: var(--gradient-accent);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2.2rem;
-            margin: 0 auto 2rem;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(107,142,35,0.3);
             transition: all 0.4s ease;
         }
 
         .feature-card:hover .feature-icon {
-            transform: scale(1.15) rotate(10deg);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .feature-title {
             color: var(--primary);
             font-weight: 800;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         /* ===== CTA SECTION ===== */
         .cta-section {
-            padding: 6rem 0;
+            padding: 5rem 0;
             background: var(--gradient-primary);
             color: white;
             text-align: center;
@@ -756,16 +729,13 @@
         .cta-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: var(--gradient-mesh);
             opacity: 0.4;
         }
 
         .cta-title {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
             position: relative;
@@ -773,7 +743,7 @@
         }
 
         .cta-text {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
             opacity: 0.95;
             max-width: 800px;
@@ -786,48 +756,27 @@
         .btn-primary {
             background: var(--gradient-accent);
             border: none;
-            padding: 1.2rem 3rem;
+            padding: 1rem 2.5rem;
             font-weight: 700;
             border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1.2rem;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            transition: all 0.4s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(107,142,35,0.3);
             position: relative;
             z-index: 1;
-            overflow: hidden;
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-primary:hover::after {
-            width: 400px;
-            height: 400px;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
-            background: var(--gradient-accent);
+            box-shadow: 0 10px 30px rgba(107,142,35,0.5);
         }
 
         .btn-outline-light {
             border-width: 2px;
             border-radius: 50px;
-            padding: 1.2rem 3rem;
+            padding: 1rem 2.5rem;
             font-weight: 700;
             transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 1;
@@ -835,7 +784,6 @@
 
         .btn-outline-light:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
             background: rgba(255, 255, 255, 0.2);
         }
 
@@ -851,26 +799,15 @@
         .footer::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: var(--gradient-mesh);
             opacity: 0.3;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
         }
 
         .footer-links h5 {
             color: var(--accent);
             margin-bottom: 1.5rem;
             font-weight: 700;
-            font-size: 1.2rem;
         }
 
         .footer-links ul {
@@ -886,13 +823,11 @@
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: all 0.3s ease;
-            position: relative;
-            display: inline-block;
         }
 
         .footer-links a:hover {
             color: var(--accent);
-            padding-left: 10px;
+            padding-left: 8px;
         }
 
         .copyright {
@@ -920,7 +855,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 10px 30px rgba(107,142,35,0.4);
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -933,28 +868,25 @@
         }
 
         .btn-back-to-top:hover {
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+            transform: translateY(-5px) scale(1.1);
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
             .page-title { font-size: 3rem; }
             .section-title { font-size: 2.5rem; }
-            .product-list { columns: 1; }
-            .overview-card { padding: 2.5rem; }
+            .brand-icon img { height: 140px; }
+            .navbar.scrolled .brand-icon img { height: 68px; }
         }
 
         @media (max-width: 768px) {
-            .page-title { font-size: 2.5rem; }
-            .cta-title { font-size: 2.2rem; }
-            .service-image { height: 220px; }
-        }
-
-        @media (max-width: 576px) {
             .page-title { font-size: 2rem; }
             .section-title { font-size: 2rem; }
-            .service-content { padding: 2rem; }
+            .cta-title { font-size: 2rem; }
+            .service-image { height: 220px; }
+            .brand-icon img { height: 120px; }
+            .navbar.scrolled .brand-icon img { height: 58px; }
+            .btn-back-to-top { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
@@ -962,11 +894,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <span class="brand-icon"><img src="assets/magatransprentlogo.png" style="width:140px; height:140px"alt="MAGADINE Logo"></span>
-                <div>
-                    <!--<div class="brand-text">MAGADINE</div>
-                    <small class="brand-subtitle">Business Enterprise</small>-->
-                </div>
+                <span class="brand-icon">
+                    <img src="assets/magatransprentlogo.png" alt="MAGADINE Logo">
+                </span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -994,9 +924,7 @@
                     </ol>
                 </nav>
                 <h1 class="page-title">Our Services</h1>
-                <p class="page-subtitle">
-                    Comprehensive supply solutions for mining, safety, and industrial operations
-                </p>
+                <p class="page-subtitle">Comprehensive supply solutions for mining, safety, and industrial operations</p>
             </div>
         </div>
     </section>
@@ -1009,35 +937,26 @@
                     <p class="section-subtitle">Complete Supply Chain Solutions for Industrial Needs</p>
                 </div>
             </div>
-            
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="overview-card">
-                        <div class="overview-icon">
-                            <i class="fas fa-hard-hat"></i>
-                        </div>
+                        <div class="overview-icon"><i class="fas fa-hard-hat"></i></div>
                         <h3 class="overview-title">Mining Supplies</h3>
                         <p>Comprehensive range of mining equipment, tools, and consumables specifically designed for the demanding mining environment.</p>
                         <p class="mb-0">From cable ties to heavy-duty equipment, we supply everything needed for efficient mining operations.</p>
                     </div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
                     <div class="overview-card">
-                        <div class="overview-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
+                        <div class="overview-icon"><i class="fas fa-shield-alt"></i></div>
                         <h3 class="overview-title">PPE & Safety Equipment</h3>
                         <p>Complete personal protective equipment solutions to ensure worker safety in hazardous environments.</p>
                         <p class="mb-0">Safety harnesses, helmets, gloves, respiratory protection, and fire safety equipment from trusted brands.</p>
                     </div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
                     <div class="overview-card">
-                        <div class="overview-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
+                        <div class="overview-icon"><i class="fas fa-industry"></i></div>
                         <h3 class="overview-title">Custom Manufacturing</h3>
                         <p>Specialized manufacturing of hand cleaners with grit and production of 1-ton textile bags to meet specific industry requirements.</p>
                         <p class="mb-0">Tailored solutions designed for durability and performance in challenging industrial conditions.</p>
@@ -1055,112 +974,48 @@
                     <p class="section-subtitle">Specialized Solutions for Diverse Industrial Needs</p>
                 </div>
             </div>
-            
             <div class="row g-4">
                 <div class="col-lg-6">
                     <div class="service-main-card">
-                        <div class="service-image mining-service-img" style="background-image: url('./assets/miningsupplies2.png');">
-                            <div class="service-badge">Core Service</div>
-                        </div>
+                        <div class="service-image mining-service-img"><div class="service-badge">Core Service</div></div>
                         <div class="service-content">
-                            <h3 class="service-title">
-                                <i class="fas fa-hard-hat me-2"></i>Mining Supplies
-                            </h3>
-                            <p class="service-description">
-                                We provide a comprehensive range of mining supplies essential for efficient and safe mining operations. Our products are selected for durability and performance in harsh mining environments.
-                            </p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check"></i> Cable ties (all sizes)</li>
-                                <li><i class="fas fa-check"></i> Hose reel fire equipment</li>
-                                <li><i class="fas fa-check"></i> Oil spill kits</li>
-                                <li><i class="fas fa-check"></i> Safety harnesses</li>
-                                <li><i class="fas fa-check"></i> Helmets and safety boots</li>
-                                <li><i class="fas fa-check"></i> Dromex gloves range</li>
-                            </ul>
-                            <a href="#mining-details" class="btn btn-service">
-                                <i class="fas fa-list-alt me-2"></i>View Products
-                            </a>
+                            <h3 class="service-title"><i class="fas fa-hard-hat me-2"></i>Mining Supplies</h3>
+                            <p class="service-description">We provide a comprehensive range of mining supplies essential for efficient and safe mining operations. Our products are selected for durability and performance in harsh mining environments.</p>
+                            <ul class="service-features"><li><i class="fas fa-check"></i> Cable ties (all sizes)</li><li><i class="fas fa-check"></i> Hose reel fire equipment</li><li><i class="fas fa-check"></i> Oil spill kits</li><li><i class="fas fa-check"></i> Safety harnesses</li><li><i class="fas fa-check"></i> Helmets and safety boots</li><li><i class="fas fa-check"></i> Dromex gloves range</li></ul>
+                            <a href="#mining-details" class="btn btn-service"><i class="fas fa-list-alt me-2"></i>View Products</a>
                         </div>
                     </div>
                 </div>
-                
                 <div class="col-lg-6">
                     <div class="service-main-card">
-                        <div class="service-image ppe-service-img" style="background-image: url('./assets/safetyequipment.png');">
-                            <div class="service-badge">Essential</div>
-                        </div>
+                        <div class="service-image ppe-service-img"><div class="service-badge">Essential</div></div>
                         <div class="service-content">
-                            <h3 class="service-title">
-                                <i class="fas fa-shield-alt me-2"></i>PPE & Safety Equipment
-                            </h3>
-                            <p class="service-description">
-                                Complete personal protective equipment solutions to ensure compliance with safety regulations and protect workers in hazardous environments.
-                            </p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check"></i> Respiratory and dust masks</li>
-                                <li><i class="fas fa-check"></i> Fire risk equipment</li>
-                                <li><i class="fas fa-check"></i> Safety harnesses</li>
-                                <li><i class="fas fa-check"></i> Chemical-resistant gloves</li>
-                                <li><i class="fas fa-check"></i> Heat-resistant gloves</li>
-                                <li><i class="fas fa-check"></i> Electrical insulating gloves</li>
-                            </ul>
-                            <a href="#ppe-details" class="btn btn-service">
-                                <i class="fas fa-list-alt me-2"></i>View Products
-                            </a>
+                            <h3 class="service-title"><i class="fas fa-shield-alt me-2"></i>PPE & Safety Equipment</h3>
+                            <p class="service-description">Complete personal protective equipment solutions to ensure compliance with safety regulations and protect workers in hazardous environments.</p>
+                            <ul class="service-features"><li><i class="fas fa-check"></i> Respiratory and dust masks</li><li><i class="fas fa-check"></i> Fire risk equipment</li><li><i class="fas fa-check"></i> Safety harnesses</li><li><i class="fas fa-check"></i> Chemical-resistant gloves</li><li><i class="fas fa-check"></i> Heat-resistant gloves</li><li><i class="fas fa-check"></i> Electrical insulating gloves</li></ul>
+                            <a href="#ppe-details" class="btn btn-service"><i class="fas fa-list-alt me-2"></i>View Products</a>
                         </div>
                     </div>
                 </div>
-                
                 <div class="col-lg-6">
                     <div class="service-main-card">
-                        <div class="service-image stationery-service-img" style="background-image: url('./assets/stationery&office.png');">
-                            <div class="service-badge">Office Supplies</div>
-                        </div>
+                        <div class="service-image stationery-service-img"><div class="service-badge">Office Supplies</div></div>
                         <div class="service-content">
-                            <h3 class="service-title">
-                                <i class="fas fa-pen-fancy me-2"></i>Stationery & Office Supplies
-                            </h3>
-                            <p class="service-description">
-                                Complete office supply solutions including stationery and general consumables for administrative and operational needs.
-                            </p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check"></i> Highlighters and pens</li>
-                                <li><i class="fas fa-check"></i> Typek paper</li>
-                                <li><i class="fas fa-check"></i> Clipboards</li>
-                                <li><i class="fas fa-check"></i> Hole punches</li>
-                                <li><i class="fas fa-check"></i> Toilet paper supplies</li>
-                                <li><i class="fas fa-check"></i> General office consumables</li>
-                            </ul>
-                            <a href="#stationery-details" class="btn btn-service">
-                                <i class="fas fa-list-alt me-2"></i>View Products
-                            </a>
+                            <h3 class="service-title"><i class="fas fa-pen-fancy me-2"></i>Stationery & Office Supplies</h3>
+                            <p class="service-description">Complete office supply solutions including stationery and general consumables for administrative and operational needs.</p>
+                            <ul class="service-features"><li><i class="fas fa-check"></i> Highlighters and pens</li><li><i class="fas fa-check"></i> Typek paper</li><li><i class="fas fa-check"></i> Clipboards</li><li><i class="fas fa-check"></i> Hole punches</li><li><i class="fas fa-check"></i> Toilet paper supplies</li><li><i class="fas fa-check"></i> General office consumables</li></ul>
+                            <a href="#stationery-details" class="btn btn-service"><i class="fas fa-list-alt me-2"></i>View Products</a>
                         </div>
                     </div>
                 </div>
-                
                 <div class="col-lg-6">
                     <div class="service-main-card">
-                        <div class="service-image consumables-service-img" style="background-image: url('./assets/cleanrags.png');">
-                            <div class="service-badge">Consumables</div>
-                        </div>
+                        <div class="service-image consumables-service-img"><div class="service-badge">Consumables</div></div>
                         <div class="service-content">
-                            <h3 class="service-title">
-                                <i class="fas fa-boxes me-2"></i>General Consumables
-                            </h3>
-                            <p class="service-description">
-                                Wide range of general consumables and cleaning supplies essential for maintaining industrial and mining operations.
-                            </p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check"></i> Cleaning rags and wipes</li>
-                                <li><i class="fas fa-check"></i> Industrial cleaning kits</li>
-                                <li><i class="fas fa-check"></i> Hand cleaners with grit</li>
-                                <li><i class="fas fa-check"></i> Construction tape</li>
-                                <li><i class="fas fa-check"></i> Sample bags</li>
-                                <li><i class="fas fa-check"></i> Industrial mops and shovels</li>
-                            </ul>
-                            <a href="#consumables-details" class="btn btn-service">
-                                <i class="fas fa-list-alt me-2"></i>View Products
-                            </a>
+                            <h3 class="service-title"><i class="fas fa-boxes me-2"></i>General Consumables</h3>
+                            <p class="service-description">Wide range of general consumables and cleaning supplies essential for maintaining industrial and mining operations.</p>
+                            <ul class="service-features"><li><i class="fas fa-check"></i> Cleaning rags and wipes</li><li><i class="fas fa-check"></i> Industrial cleaning kits</li><li><i class="fas fa-check"></i> Hand cleaners with grit</li><li><i class="fas fa-check"></i> Construction tape</li><li><i class="fas fa-check"></i> Sample bags</li><li><i class="fas fa-check"></i> Industrial mops and shovels</li></ul>
+                            <a href="#consumables-details" class="btn btn-service"><i class="fas fa-list-alt me-2"></i>View Products</a>
                         </div>
                     </div>
                 </div>
@@ -1176,71 +1031,23 @@
                     <p class="section-subtitle">Detailed Breakdown of Our Product Offerings</p>
                 </div>
             </div>
-            
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="detail-card" id="mining-details">
-                        <div class="detail-header">
-                            <h4 class="detail-title">Mining Supplies</h4>
-                        </div>
-                        <div class="detail-body">
-                            <ul class="product-list">
-                                <li><i class="fas fa-circle"></i> Cable tie (all sizes)</li>
-                                <li><i class="fas fa-circle"></i> Hose reel fire</li>
-                                <li><i class="fas fa-circle"></i> Oil Spill kit</li>
-                                <li><i class="fas fa-circle"></i> Flag, Bakkie whip</li>
-                                <li><i class="fas fa-circle"></i> Tape safety 500m x 75mm</li>
-                                <li><i class="fas fa-circle"></i> Bag, textile 1-ton bulk</li>
-                                <li><i class="fas fa-circle"></i> Mop, cleaning wooden handle</li>
-                                <li><i class="fas fa-circle"></i> Plug Top RBR 3Pin 15A</li>
-                                <li><i class="fas fa-circle"></i> Bearings</li>
-                                <li><i class="fas fa-circle"></i> Shovel round nose</li>
-                            </ul>
-                        </div>
+                        <div class="detail-header"><h4 class="detail-title">Mining Supplies</h4></div>
+                        <div class="detail-body"><ul class="product-list"><li><i class="fas fa-circle"></i> Cable tie (all sizes)</li><li><i class="fas fa-circle"></i> Hose reel fire</li><li><i class="fas fa-circle"></i> Oil Spill kit</li><li><i class="fas fa-circle"></i> Flag, Bakkie whip</li><li><i class="fas fa-circle"></i> Tape safety 500m x 75mm</li><li><i class="fas fa-circle"></i> Bag, textile 1-ton bulk</li><li><i class="fas fa-circle"></i> Mop, cleaning wooden handle</li><li><i class="fas fa-circle"></i> Plug Top RBR 3Pin 15A</li><li><i class="fas fa-circle"></i> Bearings</li><li><i class="fas fa-circle"></i> Shovel round nose</li></ul></div>
                     </div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
                     <div class="detail-card" id="ppe-details">
-                        <div class="detail-header">
-                            <h4 class="detail-title">PPE & Safety Equipment</h4>
-                        </div>
-                        <div class="detail-body">
-                            <ul class="product-list">
-                                <li><i class="fas fa-shield-alt"></i> Safety Harness</li>
-                                <li><i class="fas fa-shield-alt"></i> Helmets (hard hats)</li>
-                                <li><i class="fas fa-shield-alt"></i> Safety boots</li>
-                                <li><i class="fas fa-shield-alt"></i> Respiratory masks</li>
-                                <li><i class="fas fa-shield-alt"></i> Dust masks</li>
-                                <li><i class="fas fa-shield-alt"></i> Dromex Gloves range</li>
-                                <li><i class="fas fa-shield-alt"></i> Chemical-resistant gloves</li>
-                                <li><i class="fas fa-shield-alt"></i> Cut-resistant gloves</li>
-                                <li><i class="fas fa-shield-alt"></i> Heat-resistant gloves</li>
-                                <li><i class="fas fa-shield-alt"></i> Electrical insulating gloves</li>
-                            </ul>
-                        </div>
+                        <div class="detail-header"><h4 class="detail-title">PPE & Safety Equipment</h4></div>
+                        <div class="detail-body"><ul class="product-list"><li><i class="fas fa-shield-alt"></i> Safety Harness</li><li><i class="fas fa-shield-alt"></i> Helmets (hard hats)</li><li><i class="fas fa-shield-alt"></i> Safety boots</li><li><i class="fas fa-shield-alt"></i> Respiratory masks</li><li><i class="fas fa-shield-alt"></i> Dust masks</li><li><i class="fas fa-shield-alt"></i> Dromex Gloves range</li><li><i class="fas fa-shield-alt"></i> Chemical-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Cut-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Heat-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Electrical insulating gloves</li></ul></div>
                     </div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
                     <div class="detail-card" id="stationery-details">
-                        <div class="detail-header">
-                            <h4 class="detail-title">Stationery & Office</h4>
-                        </div>
-                        <div class="detail-body">
-                            <ul class="product-list">
-                                <li><i class="fas fa-pen"></i> Highlighters</li>
-                                <li><i class="fas fa-pen"></i> Typek paper</li>
-                                <li><i class="fas fa-pen"></i> Pens (various types)</li>
-                                <li><i class="fas fa-pen"></i> Hole punch</li>
-                                <li><i class="fas fa-pen"></i> Clipboard</li>
-                                <li><i class="fas fa-pen"></i> Paper, toilet twin saver</li>
-                                <li><i class="fas fa-pen"></i> Sealant silicone clear tube</li>
-                                <li><i class="fas fa-pen"></i> Rags, wiping cotton coloured</li>
-                                <li><i class="fas fa-pen"></i> Bag, sample 420x610MM</li>
-                                <li><i class="fas fa-pen"></i> Fire risk equipment</li>
-                            </ul>
-                        </div>
+                        <div class="detail-header"><h4 class="detail-title">Stationery & Office</h4></div>
+                        <div class="detail-body"><ul class="product-list"><li><i class="fas fa-pen"></i> Highlighters</li><li><i class="fas fa-pen"></i> Typek paper</li><li><i class="fas fa-pen"></i> Pens (various types)</li><li><i class="fas fa-pen"></i> Hole punch</li><li><i class="fas fa-pen"></i> Clipboard</li><li><i class="fas fa-pen"></i> Paper, toilet twin saver</li><li><i class="fas fa-pen"></i> Sealant silicone clear tube</li><li><i class="fas fa-pen"></i> Rags, wiping cotton coloured</li><li><i class="fas fa-pen"></i> Bag, sample 420x610MM</li><li><i class="fas fa-pen"></i> Fire risk equipment</li></ul></div>
                     </div>
                 </div>
             </div>
@@ -1255,42 +1062,15 @@
                     <p class="section-subtitle">Custom Solutions for Specific Industry Needs</p>
                 </div>
             </div>
-            
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
-                        <div class="category-image manufacturing-service-img" style="background-image: url('./assets/handcleaners.png');"></div>
-                        <div class="category-content">
-                            <div class="category-count">1</div>
-                            <h4 class="category-title">Hand Cleaners with Grit</h4>
-                            <p>Specially formulated hand cleaners designed to remove tough industrial grime, oil, and dirt while protecting skin integrity.</p>
-                            <p class="mb-0">Manufactured in-house for quality control and custom formulations.</p>
-                        </div>
-                    </div>
+                    <div class="category-card"><div class="category-image manufacturing-service-img"></div><div class="category-content"><div class="category-count">1</div><h4 class="category-title">Hand Cleaners with Grit</h4><p>Specially formulated hand cleaners designed to remove tough industrial grime, oil, and dirt while protecting skin integrity.</p><p class="mb-0">Manufactured in-house for quality control and custom formulations.</p></div></div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
-                        <div class="category-image mining-service-img" style="background-image: url('./assets/textile\ bag.jpg');"></div>
-                        <div class="category-content">
-                            <div class="category-count">2</div>
-                            <h4 class="category-title">1-Ton Textile Bags</h4>
-                            <p>Heavy-duty textile bags manufactured for bulk material handling in mining and industrial applications.</p>
-                            <p class="mb-0">Custom sizes and materials available for specific operational requirements.</p>
-                        </div>
-                    </div>
+                    <div class="category-card"><div class="category-image textile-service-img"></div><div class="category-content"><div class="category-count">2</div><h4 class="category-title">1-Ton Textile Bags</h4><p>Heavy-duty textile bags manufactured for bulk material handling in mining and industrial applications.</p><p class="mb-0">Custom sizes and materials available for specific operational requirements.</p></div></div>
                 </div>
-                
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
-                        <div class="category-image future-service-img" style="background-image: url('./assets/constructionex.png');"></div>
-                        <div class="category-content">
-                            <div class="category-count">3</div>
-                            <h4 class="category-title">Future Expansion: Construction</h4>
-                            <p>Planning to expand our services to include construction supplies and equipment to serve the growing construction sector.</p>
-                            <p class="mb-0">Watch this space for new product categories and services.</p>
-                        </div>
-                    </div>
+                    <div class="category-card"><div class="category-image future-service-img"></div><div class="category-content"><div class="category-count">3</div><h4 class="category-title">Future Expansion: Construction</h4><p>Planning to expand our services to include construction supplies and equipment to serve the growing construction sector.</p><p class="mb-0">Watch this space for new product categories and services.</p></div></div>
                 </div>
             </div>
         </div>
@@ -1304,47 +1084,11 @@
                     <p class="section-subtitle">The Advantages of Partnering With Us</p>
                 </div>
             </div>
-            
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-female"></i>
-                        </div>
-                        <h4 class="feature-title">100% Woman Owned</h4>
-                        <p>B-BBEE Level 1 contributor promoting economic empowerment and transformation.</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <h4 class="feature-title">Fast Delivery</h4>
-                        <p>Efficient supply chain ensuring timely delivery to Thaba Chweu and Greater Tubatse area.</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <h4 class="feature-title">Quality Products</h4>
-                        <p>All products meet industry standards and specifications for safety and performance.</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h4 class="feature-title">Personalized Service</h4>
-                        <p>Tailored solutions and dedicated support for each client's specific requirements.</p>
-                    </div>
-                </div>
+                <div class="col-lg-3 col-md-6"><div class="feature-card"><div class="feature-icon"><i class="fas fa-female"></i></div><h4 class="feature-title">100% Woman Owned</h4><p>B-BBEE Level 1 contributor promoting economic empowerment and transformation.</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="feature-card"><div class="feature-icon"><i class="fas fa-shipping-fast"></i></div><h4 class="feature-title">Fast Delivery</h4><p>Efficient supply chain ensuring timely delivery to Thaba Chweu and Greater Tubatse area.</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="feature-card"><div class="feature-icon"><i class="fas fa-medal"></i></div><h4 class="feature-title">Quality Products</h4><p>All products meet industry standards and specifications for safety and performance.</p></div></div>
+                <div class="col-lg-3 col-md-6"><div class="feature-card"><div class="feature-icon"><i class="fas fa-handshake"></i></div><h4 class="feature-title">Personalized Service</h4><p>Tailored solutions and dedicated support for each client's specific requirements.</p></div></div>
             </div>
         </div>
     </section>
@@ -1354,15 +1098,9 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2 class="cta-title">Ready to Partner With Us?</h2>
-                    <p class="cta-text">
-                        Experience the Magadine difference - exceptional service, quality products, and competitive pricing for all your mining and industrial supply needs.
-                    </p>
-                    <a href="contact.html" class="btn btn-primary btn-lg me-3 mb-3">
-                        <i class="fas fa-file-invoice me-2"></i>Request Quote
-                    </a>
-                    <a href="contact.html" class="btn btn-outline-light btn-lg mb-3">
-                        <i class="fas fa-phone-alt me-2"></i>Contact Sales
-                    </a>
+                    <p class="cta-text">Experience the Magadine difference - exceptional service, quality products, and competitive pricing for all your mining and industrial supply needs.</p>
+                    <a href="contact.html" class="btn btn-primary btn-lg me-3 mb-3"><i class="fas fa-file-invoice me-2"></i>Request Quote</a>
+                    <a href="contact.html" class="btn btn-outline-light btn-lg mb-3"><i class="fas fa-phone-alt me-2"></i>Contact Sales</a>
                 </div>
             </div>
         </div>
@@ -1371,65 +1109,18 @@
     <footer class="footer">
         <div class="container" style="position: relative; z-index: 1;">
             <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="footer-brand">
-                <span class="brand-icon"><img src="assets/magatransprentlogo.png" style="width:150px; height:150px"alt="MAGADINE Logo"></span>
-                        <div>
-                            <!--<div class="brand-text">MAGADINE</div>
-                            <small class="brand-subtitle">Business Enterprise</small>-->
-                        </div>
-                    </div>
-                    <p>Mining Supply and Services of Choice in South Africa.</p>
-                </div>
-                
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Quick Links</h5>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="products.html">Products</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Our Services</h5>
-                        <ul>
-                            <li><a href="services.html">Mining Supplies</a></li>
-                            <li><a href="services.html">PPE Equipment</a></li>
-                            <li><a href="services.html">Stationery Supply</a></li>
-                            <li><a href="services.html">General Consumables</a></li>
-                            <li><a href="services.html">Custom Manufacturing</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <div class="footer-contact">
-                        <h5 style="color: var(--accent); margin-bottom: 1.5rem; font-weight: 700;">Contact Info</h5>
-                        <p style="color: rgba(255, 255, 255, 0.8);"><i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px; width: 20px;"></i> Unit B19 Steelpoort Mine Supplier Park, Steelpoort, 1133</p>
-                        <p style="color: rgba(255, 255, 255, 0.8);"><i class="fas fa-phone-alt" style="color: var(--accent); margin-right: 10px; width: 20px;"></i> +27 68 221 5400</p>
-                        <p style="color: rgba(255, 255, 255, 0.8);"><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px; width: 20px;"></i> admin@magadine.co.za</p>
-                    </div>
-                </div>
+                <div class="col-lg-4 mb-4"><div class="footer-brand mb-3"><img src="assets/magatransprentlogo.png" style="height: 100px; width: auto; filter: brightness(0) invert(1);" alt="MAGADINE Logo"></div><p>Mining Supply and Services of Choice in South Africa.</p></div>
+                <div class="col-lg-2 col-md-6 mb-4"><div class="footer-links"><h5>Quick Links</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="products.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div></div>
+                <div class="col-lg-3 col-md-6 mb-4"><div class="footer-links"><h5>Our Services</h5><ul><li><a href="services.html">Mining Supplies</a></li><li><a href="services.html">PPE Equipment</a></li><li><a href="services.html">Stationery Supply</a></li><li><a href="services.html">General Consumables</a></li><li><a href="services.html">Custom Manufacturing</a></li></ul></div></div>
+                <div class="col-lg-3 mb-4"><div class="footer-contact"><h5 style="color: var(--accent); margin-bottom: 1.5rem;">Contact Info</h5><p><i class="fas fa-map-marker-alt me-2"></i> Unit B19 Steelpoort Mine Supplier Park, Steelpoort, 1133</p><p><i class="fas fa-phone-alt me-2"></i> +27 68 221 5400</p><p><i class="fas fa-envelope me-2"></i> admin@magadine.co.za</p></div></div>
             </div>
-            
-            <div class="copyright">
-                <p class="mb-0">© Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved</p>
-            </div>
+            <div class="copyright"><p class="mb-0">© Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved</p></div>
         </div>
     </footer>
 
-    <button id="backToTop" class="btn btn-back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <button id="backToTop" class="btn btn-back-to-top"><i class="fas fa-chevron-up"></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -1437,39 +1128,10 @@
             window.addEventListener('scroll', function() {
                 const navbar = document.querySelector('.navbar');
                 const backToTop = document.getElementById('backToTop');
-                
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('show');
-                } else {
-                    backToTop.classList.remove('show');
-                }
-            });
-            
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        const navbarToggler = document.querySelector('.navbar-toggler');
-                        if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
-                            navbarToggler.click();
-                        }
-                    }
-                });
+                if (window.scrollY > 80) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+                if (window.scrollY > 300) backToTop.classList.add('show');
+                else backToTop.classList.remove('show');
             });
             
             document.getElementById('backToTop').addEventListener('click', function() {

@@ -249,8 +249,8 @@
 
         /* ===== PAGE HERO ===== */
         .page-hero {
-            background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(30, 58, 95, 0.9) 100%),
-                        url('./assets/magahero6.png');
+            background: /*linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(30, 58, 95, 0.9) 100%),*/
+                        url('./assets/herocont22.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -535,12 +535,12 @@
         }
 
         /* Service images */
-        .mining-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/miningsupplies2.png'); background-size: cover; background-position: center; }
+        .mining-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/maga2.jpeg'); background-size: cover; background-position: center; }
         .ppe-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/safetyequipment.png'); background-size: cover; background-position: center; }
         .stationery-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/stationery&office.png'); background-size: cover; background-position: center; }
-        .consumables-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/cleanrags.png'); background-size: cover; background-position: center; }
-        .manufacturing-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/handcleaners.png'); background-size: cover; background-position: center; }
-        .textile-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/textile\\ bag.jpg'); background-size: cover; background-position: center; }
+        .consumables-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/maga8.jpeg'); background-size: cover; background-position: center; }
+        .manufacturing-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/dine12.jpeg'); background-size: cover; background-position: center; }
+        .textile-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/textile\ bag.jpg'); background-size: cover; background-position: center; }
         .future-service-img { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./assets/constructionex.png'); background-size: cover; background-position: center; }
 
         /* ===== DETAIL CARDS ===== */
@@ -907,6 +907,8 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <a href="contact.html" class="btn btn-cta ms-lg-3 mt-3 mt-lg-0">Get Quote</a>
@@ -917,51 +919,8 @@
     <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
-                <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-4">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Services</li>
-                    </ol>
-                </nav>
                 <h1 class="page-title">Our Services</h1>
                 <p class="page-subtitle">Comprehensive supply solutions for mining, safety, and industrial operations</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="services-overview">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-12 text-center">
-                    <h2 class="section-title">What We Offer</h2>
-                    <p class="section-subtitle">Complete Supply Chain Solutions for Industrial Needs</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="overview-card">
-                        <div class="overview-icon"><i class="fas fa-hard-hat"></i></div>
-                        <h3 class="overview-title">Mining Supplies</h3>
-                        <p>Comprehensive range of mining equipment, tools, and consumables specifically designed for the demanding mining environment.</p>
-                        <p class="mb-0">From cable ties to heavy-duty equipment, we supply everything needed for efficient mining operations.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="overview-card">
-                        <div class="overview-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3 class="overview-title">PPE & Safety Equipment</h3>
-                        <p>Complete personal protective equipment solutions to ensure worker safety in hazardous environments.</p>
-                        <p class="mb-0">Safety harnesses, helmets, gloves, respiratory protection, and fire safety equipment from trusted brands.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="overview-card">
-                        <div class="overview-icon"><i class="fas fa-industry"></i></div>
-                        <h3 class="overview-title">Custom Manufacturing</h3>
-                        <p>Specialized manufacturing of hand cleaners with grit and production of 1-ton textile bags to meet specific industry requirements.</p>
-                        <p class="mb-0">Tailored solutions designed for durability and performance in challenging industrial conditions.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1023,7 +982,7 @@
         </div>
     </section>
 
-    <section class="service-details">
+    <!--<section class="service-details">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 text-center">
@@ -1041,7 +1000,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="detail-card" id="ppe-details">
                         <div class="detail-header"><h4 class="detail-title">PPE & Safety Equipment</h4></div>
-                        <div class="detail-body"><ul class="product-list"><li><i class="fas fa-shield-alt"></i> Safety Harness</li><li><i class="fas fa-shield-alt"></i> Helmets (hard hats)</li><li><i class="fas fa-shield-alt"></i> Safety boots</li><li><i class="fas fa-shield-alt"></i> Respiratory masks</li><li><i class="fas fa-shield-alt"></i> Dust masks</li><li><i class="fas fa-shield-alt"></i> Dromex Gloves range</li><li><i class="fas fa-shield-alt"></i> Chemical-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Cut-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Heat-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Electrical insulating gloves</li></ul></div>
+                        <div class="detail-body"><ul class="product-list"><li><i class="fas fa-shield-alt"></i> Safety Harness</li><li><i class="fas fa-shield-alt"></i> Helmets (hard hats)</li><li><i class="fas fa-shield-alt"></i> Safety boots</li><li><i class="fas fa-shield-alt"></i> Respiratory masks</li><li><i class="fas fa-shield-alt"></i> Dust masks</li><li><i class="fas fa-shield-alt"></i> Dromex Gloves range</li><li><i class="fas fa-shield-alt"></i> Chemical-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Cut-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Heat-resistant gloves</li><li><i class="fas fa-shield-alt"></i> Electrical insulating glove</li></ul></div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -1052,7 +1011,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <section class="product-categories">
         <div class="container">

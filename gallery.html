@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Magadine Business Enterprise</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/magaLogo.jpeg" type="image/jpeg">
+
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d4f7c;
+            --secondary: #8B4513;
+            --accent: #6b8e23;
+            --accent-dark: #556b1f;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 50%, #0f172a 100%);
+            --gradient-accent: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, rgba(107,142,35,0.3) 0px, transparent 50%),
+                             radial-gradient(at 80% 0%, rgba(139,69,19,0.3) 0px, transparent 50%),
+                             radial-gradient(at 0% 50%, rgba(31,58,95,0.3) 0px, transparent 50%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: transparent;
+            padding: 0 0;
+            min-height: 90px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+        }
+        .navbar.scrolled {
+            min-height: 80px;
+            background: linear-gradient(135deg, rgba(248,250,252,0.99) 0%, rgba(235,242,250,0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(30,58,95,0.15), 0 2px 8px rgba(107,142,35,0.1);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(135deg, #6b8e23, #8B4513, #1e3a5f) 1;
+        }
+        .navbar-brand { display: flex; align-items: center; height: 100%; transition: transform 0.3s ease; padding: 4px 0; }
+        .navbar-brand:hover { transform: scale(1.03); }
+        .brand-icon { display: inline-flex; align-items: center; justify-content: center; line-height: 0; position: relative; }
+        .brand-icon img {
+            height: 180px; width: auto; object-fit: contain;
+            filter: drop-shadow(0 4px 16px rgba(107,142,35,0.25));
+            transition: filter 0.3s ease, height 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .navbar.scrolled .brand-icon img { height: 80px; }
+        .nav-link {
+            color: rgba(255,255,255,0.95) !important;
+            font-weight: 600; margin: 0 0.5rem;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 8px; position: relative;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+        .navbar.scrolled .nav-link { color: rgba(12,1,1,0.85) !important; text-shadow: none; }
+        .nav-link::before {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            width: 0; height: 2px; background: var(--gradient-accent);
+            transition: all 0.3s ease; transform: translateX(-50%);
+        }
+        .nav-link:hover::before, .nav-link.active::before { width: 80%; }
+        .nav-link:hover, .nav-link.active {
+            color: rgba(255,255,255,0.9) !important;
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        .navbar.scrolled .nav-link:hover, .navbar.scrolled .nav-link.active {
+            color: rgba(12,1,1,0.9) !important;
+            background: linear-gradient(135deg, rgba(107,142,35,0.08) 0%, rgba(139,69,19,0.05) 100%);
+        }
+        .btn-cta {
+            background: var(--gradient-accent); color: white; font-weight: 700;
+            padding: 0.7rem 2rem; border-radius: 50px; border: none;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 15px rgba(107,142,35,0.3);
+            position: relative; overflow: hidden;
+        }
+        .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(107,142,35,0.5); color: white; }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: white; border-radius: 20px; margin-top: 20px;
+                padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+                border: 1px solid rgba(107,142,35,0.15);
+            }
+            .navbar-collapse .nav-link { color: var(--dark) !important; text-shadow: none; padding: 12px 16px !important; margin: 4px 0; border-radius: 12px; }
+            .navbar-collapse .nav-link:hover, .navbar-collapse .nav-link.active {
+                background: linear-gradient(135deg, rgba(107,142,35,0.1) 0%, rgba(139,69,19,0.08) 100%);
+                color: var(--primary) !important;
+            }
+            .navbar-collapse .btn-cta { margin-top: 12px !important; width: 100%; text-align: center; }
+            .navbar-toggler { background: rgba(255,255,255,0.9); border: 1px solid rgba(107,142,35,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+            .brand-icon img { height: 140px; }
+            .navbar.scrolled .brand-icon img { height: 68px; }
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: url('./assets/galhero2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 60vh;
+            display: flex; align-items: center;
+            position: relative; color: white;
+            padding-top: 90px; overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; inset: 0;
+            /*background: linear-gradient(135deg, rgba(10,25,41,0.88) 0%, rgba(30,58,95,0.80) 100%);*/
+        }
+        .page-hero::after {
+            content: ''; position: absolute; inset: 0;
+            background: var(--gradient-mesh); opacity: 0.5; pointer-events: none;
+        }
+        .page-hero-content { position: relative; z-index: 10; text-align: center; animation: fadeInUp 1s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .page-title { font-size: 4rem; font-weight: 900; margin-bottom: 1rem; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .page-title .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .page-subtitle { font-size: 1.3rem; opacity: 0.92; max-width: 700px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+        .breadcrumb {
+            background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
+            padding: 0.7rem 1.5rem; border-radius: 50px; display: inline-flex; margin-bottom: 1.5rem;
+        }
+        .breadcrumb-item a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; }
+        .breadcrumb-item a:hover { color: var(--accent); }
+        .breadcrumb-item.active { color: var(--accent); font-weight: 600; }
+        .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.5); }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery-section { padding: 6rem 0; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f0f5fa 100%); }
+
+        /* Filter Tabs */
+        .filter-tabs { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 3.5rem; }
+        .filter-btn {
+            background: white; color: var(--primary);
+            border: 2px solid rgba(30,58,95,0.12);
+            padding: 0.55rem 1.6rem; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.35s ease;
+            position: relative; overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        .filter-btn::after {
+            content: ''; position: absolute; inset: 0;
+            background: var(--gradient-accent); opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .filter-btn span { position: relative; z-index: 1; transition: color 0.35s ease; }
+        .filter-btn:hover, .filter-btn.active {
+            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(107,142,35,0.35);
+            transform: translateY(-2px);
+        }
+        .filter-btn:hover::after, .filter-btn.active::after { opacity: 1; }
+        .filter-btn:hover span, .filter-btn.active span { color: white; }
+
+        /* ===== MASONRY / BENTO GRID ===== */
+        .gallery-grid {
+            columns: 4;
+            column-gap: 18px;
+        }
+        @media (max-width: 1200px) { .gallery-grid { columns: 3; } }
+        @media (max-width: 768px)  { .gallery-grid { columns: 2; } }
+        @media (max-width: 480px)  { .gallery-grid { columns: 1; } }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 18px;
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+        }
+        .gallery-item img {
+            width: 100%; display: block;
+            transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+            border-radius: 18px;
+        }
+
+        /* Unique hover overlay — diagonal wipe with shimmer scan */
+        .gallery-item .overlay {
+            position: absolute; inset: 0;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(30,58,95,0.0) 0%, rgba(107,142,35,0.0) 100%);
+            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+            display: flex; align-items: flex-end;
+            overflow: hidden;
+        }
+
+        /* Diagonal wipe mask */
+        .gallery-item .overlay::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(160deg, rgba(15,23,42,0.0) 0%, rgba(30,58,95,0.82) 60%, rgba(107,142,35,0.75) 100%);
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+            transition: clip-path 0.55s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        /* Shimmer scan line */
+        .gallery-item .overlay::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            transform: skewX(-20deg);
+            transition: left 0s;
+        }
+
+        .gallery-item:hover .overlay::before {
+            clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0 100%);
+        }
+        .gallery-item:hover .overlay::after {
+            left: 160%;
+            transition: left 0.7s ease 0.15s;
+        }
+        .gallery-item:hover img { transform: scale(1.07); }
+
+        /* Caption inside overlay */
+        .gallery-item .caption {
+            position: relative; z-index: 2;
+            padding: 1.5rem; width: 100%;
+            transform: translateY(20px);
+            opacity: 0; transition: all 0.45s cubic-bezier(0.4,0,0.2,1) 0.05s;
+        }
+        .gallery-item:hover .caption { transform: translateY(0); opacity: 1; }
+        .caption-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: white; margin-bottom: 0.2rem; }
+        .caption-tag {
+            display: inline-block;
+            background: var(--gradient-accent);
+            color: white; font-size: 0.72rem; font-weight: 700;
+            padding: 0.2rem 0.75rem; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase;
+        }
+
+        /* Corner icon badge */
+        .gallery-item .zoom-icon {
+            position: absolute; top: 14px; right: 14px; z-index: 3;
+            width: 38px; height: 38px; border-radius: 50%;
+            background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(255,255,255,0.4);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 0.85rem;
+            opacity: 0; transform: scale(0.5) rotate(-15deg);
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.1s;
+        }
+        .gallery-item:hover .zoom-icon { opacity: 1; transform: scale(1) rotate(0deg); }
+
+        /* Featured (tall) items */
+        .gallery-item.featured img { min-height: 420px; object-fit: cover; }
+
+        /* Hidden items */
+        .gallery-item.hidden { display: none; }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(5,10,20,0.96);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 1rem;
+        }
+        .lightbox-overlay.open { opacity: 1; visibility: visible; }
+
+        .lightbox-inner {
+            position: relative; max-width: 1100px; width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            animation: lbIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes lbIn { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+
+        .lightbox-img-wrap {
+            position: relative; border-radius: 22px; overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+            max-height: 80vh;
+        }
+        .lightbox-img-wrap img {
+            max-width: 100%; max-height: 80vh; object-fit: contain;
+            display: block; border-radius: 22px;
+        }
+
+        /* Edge shine on lightbox */
+        .lightbox-img-wrap::before {
+            content: ''; position: absolute; inset: 0;
+            border-radius: 22px;
+            border: 1.5px solid rgba(107,142,35,0.35);
+            pointer-events: none; z-index: 2;
+        }
+
+        .lightbox-caption {
+            margin-top: 1.2rem; text-align: center;
+        }
+        .lightbox-caption h4 { color: white; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .lightbox-caption p { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+
+        /* Controls */
+        .lb-close {
+            position: fixed; top: 22px; right: 28px;
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            color: white; width: 48px; height: 48px;
+            border-radius: 50%; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s ease; z-index: 10001;
+        }
+        .lb-close:hover { background: rgba(239,68,68,0.7); border-color: transparent; transform: rotate(90deg) scale(1.1); }
+
+        .lb-nav {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            color: white; width: 54px; height: 54px;
+            border-radius: 50%; font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.35s ease; z-index: 10001;
+        }
+        .lb-nav:hover { background: var(--gradient-accent); border-color: transparent; transform: translateY(-50%) scale(1.1); }
+        .lb-prev { left: 18px; }
+        .lb-next { right: 18px; }
+
+        /* Counter pill */
+        .lb-counter {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85);
+            padding: 0.45rem 1.4rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+            z-index: 10001; display: flex; gap: 0.6rem; align-items: center;
+        }
+        .lb-counter-dots { display: flex; gap: 6px; }
+        .lb-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: rgba(255,255,255,0.3); transition: all 0.3s ease;
+        }
+        .lb-dot.active { background: var(--accent); transform: scale(1.4); }
+
+        /* ===== STATS STRIP ===== */
+        .stats-strip {
+            background: var(--gradient-primary); padding: 3rem 0;
+            position: relative; overflow: hidden;
+        }
+        .stats-strip::before {
+            content: ''; position: absolute; inset: 0;
+            background: var(--gradient-mesh); opacity: 0.3;
+        }
+        .strip-stat { text-align: center; position: relative; z-index: 1; }
+        .strip-number {
+            font-size: 2.8rem; font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            line-height: 1; margin-bottom: 0.4rem;
+        }
+        .strip-label { color: rgba(255,255,255,0.75); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+
+        /* Dividers between stats */
+        .strip-stat + .strip-stat { border-left: 1px solid rgba(255,255,255,0.1); }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-size: 3rem; font-weight: 900; margin-bottom: 1rem;
+            position: relative; display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: -12px; left: 50%;
+            transform: translateX(-50%); width: 90px; height: 5px;
+            background: var(--gradient-accent); border-radius: 3px;
+        }
+        .section-subtitle { color: var(--primary-light); font-size: 1.2rem; margin-bottom: 3rem; font-weight: 500; }
+
+        /* ===== CTA ===== */
+        .cta-section { padding: 5rem 0; background: linear-gradient(180deg, #f0f5fa 0%, #ffffff 100%); }
+        .cta-card {
+            background: var(--gradient-primary); color: white;
+            border-radius: 25px; padding: 4rem;
+            box-shadow: 0 20px 60px rgba(30,58,95,0.22);
+            position: relative; overflow: hidden; text-align: center;
+        }
+        .cta-card::before {
+            content: ''; position: absolute; top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(107,142,35,0.15) 0%, transparent 70%);
+            animation: rotateSlow 20s linear infinite;
+        }
+        @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .cta-title { font-size: 2.4rem; font-weight: 900; margin-bottom: 1rem; position: relative; z-index: 1; }
+        .cta-text { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.92; position: relative; z-index: 1; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .btn-primary {
+            background: var(--gradient-accent); border: none;
+            padding: 0.9rem 2.5rem; font-weight: 700; border-radius: 50px;
+            transition: all 0.4s ease; font-size: 1.05rem;
+            box-shadow: 0 5px 20px rgba(107,142,35,0.35); position: relative; z-index: 1;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(107,142,35,0.55); }
+        .btn-outline-light { border: 2px solid rgba(255,255,255,0.7); border-radius: 50px; font-weight: 700; transition: all 0.4s ease; position: relative; z-index: 1; }
+        .btn-outline-light:hover { transform: translateY(-3px); background: rgba(255,255,255,0.12); }
+
+        /* ===== FOOTER ===== */
+        .footer { background: var(--gradient-primary); color: white; padding: 3rem 0 2rem; position: relative; overflow: hidden; }
+        .footer::before { content: ''; position: absolute; inset: 0; background: var(--gradient-mesh); opacity: 0.25; }
+        .footer-links h5 { color: var(--accent); margin-bottom: 1.2rem; font-weight: 700; }
+        .footer-links ul { list-style: none; padding-left: 0; }
+        .footer-links li { margin-bottom: 0.6rem; }
+        .footer-links a { color: rgba(255,255,255,0.75); text-decoration: none; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--accent); padding-left: 6px; }
+        .copyright { padding-top: 1.5rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: rgba(255,255,255,0.55); position: relative; z-index: 1; }
+
+        /* ===== BACK TO TOP ===== */
+        .btn-back-to-top {
+            position: fixed; bottom: 40px; right: 40px;
+            width: 58px; height: 58px; border-radius: 50%;
+            background: var(--gradient-accent); color: white; border: none;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            box-shadow: 0 8px 28px rgba(107,142,35,0.4);
+            opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 1000;
+        }
+        .btn-back-to-top.show { opacity: 1; visibility: visible; }
+        .btn-back-to-top:hover { transform: translateY(-5px) scale(1.1); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title { font-size: 2.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .lb-prev { left: 6px; } .lb-next { right: 6px; }
+            .cta-card { padding: 2rem; } .cta-title { font-size: 1.8rem; }
+            .btn-back-to-top { bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">
+                    <img src="assets/magatransprentlogo.png" alt="MAGADINE Logo">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-cta ms-lg-3 mt-3 mt-lg-0">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <!--<nav aria-label="breadcrumb" class="d-flex justify-content-center mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                    </ol>
+                </nav>-->
+                <h1 class="page-title">Our <span class="highlight">Gallery</span></h1>
+                <p class="page-subtitle">A visual showcase of our products, operations, and commitment to excellence in mining supply and services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-6 col-md-3 strip-stat py-2"><div class="strip-number" data-target="500">0</div><div class="strip-label">Products Stocked</div></div>
+                <div class="col-6 col-md-3 strip-stat py-2"><div class="strip-number" data-target="8">0</div><div class="strip-label">Years of Excellence</div></div>
+                <div class="col-6 col-md-3 strip-stat py-2"><div class="strip-number" data-target="100">0</div><div class="strip-label">% Woman Owned</div></div>
+                <div class="col-6 col-md-3 strip-stat py-2"><div class="strip-number" data-target="1">0</div><div class="strip-label">B-BBEE Level</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Photo Gallery</h2>
+                    <p class="section-subtitle mt-4">Browse our collection of products, team, and facilities</p>
+                </div>
+            </div>
+
+            <!-- Filter tabs -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all"><span>All Photos</span></button>
+                <button class="filter-btn" data-filter="products"><span>Products</span></button>
+                <button class="filter-btn" data-filter="ppe"><span>PPE & Safety</span></button>
+                <button class="filter-btn" data-filter="mining"><span>Mining Supplies</span></button>
+                <button class="filter-btn" data-filter="team"><span>Our Team</span></button>
+                <button class="filter-btn" data-filter="facilities"><span>Facilities</span></button>
+            </div>
+
+            <!-- Masonry Grid -->
+            <div class="gallery-grid" id="galleryGrid">
+
+                <div class="gallery-item featured" data-category="mining" data-title="Mining Operations" data-tag="Mining">
+                    <img src="assets/maga15.jpeg" alt="Mining supplies equipment">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Mining Supplies</div>
+                            <span class="caption-tag">Mining</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item" data-category="ppe" data-title="PPE Equipment" data-tag="PPE & Safety">
+                    <img src="assets/maga13.jpeg" alt="PPE safety equipment">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">PPE Equipment</div>
+                            <span class="caption-tag">PPE & Safety</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item" data-category="products" data-title="Safety Harness" data-tag="Products">
+                    <img src="assets/safetyHarness.png" alt="Safety harness">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Safety Harness</div>
+                            <span class="caption-tag">Products</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item" data-category="products" data-title="Fire Safety Gear" data-tag="Products">
+                    <img src="assets/firesafetygear.png" alt="Fire safety gear">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Fire Safety Gear</div>
+                            <span class="caption-tag">Products</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item featured" data-category="mining" data-title="Construction Tape" data-tag="Mining">
+                    <img src="assets/maga9.jpeg" alt="Construction tape">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Construction Tape</div>
+                            <span class="caption-tag">Mining</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item" data-category="products" data-title="Cleaning Kit Supply" data-tag="Products">
+                    <img src="assets/cleaningkit.png" alt="Cleaning kit supply">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Cleaning Kit Supply</div>
+                            <span class="caption-tag">Products</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item" data-category="products" data-title="Stationery & Office" data-tag="Products">
+                    <img src="assets/stationery&office.png" alt="Stationery and office supplies">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Stationery & Office</div>
+                            <span class="caption-tag">Products</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item featured" data-category="team" data-title="Director — Miss Marumo Mkhonto" data-tag="Our Team">
+                    <img src="assets/mmemarumo2.png" alt="Miss Marumo Mkhonto">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Miss Marumo Mkhonto</div>
+                            <span class="caption-tag">Our Team</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item featured" data-category="team" data-title="Co-owner — Ms. Mahlatse Lekwadu" data-tag="Our Team">
+                    <img src="assets/mmemahlatse2.png" alt="Ms. Mahlatse Lekwadu">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Ms. Mahlatse Lekwadu</div>
+                            <span class="caption-tag">Our Team</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item featured" data-category="facilities" data-title="Operations & Facilities" data-tag="Facilities">
+                    <img src="assets/dine2.jpeg" alt="Magadine operations">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Operations & Facilities</div>
+                            <span class="caption-tag">Facilities</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item featured" data-category="facilities" data-title="Our Location — Steelpoort" data-tag="Facilities">
+                    <img src="assets/abouthero2.jpeg" alt="About Magadine hero">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Our Location — Steelpoort</div>
+                            <span class="caption-tag">Facilities</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+                <div class="gallery-item" data-category="mining" data-title="Magadine Logo" data-tag="Mining">
+                    <img src="assets/magaLogo.jpeg" alt="Magadine company logo">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-title">Magadine Brand</div>
+                            <span class="caption-tag">Mining</span>
+                        </div>
+                    </div>
+                    <div class="zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                </div>
+
+            </div><!-- /gallery-grid -->
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="cta-card">
+                        <h2 class="cta-title">Ready to Work Together?</h2>
+                        <p class="cta-text">Partner with South Africa's premier women-led mining supply enterprise. Let's discuss how we can support your operations.</p>
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="contact.html" class="btn btn-primary btn-lg"><i class="fas fa-handshake me-2"></i>Get a Quote</a>
+                            <a href="products.html" class="btn btn-outline-light btn-lg"><i class="fas fa-box-open me-2"></i>View Products</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container" style="position:relative;z-index:1;">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="assets/magatransprentlogo.png" style="height:90px;width:auto;filter:brightness(0) invert(1);margin-bottom:1rem;" alt="MAGADINE Logo">
+                    <p style="color:rgba(255,255,255,0.75);">Mining Supply and Services of Choice in South Africa.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Our Services</h5>
+                        <ul>
+                            <li><a href="services.html">Mining Supplies</a></li>
+                            <li><a href="services.html">PPE Equipment</a></li>
+                            <li><a href="services.html">Stationery Supply</a></li>
+                            <li><a href="services.html">General Consumables</a></li>
+                            <li><a href="services.html">Custom Manufacturing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 style="color:var(--accent);margin-bottom:1.2rem;">Contact Info</h5>
+                    <p style="color:rgba(255,255,255,0.75);"><i class="fas fa-map-marker-alt me-2"></i>Unit B19 Steelpoort Mine Supplier Park, Steelpoort, 1133</p>
+                    <p style="color:rgba(255,255,255,0.75);"><i class="fas fa-phone-alt me-2"></i>+27 68 221 5400</p>
+                    <p style="color:rgba(255,255,255,0.75);"><i class="fas fa-envelope me-2"></i>admin@magadine.co.za</p>
+                </div>
+            </div>
+            <div class="copyright"><p class="mb-0">© Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved</p></div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="btn btn-back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+        <button class="lb-close" id="lbClose" aria-label="Close lightbox"><i class="fas fa-times"></i></button>
+        <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+        <button class="lb-nav lb-next" id="lbNext" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-inner" id="lbInner">
+            <div class="lightbox-img-wrap">
+                <img id="lbImg" src="" alt="">
+            </div>
+            <div class="lightbox-caption">
+                <h4 id="lbTitle"></h4>
+                <p id="lbTag"></p>
+            </div>
+        </div>
+        <div class="lb-counter">
+            <span id="lbCount">1 / 12</span>
+            <div class="lb-counter-dots" id="lbDots"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Navbar scroll
+        window.addEventListener('scroll', function() {
+            const nb = document.querySelector('.navbar');
+            const bt = document.getElementById('backToTop');
+            nb.classList.toggle('scrolled', window.scrollY > 80);
+            bt.classList.toggle('show', window.scrollY > 300);
+        });
+        document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Counter animation
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target);
+            const dur = 1800, step = target / (dur / 16);
+            let cur = 0;
+            const t = setInterval(() => {
+                cur += step;
+                if (cur >= target) { el.textContent = target; clearInterval(t); }
+                else { el.textContent = Math.floor(cur); }
+            }, 16);
+        }
+        const cObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting && e.target.textContent === '0') animateCounter(e.target); });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.strip-number[data-target]').forEach(c => cObs.observe(c));
+
+        // Scroll reveal
+        const revObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.gallery-item').forEach(el => {
+            el.style.opacity = '0'; el.style.transform = 'translateY(28px)'; el.style.transition = 'all 0.55s ease';
+            revObs.observe(el);
+        });
+
+        // ===== FILTER =====
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.dataset.filter;
+                items.forEach(item => {
+                    const match = filter === 'all' || item.dataset.category === filter;
+                    if (match) {
+                        item.classList.remove('hidden');
+                        item.style.opacity = '0'; item.style.transform = 'translateY(28px)';
+                        setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, 50);
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+                buildVisibleList();
+            });
+        });
+
+        // ===== LIGHTBOX =====
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbTitle = document.getElementById('lbTitle');
+        const lbTag = document.getElementById('lbTag');
+        const lbCount = document.getElementById('lbCount');
+        const lbDots = document.getElementById('lbDots');
+        let visibleItems = [];
+        let currentIdx = 0;
+
+        function buildVisibleList() {
+            visibleItems = Array.from(document.querySelectorAll('.gallery-item:not(.hidden)'));
+            buildDots();
+        }
+
+        function buildDots() {
+            lbDots.innerHTML = '';
+            const max = Math.min(visibleItems.length, 12);
+            for (let i = 0; i < max; i++) {
+                const d = document.createElement('div');
+                d.className = 'lb-dot' + (i === currentIdx ? ' active' : '');
+                lbDots.appendChild(d);
+            }
+        }
+
+        function updateDots() {
+            const dots = lbDots.querySelectorAll('.lb-dot');
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentIdx));
+        }
+
+        function openLightbox(idx) {
+            currentIdx = idx;
+            const item = visibleItems[idx];
+            const img = item.querySelector('img');
+            lbImg.src = img.src;
+            lbImg.alt = img.alt;
+            lbTitle.textContent = item.dataset.title || '';
+            lbTag.textContent = item.dataset.tag || '';
+            lbCount.innerHTML = `<span>${idx + 1} / ${visibleItems.length}</span>`;
+            updateDots();
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lb.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function navigate(dir) {
+            currentIdx = (currentIdx + dir + visibleItems.length) % visibleItems.length;
+            const item = visibleItems[currentIdx];
+            const img = item.querySelector('img');
+            lbImg.style.opacity = '0'; lbImg.style.transform = 'scale(0.94)';
+            setTimeout(() => {
+                lbImg.src = img.src; lbImg.alt = img.alt;
+                lbTitle.textContent = item.dataset.title || '';
+                lbTag.textContent = item.dataset.tag || '';
+                lbCount.innerHTML = `<span>${currentIdx + 1} / ${visibleItems.length}</span>`;
+                updateDots();
+                lbImg.style.opacity = '1'; lbImg.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        lbImg.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+
+        buildVisibleList();
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                const idx = visibleItems.indexOf(item);
+                if (idx !== -1) openLightbox(idx);
+            });
+        });
+
+        document.getElementById('lbClose').addEventListener('click', closeLightbox);
+        document.getElementById('lbPrev').addEventListener('click', () => navigate(-1));
+        document.getElementById('lbNext').addEventListener('click', () => navigate(1));
+
+        lb.addEventListener('click', function(e) {
+            if (e.target === lb) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!lb.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+        });
+
+        // Touch/swipe on lightbox
+        let touchStartX = 0;
+        lb.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+        lb.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+        });
+    });
+    </script>
+</body>
+</html>

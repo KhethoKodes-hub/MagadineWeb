@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magadine Business Enterprise | Premier Mining Supply & Services</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel=icon href="assets/magaLogo.jpeg" type="image/jpeg">
+   
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d4f7c;
+            --secondary: #8B4513;
+            --accent: #6b8e23;
+            --accent-dark: #556b1f;
+            --success: #10b981;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --white: #ffffff;
+            --olive: #6b8e23;
+            --brown: #8B4513;
+            --navy: #1e3a5f;
+            --black: #0f172a;
+            --gradient-1: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-2: linear-gradient(135deg, #8B4513 0%, #1e3a5f 100%);
+            --gradient-3: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 50%, #0f172a 100%);
+            --gradient-accent: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, rgba(107, 142, 35, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, rgba(139, 69, 19, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, rgba(31, 58, 95, 0.3) 0px, transparent 50%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            padding: 0 0;
+            min-height: 90px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+        }
+        .navbar.scrolled {
+            min-height: 80px;
+            background: linear-gradient(135deg, rgba(248,250,252,0.99) 0%, rgba(235,242,250,0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(30,58,95,0.15), 0 2px 8px rgba(107,142,35,0.1);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(135deg, #6b8e23, #8B4513, #1e3a5f) 1;
+        }
+        
+        /* Mobile Navbar Styles */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: white;
+                border-radius: 20px;
+                margin-top: 20px;
+                padding: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+                border: 1px solid rgba(107,142,35,0.15);
+            }
+            .navbar-collapse .nav-link {
+                color: var(--dark) !important;
+                text-shadow: none;
+                padding: 12px 16px !important;
+                margin: 4px 0;
+                border-radius: 12px;
+            }
+            .navbar-collapse .nav-link:hover,
+            .navbar-collapse .nav-link.active {
+                background: linear-gradient(135deg, rgba(107,142,35,0.1) 0%, rgba(139,69,19,0.08) 100%);
+                color: var(--primary) !important;
+            }
+            .navbar-collapse .btn-cta {
+                margin-top: 12px !important;
+                width: 100%;
+                text-align: center;
+                background: var(--gradient-accent);
+                color: white;
+            }
+            .navbar-toggler {
+                background: rgba(255,255,255,0.9);
+                border: 1px solid rgba(107,142,35,0.3);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            .navbar-toggler-icon {
+                filter: invert(0);
+            }
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            transition: transform 0.3s ease;
+            padding: 4px 0;
+        }
+        .navbar-brand:hover { transform: scale(1.03); }
+        .brand-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+            position: relative;
+        }
+        .brand-icon::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: linear-gradient(135deg, rgba(107,142,35,0.15) 0%, rgba(139,69,19,0.1) 100%);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .navbar-brand:hover .brand-icon::before { opacity: 1; }
+
+        /* Creative Business Name Styling */
+        .business-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.45rem;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #6b8e23 0%, #8B4513 50%, #1e3a5f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled .business-name {
+            font-size: 1.25rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .brand-icon img {
+            height: 300px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 16px rgba(107,142,35,0.25));
+            transition: filter 0.3s ease, height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .navbar.scrolled .brand-icon img {
+            height: 80px;
+        }
+        .navbar-brand:hover .brand-icon img {
+            filter: drop-shadow(0 6px 22px rgba(107,142,35,0.4));
+        }
+
+        .particles-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+        .navbar.scrolled .nav-link {
+            color: rgba(12, 1, 1, 0.85) !important;
+            text-shadow: none;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::before, .nav-link.active::before { width: 80%; }
+        .nav-link:hover, .nav-link.active {
+            color: rgba(255, 255, 255, 0.9) !important;
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        .navbar.scrolled .nav-link:hover,
+        .navbar.scrolled .nav-link.active {
+            color: rgba(12, 1, 1, 0.9) !important;
+            background: linear-gradient(135deg, rgba(107,142,35,0.08) 0%, rgba(139,69,19,0.05) 100%);
+        }
+        .btn-cta {
+            background: var(--gradient-accent);
+            color: white;
+            font-weight: 700;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(107,142,35,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .btn-cta:hover::before { width: 300px; height: 300px; }
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(107,142,35,0.5);
+            color: white;
+        }
+
+        /* ===== HERO ===== */
+        .hero-section {
+            background: /*linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(30, 58, 95, 0.9) 100%),*/
+                        url('./assets/dine2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            padding-top: 90px;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.6;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(225deg, rgba(107,142,35,0.12) 0%, transparent 40%, rgba(139,69,19,0.1) 100%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .hero-title .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        @keyframes shimmer { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label { font-size: 0.9rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ===== SECTIONS ===== */
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+        .section-subtitle {
+            color: var(--primary-light);
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            font-weight: 500;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-section {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f0f5fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(107,142,35,0.03) 0%, rgba(139,69,19,0.03) 50%, rgba(30,58,95,0.03) 100%);
+            pointer-events: none;
+        }
+        .about-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(107,142,35,0.1);
+            position: relative;
+        }
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .about-card:hover::before { transform: scaleX(1); }
+        .about-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(30,58,95,0.12) !important;
+            background: linear-gradient(145deg, #ffffff 0%, #f0f8e8 100%);
+        }
+        .icon-wrapper {
+            width: 90px; height: 90px;
+            background: var(--gradient-accent);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(107,142,35,0.3);
+            transition: all 0.4s ease;
+        }
+        .about-card:hover .icon-wrapper { transform: scale(1.1) rotate(5deg); }
+        .mission-card {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 25px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(107,142,35,0.15) 0%, transparent 70%);
+            animation: rotateSlow 20s linear infinite;
+        }
+        @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .mission-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(30,58,95,0.4) !important;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-section {
+            background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+            position: relative;
+        }
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
+            background: white;
+            position: relative;
+            border: 1px solid rgba(107,142,35,0.08);
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(107,142,35,0.05) 0%, rgba(139,69,19,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .service-card:hover::after { opacity: 1; }
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(30,58,95,0.18) !important;
+        }
+        .service-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== VALUES ===== */
+        .values-section {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+        .value-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(107,142,35,0.08);
+        }
+        .value-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .value-card:hover::before { transform: scaleX(1); }
+        .value-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(30,58,95,0.15) !important;
+            background: linear-gradient(145deg, #ffffff 0%, #f0f8e8 100%);
+        }
+        .value-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        /* ===== PRODUCTS ===== */
+        .products-section {
+            background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+        }
+        .product-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(30,58,95,0.08);
+            position: relative;
+            background: white;
+            border: 1px solid rgba(107,142,35,0.08);
+        }
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            z-index: 1;
+        }
+        .product-card:hover::before { transform: scaleX(1); }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(30,58,95,0.15) !important;
+        }
+        .product-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f0f5fa 100%);
+        }
+        .contact-card {
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(107,142,35,0.1);
+        }
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(30,58,95,0.12) !important;
+        }
+        .contact-icon {
+            width: 90px; height: 90px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 2rem;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(107,142,35,0.3);
+            transition: all 0.4s ease;
+        }
+        .contact-icon:hover { transform: scale(1.1) rotate(5deg); }
+        .contact-link { color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .contact-link:hover { color: var(--accent); }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(107,142,35,0.15) 0%, rgba(139,69,19,0.1) 50%, transparent 100%);
+            opacity: 0.5;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .btn-back-to-top {
+            position: fixed;
+            bottom: 40px; right: 40px;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            color: white; border: none;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(107,142,35,0.4);
+            opacity: 0; visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+        .btn-back-to-top.show { opacity: 1; visibility: visible; }
+        .btn-back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(107,142,35,0.6);
+        }
+
+        /* Form */
+        .form-control {
+            border: 2px solid rgba(107,142,35,0.15);
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(107,142,35,0.15);
+        }
+        .btn-primary {
+            background: var(--gradient-accent);
+            border: none;
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(107,142,35,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(107,142,35,0.5);
+            background: linear-gradient(135deg, #7aa528 0%, #9e4e16 100%);
+        }
+        .btn-outline-light {
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.4s ease;
+        }
+        .btn-outline-light:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.15);
+        }
+        .expansion-card {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 100%);
+            color: white;
+            border-radius: 20px;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .expansion-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(107,142,35,0.2) 0%, transparent 70%);
+        }
+        .badge-expansion {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(107,142,35,0.4);
+            display: inline-block;
+        }
+
+        /* Gallery nav link */
+        .nav-link[href="gallery.html"] {
+            background: linear-gradient(135deg, rgba(107,142,35,0.1) 0%, rgba(139,69,19,0.08) 100%);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .business-name { font-size: 1.15rem; }
+            .brand-icon img { height: 140px; }
+            .navbar.scrolled .brand-icon img { height: 68px; }
+            .hero-stats { gap: 2rem; }
+        }
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2.2rem; }
+            .business-name { font-size: 1.05rem; }
+            .brand-icon img { height: 120px; }
+            .navbar.scrolled .brand-icon img { height: 58px; }
+            .btn-back-to-top { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="brand-icon">
+                    <span class="visually-hidden">MAGADINE Logo</span>
+                    <!-- Logo commented out as requested -->
+                    <!-- <img src="assets/magatransprentlogo.png" alt="MAGADINE Logo"> -->
+                    
+                    <!-- Creative business name -->
+                    <span class="business-name">
+                        MAGADINE BUSINESS<br>ENTERPRISE (PTY) LTD
+                    </span>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-cta ms-lg-3 mt-3 mt-lg-0">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- The rest of your website remains 100% unchanged from your original code -->
+    <section id="home" class="hero-section">
+        <div class="particles-bg" id="particles"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 col-md-10">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="d-block">Mining Supply & Services</span>
+                            <span class="highlight">of Choice</span>
+                        </h1>
+                        <p class="hero-subtitle lead mb-4">
+                            Serving the Thaba Chweu and Greater Tubatse area with exceptional service, competitive pricing, and unwavering commitment to excellence.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="products.html" class="btn btn-primary btn-lg me-3 mb-3">
+                                <i class="fas fa-box-open me-2"></i>View Products
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-light btn-lg mb-3">
+                                <i class="fas fa-phone-alt me-2"></i>Contact Us
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="8">0</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="100">0</div>
+                                <div class="stat-label">% Woman Owned</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="500">0</div>
+                                <div class="stat-label">+ Products</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">About Magadine Business Enterprise</h2>
+                    <p class="section-subtitle">100% Black Woman Owned & Led</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="about-card card h-100 border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="icon-wrapper mb-4"><i class="fas fa-female"></i></div>
+                            <h3 class="card-title mb-3">100% Black Woman Owned</h3>
+                            <p class="card-text">Magadine Business Enterprise (Pty) Ltd was founded in 2016 in the Thaba Chweu Municipality area and is 100% black woman owned.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-card card h-100 border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="icon-wrapper mb-4"><i class="fas fa-users"></i></div>
+                            <h3 class="card-title mb-3">All Woman Leadership</h3>
+                            <p class="card-text">Miss Marumo Mkhonto is a sole director with 51% of shares and the other 49% is held by a disabled black woman Ms. Mahlatse Lekwadu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="mission-card card border-0 shadow">
+                        <div class="card-body p-4 p-lg-5">
+                            <h3 class="card-title text-center mb-4"><i class="fas fa-bullseye me-2"></i>Our Mission</h3>
+                            <p class="mission-text lead text-center">Magadine Business Enterprise (Pty) Ltd intends to deliver remarkable service supply and support to our customers with a purposeful sense of urgency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-subtitle">Comprehensive Supply Solutions</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0">
+                        <img src="assets/miningsup.png" class="service-image" alt="Mining supplies equipment">
+                        <div class="card-body p-4">
+                            <h3 class="card-title"><i class="fas fa-hard-hat me-2"></i>Mining Supplies</h3>
+                            <p class="card-text">Comprehensive range of mining equipment, tools, and consumables for the mining industry.</p>
+                            <ul class="list-unstyled mt-2">
+                                <li><i class="fas fa-check text-success me-2"></i>Cable ties (all sizes)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Safety harnesses</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Helmets & safety boots</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Dromex Gloves range</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0">
+                        <img src="assets/PPEsafety.png" class="service-image" alt="PPE & Safety">
+                        <div class="card-body p-4">
+                            <h3 class="card-title"><i class="fas fa-shield-alt me-2"></i>PPE & Safety</h3>
+                            <p class="card-text">Personal Protective Equipment to ensure worker safety in hazardous environments.</p>
+                            <ul class="list-unstyled mt-2">
+                                <li><i class="fas fa-check text-success me-2"></i>Respiratory masks</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Safety harnesses</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Fire risk equipment</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Chemical-resistant gloves</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0">
+                        <img src="assets/stationery&office.png" class="service-image" alt="Stationery & Office">
+                        <div class="card-body p-4">
+                            <h3 class="card-title"><i class="fas fa-pen-fancy me-2"></i>Stationery & Office</h3>
+                            <p class="card-text">Complete office supply solutions including stationery and general consumables.</p>
+                            <ul class="list-unstyled mt-2">
+                                <li><i class="fas fa-check text-success me-2"></i>Highlighters & Pens</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Typek paper</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Clipboards</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Hole punches</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="expansion-card card border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8">
+                                    <h3 class="card-title mb-3 text-white"><i class="fas fa-chart-line me-2"></i>Future Expansion</h3>
+                                    <p class="card-text text-white-50">Magadine Business Enterprise identified supply services as a core service and is planning to grow and expand to Construction. Additionally, we manufacture hand cleaners with grit and produce 1-ton textile bags to meet diverse industry needs.</p>
+                                </div>
+                                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                                    <span class="badge-expansion">Coming Soon</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Our Promise</h2>
+                    <p class="section-subtitle">We Do What We Say We Will Do</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">01</div>
+                            <h4 class="card-title mt-3">Integrity & Honesty</h4>
+                            <p class="card-text">Transparent dealings and ethical business practices</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">02</div>
+                            <h4 class="card-title mt-3">Accountable & Responsible</h4>
+                            <p class="card-text">Taking ownership of our commitments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">03</div>
+                            <h4 class="card-title mt-3">Motivated & Professional</h4>
+                            <p class="card-text">Dedicated team delivering quality service</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card card text-center border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="value-number">04</div>
+                            <h4 class="card-title mt-3">Safety & Quality</h4>
+                            <p class="card-text">Prioritizing safety and high-quality products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Quality Mining & Safety Supplies</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+                        <img src="assets/safetyHarness.png" class="product-image img-fluid" alt="Safety harness product image">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Safety Harness</h5>
+                            <p class="card-text small">High-quality fall protection equipment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+                        <img src="assets/firesafetygear.png" class="product-image fire-equipment">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Fire Risk Equipment</h5>
+                            <p class="card-text small">Essential fire safety gear</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+                        <img src="assets/cleaningkit.png" class="product-image cleaning-kit">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Cleaning Kit Supply</h5>
+                            <p class="card-text small">Industrial cleaning solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card card border-0 h-100">
+                        <img src="assets/constructionTape.png" class="product-image construction-tape">
+                        <div class="card-body p-3">
+                            <h5 class="card-title">Construction Tape</h5>
+                            <p class="card-text small">High-visibility safety tape</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a href="contact.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-list-alt me-2"></i>View Full Product Catalog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p class="section-subtitle">Get in touch for quotes and inquiries</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-card card border-0 shadow-lg">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="row">
+                                <div class="col-md-4 text-center mb-4 mb-md-0">
+                                    <div class="contact-icon mb-3"><i class="fas fa-envelope"></i></div>
+                                    <h5>Email</h5>
+                                    <a href="mailto:admin@magadine.co.za" class="contact-link">admin@magadine.co.za</a>
+                                </div>
+                                <div class="col-md-4 text-center mb-4 mb-md-0">
+                                    <div class="contact-icon mb-3"><i class="fas fa-phone-alt"></i></div>
+                                    <h5>Phone</h5>
+                                    <a href="tel:+27682215400" class="contact-link">+27 68 221 5400</a>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="contact-icon mb-3"><i class="fas fa-map-marker-alt"></i></div>
+                                    <h5>Location</h5>
+                                    <p class="contact-text">Unit B19 Steelpoort Mine Supplier Park,<br>Farm Spitskop 333KT, Road R555,<br>Steelpoort, 1133</p>
+                                </div>
+                            </div>
+                            <div class="mt-5 pt-4 border-top">
+                                <h4 class="text-center mb-4">Send Us a Message</h4>
+                                <form id="contactForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Your Name" required></div>
+                                        <div class="col-md-6"><input type="email" class="form-control" placeholder="Your Email" required></div>
+                                        <div class="col-12"><input type="text" class="form-control" placeholder="Subject" required></div>
+                                        <div class="col-12"><textarea class="form-control" rows="4" placeholder="Your Message" required></textarea></div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-3">
+                        <span class="brand-icon">
+                            <!-- Logo commented out -->
+                            <!-- <img src="assets/magatransprentlogo.png" style="width: 200px; height: auto;" alt="MAGADINE Logo"> -->
+                            
+                            <span class="business-name" style="font-size: 1.25rem; -webkit-text-fill-color: white; color: white; text-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                                MAGADINE BUSINESS<br>ENTERPRISE (PTY) LTD
+                            </span>
+                        </span>
+                    </div>
+                    <p class="mb-0 mt-3" style="position: relative; z-index: 1; color: rgba(255,255,255,0.8);">Mining Supply and Services of Choice</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0" style="position: relative; z-index: 1; color: rgba(255,255,255,0.7);">
+                        © Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="btn btn-back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            function createParticles() {
+                const container = document.getElementById('particles');
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.width = (Math.random() * 4 + 2) + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.animationDelay = Math.random() * 20 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    container.appendChild(particle);
+                }
+            }
+            createParticles();
+            function animateCounter(element) {
+                const target = parseInt(element.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) { element.textContent = target; clearInterval(timer); }
+                    else { element.textContent = Math.floor(current); }
+                }, 16);
+            }
+            const counters = document.querySelectorAll('.stat-number[data-target]');
+            const observerCounter = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting && entry.target.textContent === '0') animateCounter(entry.target); });
+            }, { threshold: 0.5 });
+            counters.forEach(counter => observerCounter.observe(counter));
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                const backToTop = document.getElementById('backToTop');
+                if (window.scrollY > 80) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
+                if (window.scrollY > 300) backToTop.classList.add('show'); else backToTop.classList.remove('show');
+            });
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) { window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
+                });
+            });
+            document.getElementById('backToTop').addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you shortly.');
+                this.reset();
+            });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.service-card, .value-card, .product-card, .about-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

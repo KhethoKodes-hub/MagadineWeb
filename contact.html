@@ -923,12 +923,6 @@
         <div class="particles-bg" id="particles"></div>
         <div class="container">
             <div class="page-hero-content">
-                <!--<nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
-                    </ol>
-                </nav>-->
                 <h1 class="page-title">Get In Touch</h1>
                 <p class="page-subtitle">Contact Magadine Business Enterprise for quality mining supplies, PPE, and industrial solutions</p>
             </div>
@@ -1048,7 +1042,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="map-container animate-fade-in-up">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.5!2d30.4167!3d-24.4667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6b3b5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2sSteelpoort!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.5!2d30.4167!3d-24.4667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6b3b5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e5e!2sSteelpoort!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         <div class="map-overlay">
                             <h4 class="map-title"><i class="fas fa-map-marker-alt me-1" style="color: var(--accent);"></i> Our Location</h4>
                             <p class="mb-0 small">Unit B19 Steelpoort Mine Supplier Park<br>Farm Spitskop 333KT, Road R555<br>Steelpoort, 1133</p>
@@ -1189,32 +1183,81 @@
             contactForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 event.stopPropagation();
-                if (!contactForm.checkValidity()) contactForm.classList.add('was-validated');
-                else {
-                    const submitBtn = contactForm.querySelector('.btn-submit');
-                    const originalText = submitBtn.innerHTML;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
-                    submitBtn.disabled = true;
-                    setTimeout(() => {
-                        const successAlert = document.createElement('div');
-                        successAlert.className = 'alert alert-success alert-dismissible fade show mt-4';
-                        successAlert.innerHTML = `<i class="fas fa-check-circle me-2"></i><strong>Thank you for your message!</strong> We have received your inquiry and will contact you within 24 hours.<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
-                        contactForm.parentNode.insertBefore(successAlert, contactForm.nextSibling);
-                        contactForm.reset();
-                        contactForm.classList.remove('was-validated');
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        setTimeout(() => { if (successAlert.parentNode) successAlert.remove(); }, 10000);
-                    }, 1500);
+                
+                if (!contactForm.checkValidity()) {
+                    contactForm.classList.add('was-validated');
+                    return;
                 }
+
+                const submitBtn = contactForm.querySelector('.btn-submit');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
+                submitBtn.disabled = true;
+
+                // Collect form data exactly as filled
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    company: document.getElementById('company').value || 'Not provided',
+                    serviceType: document.getElementById('serviceType').value,
+                    message: document.getElementById('message').value
+                };
+
+                // Format the email body exactly as requested
+                const emailBody = `
+New Contact Form Submission from Magadine Website
+
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company}
+Service Interested In: ${formData.serviceType}
+
+Message:
+${formData.message}
+
+---
+Submitted on: ${new Date().toLocaleString('en-ZA')}
+                `.trim();
+
+                // Send email using mailto (opens user's default email client with pre-filled content)
+                const mailtoLink = `mailto:kmngomezulu82@gmail.com?subject=New Contact Form - ${formData.firstName} ${formData.lastName}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Open the user's email client with the exact formatted message
+                window.location.href = mailtoLink;
+
+                // Show success message immediately (since mailto is handled by browser)
+                setTimeout(() => {
+                    const successAlert = document.createElement('div');
+                    successAlert.className = 'alert alert-success alert-dismissible fade show mt-4';
+                    successAlert.innerHTML = `<i class="fas fa-check-circle me-2"></i><strong>Thank you for your message!</strong> Your email client has opened with the message ready to send to kmngomezulu82@gmail.com.<br><small>Please click Send in your email app.</small><button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+                    contactForm.parentNode.insertBefore(successAlert, contactForm.nextSibling);
+                    
+                    contactForm.reset();
+                    contactForm.classList.remove('was-validated');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    setTimeout(() => { 
+                        if (successAlert.parentNode) successAlert.remove(); 
+                    }, 15000);
+                }, 800);
             }, false);
             
             const formInputs = contactForm.querySelectorAll('input, select, textarea');
             formInputs.forEach(input => {
                 input.addEventListener('input', function() {
-                    if (this.checkValidity()) { this.classList.remove('is-invalid'); this.classList.add('is-valid'); }
-                    else { this.classList.remove('is-valid'); this.classList.add('is-invalid'); }
+                    if (this.checkValidity()) { 
+                        this.classList.remove('is-invalid'); 
+                        this.classList.add('is-valid'); 
+                    } else { 
+                        this.classList.remove('is-valid'); 
+                        this.classList.add('is-invalid'); 
+                    }
                 });
             });
         });

@@ -1197,7 +1197,7 @@ ${formData.message}
 Submitted on: ${new Date().toLocaleString('en-ZA')}
                 `.trim();
 
-                const mailtoLink = `mailto:kmngomezulu82@gmail.com?subject=New Contact Form - ${encodeURIComponent(formData.firstName + ' ' + formData.lastName)}&body=${encodeURIComponent(emailBody)}`;
+                const mailtoLink = `mailto: admin@magadine.co.za?subject=New Contact Form - ${encodeURIComponent(formData.firstName + ' ' + formData.lastName)}&body=${encodeURIComponent(emailBody)}`;
                 
                 window.location.href = mailtoLink;
 
@@ -1205,7 +1205,7 @@ Submitted on: ${new Date().toLocaleString('en-ZA')}
                 setTimeout(() => {
                     const successAlert = document.createElement('div');
                     successAlert.className = 'alert alert-success alert-dismissible fade show mt-4';
-                    successAlert.innerHTML = `<i class="fas fa-check-circle me-2"></i><strong>Thank you for your message!</strong> Your email client has opened with the message ready to send to kmngomezulu82@gmail.com.<br><small>Please click Send in your email app.</small><button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+                    successAlert.innerHTML = `<i class="fas fa-check-circle me-2"></i><strong>Thank you for your message!</strong> Your email client has opened with the message ready to send to  admin@magadine.co.za.<br><small>Please click Send in your email app.</small><button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
                     contactForm.parentNode.insertBefore(successAlert, contactForm.nextSibling);
                     
                     contactForm.reset();

@@ -946,57 +946,59 @@
                     <div class="contact-form-container animate-fade-in-up">
                         <h3 class="form-title">Request a Quote</h3>
                         <p class="form-subtitle">Fill out the form below and we'll provide you with a competitive quote for your mining supply needs.</p>
-                        <form id="contactForm" novalidate>
+                        
+                        <!-- FormSubmit.co Integration - sends directly to admin@magadine.co.za -->
+                        <form id="contactForm" action="https://formsubmit.co/admin@magadine.co.za" method="POST" enctype="multipart/form-data">
+                            <!-- FormSubmit.co configuration -->
+                            <input type="hidden" name="_subject" value="Magadine Business - New Contact Form Submission">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_replyto" value="email">
+                            <input type="hidden" name="_next" value="https://magadine.co.za/thanks.html">
+                            
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="firstName" class="form-label">First Name *</label>
-                                    <input type="text" class="form-control" id="firstName" required>
-                                    <div class="invalid-feedback">Please enter your first name.</div>
+                                    <input type="text" class="form-control" id="firstName" name="First Name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lastName" class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control" id="lastName" required>
-                                    <div class="invalid-feedback">Please enter your last name.</div>
+                                    <input type="text" class="form-control" id="lastName" name="Last Name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email Address *</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    <input type="email" class="form-control" id="email" name="Email" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="phone" class="form-label">Phone Number *</label>
-                                    <input type="tel" class="form-control" id="phone" required>
-                                    <div class="invalid-feedback">Please enter your phone number.</div>
+                                    <input type="tel" class="form-control" id="phone" name="Phone Number" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="company" class="form-label">Company Name</label>
-                                    <input type="text" class="form-control" id="company">
+                                    <input type="text" class="form-control" id="company" name="Company Name">
                                 </div>
                                 <div class="col-12">
                                     <label for="serviceType" class="form-label">Service Interested In *</label>
-                                    <select class="form-select" id="serviceType" required>
+                                    <select class="form-select" id="serviceType" name="Service Interested In" required>
                                         <option value="" selected disabled>Select a service</option>
-                                        <option value="mining">Mining Supplies</option>
-                                        <option value="ppe">PPE & Safety Equipment</option>
-                                        <option value="stationery">Stationery & Office Supplies</option>
-                                        <option value="consumables">General Consumables</option>
-                                        <option value="manufacturing">Custom Manufacturing</option>
-                                        <option value="other">Other Inquiry</option>
+                                        <option value="Mining Supplies">Mining Supplies</option>
+                                        <option value="PPE & Safety Equipment">PPE & Safety Equipment</option>
+                                        <option value="Stationery & Office Supplies">Stationery & Office Supplies</option>
+                                        <option value="General Consumables">General Consumables</option>
+                                        <option value="Custom Manufacturing">Custom Manufacturing</option>
+                                        <option value="Other Inquiry">Other Inquiry</option>
                                     </select>
-                                    <div class="invalid-feedback">Please select a service type.</div>
                                 </div>
                                 <div class="col-12">
                                     <label for="message" class="form-label">Your Message *</label>
-                                    <textarea class="form-control" id="message" rows="4" required></textarea>
-                                    <div class="invalid-feedback">Please enter your message.</div>
+                                    <textarea class="form-control" id="message" name="Message" rows="4" required></textarea>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="privacyPolicy" required>
+                                        <input class="form-check-input" type="checkbox" id="privacyPolicy" name="Privacy Consent" value="Agreed" required>
                                         <label class="form-check-label" for="privacyPolicy">
                                             I agree to the <a href="#" class="text-decoration-none">Privacy Policy</a> and consent to being contacted.
                                         </label>
-                                        <div class="invalid-feedback">You must agree before submitting.</div>
                                     </div>
                                 </div>
                                 <div class="col-12 mt-3">
@@ -1152,87 +1154,20 @@
             }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
             document.querySelectorAll('.animate-fade-in-up').forEach(element => observer.observe(element));
             
-            // FIXED FORM HANDLER
-            const contactForm = document.getElementById('contactForm');
-            
-            contactForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                event.stopPropagation();
-
-                // Safe validity check
-                if (contactForm.checkValidity && !contactForm.checkValidity()) {
-                    contactForm.classList.add('was-validated');
-                    return;
-                }
-
-                const submitBtn = contactForm.querySelector('.btn-submit');
+            // FormSubmit.co handles the submission automatically
+            // Add visual feedback for form submission
+            const magForm = document.getElementById('contactForm');
+            magForm.addEventListener('submit', function(e) {
+                const submitBtn = magForm.querySelector('.btn-submit');
                 const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
                 submitBtn.disabled = true;
-
-                // Collect form data exactly as filled
-                const formData = {
-                    firstName: document.getElementById('firstName').value.trim(),
-                    lastName: document.getElementById('lastName').value.trim(),
-                    email: document.getElementById('email').value.trim(),
-                    phone: document.getElementById('phone').value.trim(),
-                    company: document.getElementById('company').value.trim() || 'Not provided',
-                    serviceType: document.getElementById('serviceType').value,
-                    message: document.getElementById('message').value.trim()
-                };
-
-                const emailBody = `
-New Contact Form Submission from Magadine Website
-
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Company: ${formData.company}
-Service Interested In: ${formData.serviceType}
-
-Message:
-${formData.message}
-
----
-Submitted on: ${new Date().toLocaleString('en-ZA')}
-                `.trim();
-
-                const mailtoLink = `mailto: admin@magadine.co.za?subject=New Contact Form - ${encodeURIComponent(formData.firstName + ' ' + formData.lastName)}&body=${encodeURIComponent(emailBody)}`;
                 
-                window.location.href = mailtoLink;
-
-                // Show success message
+                // Re-enable after 3 seconds (form will redirect to thank you page)
                 setTimeout(() => {
-                    const successAlert = document.createElement('div');
-                    successAlert.className = 'alert alert-success alert-dismissible fade show mt-4';
-                    successAlert.innerHTML = `<i class="fas fa-check-circle me-2"></i><strong>Thank you for your message!</strong> Your email client has opened with the message ready to send to  admin@magadine.co.za.<br><small>Please click Send in your email app.</small><button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
-                    contactForm.parentNode.insertBefore(successAlert, contactForm.nextSibling);
-                    
-                    contactForm.reset();
-                    contactForm.classList.remove('was-validated');
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
-                    
-                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    
-                    setTimeout(() => { if (successAlert.parentNode) successAlert.remove(); }, 15000);
-                }, 800);
-            }, false);
-            
-            // Real-time validation
-            const formInputs = contactForm.querySelectorAll('input, select, textarea');
-            formInputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    if (this.checkValidity) {
-                        if (this.checkValidity()) {
-                            this.classList.remove('is-invalid');
-                            this.classList.add('is-valid');
-                        } else {
-                            this.classList.remove('is-valid');
-                            this.classList.add('is-invalid');
-                        }
-                    }
-                });
+                }, 3000);
             });
         });
     </script>

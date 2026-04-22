@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Magadine Business Enterprise</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/magaLogo.jpeg" type="image/jpeg">
+    
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d4f7c;
+            --secondary: #8B4513;
+            --accent: #6b8e23;
+            --accent-dark: #556b1f;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --white: #ffffff;
+            --gradient-accent: linear-gradient(135deg, #6b8e23 0%, #8B4513 100%);
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d4f7c 50%, #0f172a 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, rgba(107, 142, 35, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, rgba(139, 69, 19, 0.3) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, rgba(31, 58, 95, 0.3) 0px, transparent 50%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== PARTICLES BACKGROUND ===== */
+        .particles-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(107, 142, 35, 0.15);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: transparent;
+            backdrop-filter: none;
+            padding: 0 0;
+            min-height: 90px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar.scrolled {
+            min-height: 80px;
+            background: linear-gradient(135deg, rgba(248,250,252,0.99) 0%, rgba(235,242,250,0.99) 100%);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(30,58,95,0.15);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(135deg, #6b8e23, #8B4513, #1e3a5f) 1;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            transition: transform 0.3s ease;
+            padding: 4px 0;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.03);
+        }
+
+        .brand-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+            position: relative;
+        }
+
+        .brand-icon img {
+            height: 180px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 16px rgba(107,142,35,0.25));
+            transition: filter 0.3s ease, height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled .brand-icon img {
+            height: 80px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        .navbar.scrolled .nav-link {
+            color: rgba(12, 1, 1, 0.85) !important;
+            text-shadow: none;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: rgba(255, 255, 255, 0.9) !important;
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .navbar.scrolled .nav-link:hover,
+        .navbar.scrolled .nav-link.active {
+            color: rgba(12, 1, 1, 0.9) !important;
+            background: linear-gradient(135deg, rgba(107,142,35,0.08) 0%, rgba(139,69,19,0.05) 100%);
+        }
+
+        .btn-cta {
+            background: var(--gradient-accent);
+            color: white;
+            font-weight: 700;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(107,142,35,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(107,142,35,0.5);
+            color: white;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: white;
+                border-radius: 20px;
+                margin-top: 20px;
+                padding: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            }
+            .navbar-collapse .nav-link {
+                color: var(--dark) !important;
+                text-shadow: none;
+            }
+            .brand-icon img { height: 140px; }
+            .navbar.scrolled .brand-icon img { height: 68px; }
+        }
+
+        @media (max-width: 768px) {
+            .brand-icon img { height: 120px; }
+            .navbar.scrolled .brand-icon img { height: 58px; }
+        }
+
+        /* ===== THANK YOU HERO ===== */
+        .thankyou-hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px clamp(1.5rem,5vw,4rem) 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
+        }
+
+        .thankyou-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.5;
+        }
+
+        .thankyou-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .checkmark-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 32px;
+            background: linear-gradient(135deg, rgba(107,142,35,0.2), rgba(139,69,19,0.1));
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(107,142,35,0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 25px rgba(107,142,35,0); }
+        }
+
+        .checkmark-circle i {
+            font-size: 55px;
+            color: var(--accent);
+        }
+
+        .thankyou-title {
+            font-size: clamp(48px,8vw,88px);
+            font-weight: 900;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .thankyou-title .highlight {
+            color: var(--accent);
+            display: block;
+        }
+
+        .thankyou-message {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Response Box */
+        .response-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .response-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .response-title i {
+            font-size: 1.3rem;
+        }
+
+        .response-text {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .response-text strong {
+            color: var(--accent);
+        }
+
+        .response-hours {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .response-hours span {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .response-hours i {
+            color: var(--accent);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(107,142,35,0.3);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(107,142,35,0.5);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 14px 32px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline-custom:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: auto;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-mesh);
+            opacity: 0.3;
+        }
+
+        .copyright {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-primary-custom, .btn-outline-custom {
+                justify-content: center;
+            }
+            .response-box {
+                padding: 20px;
+            }
+            .response-hours {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">
+                    <img src="assets/magatransprentlogo.png" alt="MAGADINE Logo">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-cta ms-lg-3 mt-3 mt-lg-0">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="thankyou-hero">
+        <div class="particles-bg" id="particles"></div>
+        <div class="thankyou-bg"></div>
+        
+        <div class="thankyou-content">
+            <div class="checkmark-circle">
+                <i class="fas fa-check"></i>
+            </div>
+            
+            <h1 class="thankyou-title">
+                THANK<br>
+                <span class="highlight">YOU!</span>
+            </h1>
+            
+            <p class="thankyou-message">
+                Your message has been successfully sent to the Magadine Business Enterprise team. We truly appreciate you reaching out.
+            </p>
+            
+            <div class="response-box">
+                <div class="response-title">
+                    <i class="fas fa-clock"></i>
+                    WHAT HAPPENS NEXT?
+                </div>
+                <div class="response-text">
+                    <strong>📧 Within 24 hours</strong> — One of our representatives will review your inquiry and respond via email or phone.<br><br>
+                    <strong>📞 For urgent matters</strong> — Feel free to call us directly at <strong>+27 68 221 5400</strong> during business hours.<br><br>
+                    <strong>📋 Quote requests</strong> — We'll prepare a competitive quote based on your specific requirements.
+                </div>
+                <div class="response-hours">
+                    <span><i class="far fa-clock"></i> Response time: Within 24 hours</span>
+                    <span><i class="fas fa-phone-alt"></i> Mon-Fri: 8:00 AM - 3:30 PM</span>
+                    <span><i class="fas fa-calendar-alt"></i> Sat-Sun: Closed</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="index.html" class="btn-primary-custom">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="tel:+27682215400" class="btn-outline-custom">
+                    <i class="fas fa-phone-alt"></i> Call Us Now
+                </a>
+                <a href="https://wa.me/27682215400" class="btn-outline-custom">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="copyright">
+                <p class="mb-0">© Copyright <span id="currentYear"></span> Magadine Business Enterprise (Pty) Ltd - All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Create particles
+            function createParticles() {
+                const container = document.getElementById('particles');
+                if (container) {
+                    for (let i = 0; i < 40; i++) {
+                        const particle = document.createElement('div');
+                        particle.className = 'particle';
+                        particle.style.left = Math.random() * 100 + '%';
+                        particle.style.top = Math.random() * 100 + '%';
+                        particle.style.width = (Math.random() * 5 + 2) + 'px';
+                        particle.style.height = particle.style.width;
+                        particle.style.animationDelay = Math.random() * 20 + 's';
+                        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                        container.appendChild(particle);
+                    }
+                }
+            }
+            createParticles();
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 80) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Check if coming from form submission
+            if (document.referrer && (document.referrer.includes('formsubmit.co') || document.referrer.includes('contact.html'))) {
+                console.log('Thank you page accessed after form submission');
+                // Optional: Add a subtle animation or tracking
+            }
+        });
+    </script>
+</body>
+</html>
